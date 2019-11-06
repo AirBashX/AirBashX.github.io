@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JQuery | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="一.基础知识1.安装使用 离线使用   从网上下载jQuery的JS文件,放到项目目录  使用时导入到需要使用的文件中(导入行内不能写代码) 1&amp;lt;script type=&quot;text&#x2F;javascript&quot; src=&quot;..&#x2F;js&#x2F;jquery-1.4.2.js&quot;&amp;gt;&amp;lt;&#x2F;script&amp;gt;    在线使用 1&amp;lt;script type=&quot;text&#x2F;javascript&quot; src=">
+<meta name="keywords" content="前端,Jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQuery">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;02&#x2F;%E5%89%8D%E7%AB%AF&#x2F;JQuery&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="一.基础知识1.安装使用 离线使用   从网上下载jQuery的JS文件,放到项目目录  使用时导入到需要使用的文件中(导入行内不能写代码) 1&amp;lt;script type=&quot;text&#x2F;javascript&quot; src=&quot;..&#x2F;js&#x2F;jquery-1.4.2.js&quot;&amp;gt;&amp;lt;&#x2F;script&amp;gt;    在线使用 1&amp;lt;script type=&quot;text&#x2F;javascript&quot; src=">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.450Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-前端/JQuery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      JQuery
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/前端/">前端</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="一-基础知识"><a href="#一-基础知识" class="headerlink" title="一.基础知识"></a>一.基础知识</h3><h4 id="1-安装使用"><a href="#1-安装使用" class="headerlink" title="1.安装使用"></a>1.安装使用</h4><ul>
+<li>离线使用</li>
+</ul>
+<ol>
+<li><p>从网上下载jQuery的JS文件,放到项目目录</p>
+</li>
+<li><p>使用时导入到需要使用的文件中(导入行内不能写代码)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"../js/jquery-1.4.2.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>在线使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"地址"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2.注意事项"></a>2.注意事项</h4><ul>
+<li><p>优势</p>
+<ul>
+<li>相对于js能更好的选择元素,修改css</li>
+<li>当一个网站下载完以后,另一个网站可以复用</li>
+</ul>
+</li>
+<li><p>详细介绍:</p>
+<ul>
+<li>jQuery是一个用js写的js框架</li>
+<li>选择器时jQuery的基础</li>
+</ul>
+</li>
+<li><p>创建新元素时命名为$(),或者jQuery()</p>
+</li>
+</ul>
+<h4 id="3-对象转换"><a href="#3-对象转换" class="headerlink" title="3.对象转换"></a>3.对象转换</h4><p>jQ对象和JS对象之间的方法不同互相使用</p>
+<ul>
+<li>js转换为jQuery:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">js转jq   <span class="keyword">var</span> jq = $(js);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>jQuery转换为js:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jq转js  <span class="keyword">var</span> js = jq[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-区别-方法"><a href="#4-区别-方法" class="headerlink" title="4.区别/方法"></a>4.区别/方法</h4><table>
+<thead>
+<tr>
+<th>jq代码</th>
+<th>js代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>val()</td>
+<td>value</td>
+</tr>
+<tr>
+<td>eq(n)</td>
+<td>遍历</td>
+</tr>
+<tr>
+<td>each()</td>
+<td>循环遍历</td>
+</tr>
+<tr>
+<td>load</td>
+<td>onload</td>
+</tr>
+</tbody></table>
+<h4 id="5-遍历数组"><a href="#5-遍历数组" class="headerlink" title="5.遍历数组"></a>5.遍历数组</h4><ul>
+<li><p>jQuery方法调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">$.each(a, <span class="function"><span class="keyword">function</span>(<span class="params">key, val</span>) </span>&#123;<span class="comment">//以jQuery对象的方法调用，兼容性好;</span></span><br><span class="line">    <span class="built_in">console</span>.log(a[key] + <span class="string">'下标为'</span> + key + <span class="string">'值为'</span> + val);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象转换调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//也可以用$(a)将a转化为jquery对象，然后以下列方式的形式调用</span></span><br><span class="line">$(a).each(<span class="function"><span class="keyword">function</span>(<span class="params">key,val</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a[key] + <span class="string">'下标为'</span> + key + <span class="string">'值为'</span> + val);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历对象时</p>
+<p>$(“img”).eq(0)=$(this)=$(val)</p>
+</li>
+</ul>
+<h3 id="二-选择器-获取元素"><a href="#二-选择器-获取元素" class="headerlink" title="二.选择器(获取元素)"></a>二.选择器(获取元素)</h3><h4 id="1-基本选择器"><a href="#1-基本选择器" class="headerlink" title="1.基本选择器"></a>1.基本选择器</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“*”)</td>
+<td>任意元素选择器</td>
+</tr>
+<tr>
+<td>$(“标签名”)</td>
+<td>标签名选择器</td>
+</tr>
+<tr>
+<td>$(“#id名”)</td>
+<td>Id选择器</td>
+</tr>
+<tr>
+<td>$(“.class名”)</td>
+<td>class选择器</td>
+</tr>
+<tr>
+<td>$(“标签名,#id,.class”)</td>
+<td>分组选择器</td>
+</tr>
+<tr>
+<td>$(“标签名.class名”)</td>
+<td>元素选择器(标签名为XXX且class名为XXX)</td>
+</tr>
+</tbody></table>
+<h4 id="2-层级选择器"><a href="#2-层级选择器" class="headerlink" title="2.层级选择器"></a>2.层级选择器</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“div span”)</td>
+<td>匹配所有div下的span元素 包含所有后代</td>
+</tr>
+<tr>
+<td>$(“div&gt;span”)</td>
+<td>匹配所有div下的span子元素</td>
+</tr>
+<tr>
+<td>$(“div+span”)</td>
+<td>匹配所有div后面的第一个弟弟元素</td>
+</tr>
+<tr>
+<td>$(“div~span”)</td>
+<td>匹配所有div后面所有的span弟弟们元素</td>
+</tr>
+</tbody></table>
+<h4 id="2-2层级方法"><a href="#2-2层级方法" class="headerlink" title="2.2层级方法"></a>2.2层级方法</h4><p>不包括自身/当选择器全部选择,然后查找兄弟元素,第一个不被选择</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“#abc”).siblings(“div”)</td>
+<td>匹配id为abc元素的所有兄弟元素</td>
+</tr>
+<tr>
+<td>$(“#abc”).next(“div”)</td>
+<td>匹配id为abc元素的弟弟元素</td>
+</tr>
+<tr>
+<td>$(“#abc”).nexAll()</td>
+<td>匹配id为abc元素的弟弟元素们</td>
+</tr>
+<tr>
+<td>$(“#abc”).prev(“div”)</td>
+<td>匹配id为abc元素的哥哥元素</td>
+</tr>
+<tr>
+<td>$(“#abc”).prevAll()</td>
+<td>匹配id为abc元素的哥哥元素们</td>
+</tr>
+</tbody></table>
+<h4 id="3-过滤选择器"><a href="#3-过滤选择器" class="headerlink" title="3.过滤选择器"></a>3.过滤选择器</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“div:first”)</td>
+<td>匹配所有div元素中的第一个</td>
+<td>存在单独方法</td>
+</tr>
+<tr>
+<td>$(“div:last”)</td>
+<td>匹配所有div元素中的最后一个</td>
+<td>存在单独方法</td>
+</tr>
+<tr>
+<td>$(“div:even”)</td>
+<td>匹配所有div元素中的偶数个</td>
+<td>从0开始</td>
+</tr>
+<tr>
+<td>$(“div:odd”)</td>
+<td>匹配所有div元素中的奇数个</td>
+<td>从0开始</td>
+</tr>
+<tr>
+<td>$(“div:eq(n)”)</td>
+<td>匹配第n个div元素</td>
+<td>存在单独方法</td>
+</tr>
+<tr>
+<td>$(“div:lt(n)”)</td>
+<td>匹配所有下标小于n的所有div元素</td>
+<td></td>
+</tr>
+<tr>
+<td>$(“div:gt(n)”)</td>
+<td>匹配所有下标大于n的所有div元素</td>
+<td></td>
+</tr>
+<tr>
+<td>$(“div:not(.abc)”)</td>
+<td>匹配所有div中class值不等于abc的</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="3-3过滤方法"><a href="#3-3过滤方法" class="headerlink" title="3.3过滤方法"></a>3.3过滤方法</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“#abc”).filter(function(index,ele){index相关flag return true})</td>
+<td>过滤return为 true的所有div元素</td>
+</tr>
+<tr>
+<td>$(“#abc”).map(function(index,ele){index相关flag return ele})</td>
+<td>过滤return为ele的div元素</td>
+</tr>
+<tr>
+<td>$(“#abc”).find(“.class名”)</td>
+<td>匹配class为”class名”的所有div元素</td>
+</tr>
+<tr>
+<td>$(“#abc”).not(“.class名”)</td>
+<td>匹配class不为”class名”的所有div元素</td>
+</tr>
+<tr>
+<td>$(“#abc”).is(“.class名”)</td>
+<td>检查class为”class名”的所有div元素</td>
+</tr>
+<tr>
+<td>$(“#abc”).slice(a,b)</td>
+<td>匹配[a,b)div元素,不写b时代表[a,+无限)</td>
+</tr>
+<tr>
+<td>$(“#abc”).has(p)</td>
+<td>匹配所有包含p子元素的div</td>
+</tr>
+</tbody></table>
+<h4 id="4-内容选择器"><a href="#4-内容选择器" class="headerlink" title="4.内容选择器"></a>4.内容选择器</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“div:has(p)”)</td>
+<td>匹配所有包含p子元素的div</td>
+</tr>
+<tr>
+<td>$(“div:empty”)</td>
+<td>匹配所有空的div</td>
+</tr>
+<tr>
+<td>$(“div:parent”)</td>
+<td>匹配所有非空的div</td>
+</tr>
+<tr>
+<td>$(“div:contains(‘abc’)”)</td>
+<td>匹配所有包含abc文本的div</td>
+</tr>
+</tbody></table>
+<h4 id="5-属性选择器"><a href="#5-属性选择器" class="headerlink" title="5.属性选择器"></a>5.属性选择器</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“div[id]”)</td>
+<td>匹配所有包含id属性的元素</td>
+</tr>
+<tr>
+<td>$(“div[id=’d1’]”)</td>
+<td>匹配所有id等于d1的元素</td>
+</tr>
+<tr>
+<td>$(“div[id!=’d1’]”)</td>
+<td>匹配所有id不等于d1的元素</td>
+</tr>
+</tbody></table>
+<h4 id="6-可见选择器"><a href="#6-可见选择器" class="headerlink" title="6.可见选择器"></a>6.可见选择器</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“div:hidden”)</td>
+<td>匹配所有隐藏的div元素</td>
+</tr>
+<tr>
+<td>$(“div:visible”)</td>
+<td>匹配所有显示的div元素</td>
+</tr>
+</tbody></table>
+<h4 id="6-2隐藏显示相关的方法"><a href="#6-2隐藏显示相关的方法" class="headerlink" title="6.2隐藏显示相关的方法"></a>6.2隐藏显示相关的方法</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“#abc”).hide();</td>
+<td>隐藏</td>
+</tr>
+<tr>
+<td>$(“#abc”).show();</td>
+<td>显示</td>
+</tr>
+<tr>
+<td>$(“#abc”).toggle();</td>
+<td>隐藏显示切换</td>
+</tr>
+</tbody></table>
+<h4 id="7-子元素选择器"><a href="#7-子元素选择器" class="headerlink" title="7.子元素选择器"></a>7.子元素选择器</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“div:nth-child(n)”)</td>
+<td>匹配所有是div并且是第n个子元素 //从1开始</td>
+</tr>
+<tr>
+<td>$(“div:first-child”)</td>
+<td>匹配所有是div并且是第一个子元素</td>
+</tr>
+<tr>
+<td>$(“div:last-child”)</td>
+<td>匹配所有是div并且是最后一个子元素</td>
+</tr>
+</tbody></table>
+<h4 id="8-表单选择器"><a href="#8-表单选择器" class="headerlink" title="8.表单选择器"></a>8.表单选择器</h4><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>选择器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“:input”)</td>
+<td>匹配form表单中所有的控件</td>
+</tr>
+<tr>
+<td>$(“:password”)</td>
+<td>匹配所有密码框</td>
+</tr>
+<tr>
+<td>$(“:radio”)</td>
+<td>匹配所有单选框</td>
+</tr>
+<tr>
+<td>$(“:checkbox”)</td>
+<td>匹配所有多选框</td>
+</tr>
+<tr>
+<td>$(“:checked”)</td>
+<td>匹配所有选中的单选、多选、下拉选</td>
+</tr>
+<tr>
+<td>$(“input:checked”)</td>
+<td>匹配所有选中的单选和多选</td>
+</tr>
+<tr>
+<td>$(“:selected”)</td>
+<td>匹配所有选中的下拉选</td>
+</tr>
+</tbody></table>
+<h3 id="三-添加元素"><a href="#三-添加元素" class="headerlink" title="三.添加元素"></a>三.添加元素</h3><ul>
+<li><p>创建元素</p>
+<p>不立即生效,需要下面三个方法的协助</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">新元素 = $(<span class="string">"&lt;div id='xxx'&gt;xxxxx&lt;/div&gt;"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">父元素.append(新元素);  <span class="comment">//添加到最后面</span></span><br><span class="line">父元素.prepend(新元素); <span class="comment">//添加到最前面</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>插入元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">兄弟元素.before(新元素);<span class="comment">//插入到元素的前面</span></span><br><span class="line">兄弟元素.after(新元素);<span class="comment">//插入到元素的后面</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">被删除元素.remove();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="四-写入元素"><a href="#四-写入元素" class="headerlink" title="四.写入元素"></a>四.写入元素</h3><ul>
+<li><p>注意事项:</p>
+<ol>
+<li>js上这里赋值也是”=”,jq变成类似java正常情况;</li>
+<li>()内不写代表取值;</li>
+<li>以下内容跟js一样都添加新元素时删除之前的配置</li>
+<li>创建的html新元素只能添加一遍,第二次添加的话不生效</li>
+<li>可以将创建的新元素1添加到新元素2,然后将新元素2添加到文件中</li>
+</ol>
+</li>
+<li><p>文本相关</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">元素.text(<span class="string">"xxx"</span>);				<span class="comment">//给元素添加文本内容</span></span><br><span class="line"><span class="keyword">var</span> str = 元素.text();		<span class="comment">//获取元素的文本内容</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>html相关</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">元素.html(<span class="string">"&lt;h1&gt;xxx&lt;/h1&gt;"</span>);	<span class="comment">//给元素添加html内容</span></span><br><span class="line"><span class="keyword">var</span> html = 元素.html();		<span class="comment">//获取元素的html内容</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>css样式相关</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">元素.css(<span class="string">"样式名称"</span>,<span class="string">"值"</span>); <span class="comment">//给元素添加样式</span></span><br><span class="line">元素.css(&#123;<span class="string">"css名称1"</span>:<span class="string">"值1"</span>,<span class="string">"css名称2"</span>:<span class="string">"值2"</span>&#125;); <span class="comment">//给元素添加多种样式</span></span><br><span class="line"><span class="keyword">var</span> x = 元素.css(<span class="string">"样式名称"</span>); <span class="comment">//获取元素某个样式的值</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="属性相关"><a href="#属性相关" class="headerlink" title="属性相关"></a>属性相关</h4><ul>
+<li><p>注意事项:</p>
+<ol>
+<li><p>不删除之前的配置</p>
+</li>
+<li><p>attr和prop区别</p>
+<table>
+<thead>
+<tr>
+<th>attr</th>
+<th>prop</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>可以获取和添加固定属性和自定义标签</td>
+<td>只能获取和添加固定属性</td>
+</tr>
+<tr>
+<td>获取未设置属性返回undefined</td>
+<td>获取未设置属性返回null</td>
+</tr>
+<tr>
+<td>可以动态获取checked的值(true或false)</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>固定属性:已经html标签</p>
+<p>自定义属性:自己定义的标签</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="1-attr"><a href="#1-attr" class="headerlink" title="1.attr"></a>1.attr</h5><ul>
+<li><p>添加属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素.attr(<span class="string">"属性名"</span>,<span class="string">"属性值"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = 元素.attr(<span class="string">"属性名"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>.Removeattr(<span class="string">"属性名"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="2-prop"><a href="#2-prop" class="headerlink" title="2.prop"></a>2.prop</h5><ul>
+<li><p>添加属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素.prop(<span class="string">"属性名"</span>,<span class="string">"属性值"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = 元素.prop(<span class="string">"属性名"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>.Removeprop(<span class="string">"属性名"</span>);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h5 id="3-class"><a href="#3-class" class="headerlink" title="3.class"></a>3.class</h5><ul>
+<li><p>添加class </p>
+<ol>
+<li>相比较与attr可以分别设置而不用遍历</li>
+<li>不删除之前的配置</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">""</span>).addClass(<span class="function"><span class="keyword">function</span>(<span class="params">index ele</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(index相关flag)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"数值"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除class</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">""</span>).removeClass(<span class="string">"数值"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断是否含有class</p>
+<ol>
+<li>相比较与attr可以不写全class名</li>
+<li>用于多class名</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">""</span>).hasClass(<span class="string">"class名"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="4-checked"><a href="#4-checked" class="headerlink" title="4.checked"></a>4.checked</h5><p>​    checked或者true</p>
+<h3 id="五-Cookie"><a href="#五-Cookie" class="headerlink" title="五.Cookie"></a>五.Cookie</h3><ol>
+<li><p>存入cookie</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(数据名, 数据值, &#123;<span class="attr">expire</span>: 有效期为多少天&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用cookie</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(数据名);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="六-事件"><a href="#六-事件" class="headerlink" title="六.事件"></a>六.事件</h3><table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+<th>js</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>click()</td>
+<td></td>
+<td>onclick()</td>
+</tr>
+</tbody></table>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/" title="JQuery">airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/&title=《JQuery》 — ZSP's Blog&pic=../images/logo/JQueryLogo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/&title=《JQuery》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JQuery》 — ZSP's Blog&url=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/前端/" class="color3">前端</a>
+      
+    <a href="/tags/Jquery/" class="color2">Jquery</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-基础知识"><span class="post-toc-text">一.基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-安装使用"><span class="post-toc-text">1.安装使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-注意事项"><span class="post-toc-text">2.注意事项</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-对象转换"><span class="post-toc-text">3.对象转换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-区别-方法"><span class="post-toc-text">4.区别/方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-遍历数组"><span class="post-toc-text">5.遍历数组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-选择器-获取元素"><span class="post-toc-text">二.选择器(获取元素)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-基本选择器"><span class="post-toc-text">1.基本选择器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-层级选择器"><span class="post-toc-text">2.层级选择器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2层级方法"><span class="post-toc-text">2.2层级方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-过滤选择器"><span class="post-toc-text">3.过滤选择器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3过滤方法"><span class="post-toc-text">3.3过滤方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-内容选择器"><span class="post-toc-text">4.内容选择器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-属性选择器"><span class="post-toc-text">5.属性选择器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-可见选择器"><span class="post-toc-text">6.可见选择器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-2隐藏显示相关的方法"><span class="post-toc-text">6.2隐藏显示相关的方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-子元素选择器"><span class="post-toc-text">7.子元素选择器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-表单选择器"><span class="post-toc-text">8.表单选择器</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-添加元素"><span class="post-toc-text">三.添加元素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四-写入元素"><span class="post-toc-text">四.写入元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#属性相关"><span class="post-toc-text">属性相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-attr"><span class="post-toc-text">1.attr</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-prop"><span class="post-toc-text">2.prop</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-class"><span class="post-toc-text">3.class</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#4-checked"><span class="post-toc-text">4.checked</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五-Cookie"><span class="post-toc-text">五.Cookie</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六-事件"><span class="post-toc-text">六.事件</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/02/Apache/Lucene/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Lucene
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/02/Spring/SpringBoot/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">SpringBoot</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

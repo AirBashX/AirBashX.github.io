@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>docker | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="1.基础知识 容器之间相互隔离,类似于沙盒机制  1.镜像分类 中间层镜像:镜像之间可以复用的部分 1docker image ls -a&#x2F;&#x2F;查看所有  虚悬镜像:当镜像打补丁时,再次pull或者build时,新镜像就会替换旧的镜像名,旧镜像名称就会变成&amp;lt;none&amp;gt;; 1docker image prune&#x2F;&#x2F;删除    2.待补充2.Docker操作1.安装docker官方安装文档,">
+<meta name="keywords" content="开源项目,运维,docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="airbash.cn&#x2F;2017&#x2F;08&#x2F;02&#x2F;%E8%BF%90%E7%BB%B4&#x2F;docker&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="1.基础知识 容器之间相互隔离,类似于沙盒机制  1.镜像分类 中间层镜像:镜像之间可以复用的部分 1docker image ls -a&#x2F;&#x2F;查看所有  虚悬镜像:当镜像打补丁时,再次pull或者build时,新镜像就会替换旧的镜像名,旧镜像名称就会变成&amp;lt;none&amp;gt;; 1docker image prune&#x2F;&#x2F;删除    2.待补充2.Docker操作1.安装docker官方安装文档,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.459Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-运维/docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      docker
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/运维/">运维</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-08-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1.基础知识"></a>1.基础知识</h2><ol>
+<li>容器之间相互隔离,类似于沙盒机制</li>
+</ol>
+<h3 id="1-镜像分类"><a href="#1-镜像分类" class="headerlink" title="1.镜像分类"></a>1.镜像分类</h3><ol>
+<li><p>中间层镜像:镜像之间可以复用的部分</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls -a//查看所有</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>虚悬镜像:当镜像打补丁时,再次pull或者build时,新镜像就会替换旧的镜像名,旧镜像名称就会变成&lt;none&gt;;</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune//删除</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-待补充"><a href="#2-待补充" class="headerlink" title="2.待补充"></a>2.待补充</h3><h2 id="2-Docker操作"><a href="#2-Docker操作" class="headerlink" title="2.Docker操作"></a>2.Docker操作</h2><h3 id="1-安装docker"><a href="#1-安装docker" class="headerlink" title="1.安装docker"></a>1.安装docker</h3><p>官方<a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">安装文档</a>,官方文档建议使用yum安装,推荐使用docker社区版本</p>
+<ol>
+<li><p>卸载旧版本:安装过旧版本的执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">docker-client \</span><br><span class="line">docker-client-latest \</span><br><span class="line">docker-common \</span><br><span class="line">docker-latest \</span><br><span class="line">docker-latest-logrotate \</span><br><span class="line">docker-logrotate \</span><br><span class="line">docker-engine</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">device-mapper-persistent-data \</span><br><span class="line">lvm2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置源</p>
+<p>/etc/yum.repos.d/下查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">--add-repo \</span><br><span class="line">https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装docker</p>
+<ol>
+<li><p>最新版</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><del>安装特定版本</del></p>
+<ol>
+<li><p>查看版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装特定版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce-版本号 docker-ce-cli-版本号 containerd.io</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-配置docker源"><a href="#2-配置docker源" class="headerlink" title="2.配置docker源"></a>2.配置docker源</h3><ol>
+<li><p>配置docker源<del>[见<a href="https://docs.docker.com/config/daemon/" target="_blank" rel="noopener">文档</a>另一种方法和出现冲突处理]</del></p>
+<p>新建/etc/docker/daemon.json,配置腾讯云docker加速源</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"registry-mirrors"</span>:[<span class="string">"https://mirror.ccs.tencentyun.com"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker-ce</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-卸载Docker"><a href="#2-卸载Docker" class="headerlink" title="2.卸载Docker"></a>2.卸载Docker</h3><ol>
+<li><p>删除docker包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker-ce</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除docker目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h2 id="3-Docker命令"><a href="#3-Docker命令" class="headerlink" title="3.Docker命令"></a>3.Docker命令</h2><p>容器=资源+镜像;镜像:原始包</p>
+<h3 id="1-镜像"><a href="#1-镜像" class="headerlink" title="1.镜像"></a>1.镜像</h3><ol>
+<li><p>下载镜像</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull [作者名/]镜像名[:版本]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看镜像层数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker history tomcat[:版本]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看镜像详情</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspcet tomcat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除镜像/容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image rm tomcat</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi tomcat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除虚悬镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导出镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [image] save tomcat &gt; tomcat.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导入镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [image] load &lt; tomcat.tar</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-容器"><a href="#2-容器" class="headerlink" title="2.容器"></a>2.容器</h3><ol>
+<li><p>创建容器</p>
+<ol>
+<li><p>基础命令</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [container] <span class="keyword">run</span><span class="bash"> -参数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+<p>run的参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>交互式</td>
+<td></td>
+</tr>
+<tr>
+<td>-t</td>
+<td>伪终端</td>
+<td></td>
+</tr>
+<tr>
+<td>-d</td>
+<td>后台运行</td>
+<td></td>
+</tr>
+<tr>
+<td>–name</td>
+<td>设置容器名</td>
+<td></td>
+</tr>
+<tr>
+<td>–rm</td>
+<td>退出时删除容器</td>
+<td></td>
+</tr>
+<tr>
+<td>-p 8080:8080</td>
+<td>指定端口号</td>
+<td>1:主机端口号;2:容器端口号</td>
+</tr>
+<tr>
+<td>-v 主机目录:容器目录</td>
+<td>数据卷</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>一般使用</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [container] <span class="keyword">run</span><span class="bash"> -itd --name 名字 镜像名</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>导入导出容器</p>
+<ol>
+<li><p>查看正在运行的容器</p>
+<p>显示:容器id、镜像名、COMMAND 、创建时间 、 STATUS 、端口号/协议、容器名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导出容器[可导出运行]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [image] export 容器id/容器名 镜像名.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导入容器[可指定名称]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [image] import 镜像名.tar [重命名:建议原名称]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>打标记</p>
+<p>用之前的镜像创建有个标记不同的镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [image] tag tomcat:1 tomcat:标记</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入关闭容器</p>
+<p>exit(ctrl+z):关闭容器,ctrl+p+q正常退出</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [container] attach 容器名/id</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [container] start 容器名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭容器</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [container] stop 容器名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除容器</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [cintainer] rm 容器名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除停止状态的容器</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container prune 容器名/id</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入容器</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 容器名[/容器id bash]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建镜像</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t 容器名 /dockefile所在目录</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="3-部署容器"><a href="#3-部署容器" class="headerlink" title="3.部署容器"></a>3.部署容器</h3><h4 id="1-mysql"><a href="#1-mysql" class="headerlink" title="1.mysql"></a>1.mysql</h4><ol>
+<li><p>下载mysql镜像</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:<span class="number">5.7</span>.<span class="number">24</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建容器</p>
+<p>-v /usr/local/docker/mysql/conf:/etc/mysql \</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> -p 3306:3306 --name mysql \</span></span><br><span class="line"><span class="bash">-v /usr/<span class="built_in">local</span>/docker/mysql/logs:/var/<span class="built_in">log</span>/mysql \</span></span><br><span class="line"><span class="bash">-v /usr/<span class="built_in">local</span>/docker/mysql/data:/var/lib/mysql \</span></span><br><span class="line"><span class="bash">-e MYSQL_ROOT_PASSWORD=mysqlYANGTUO2019 \</span></span><br><span class="line"><span class="bash">-d mysql:5.7.24</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="4-DockerFile"><a href="#4-DockerFile" class="headerlink" title="4.DockerFile"></a>4.DockerFile</h2><ol>
+<li>开头必须是FROM 镜像名</li>
+<li>WORKDIR:设置工作目录</li>
+<li>RUN + shell脚本</li>
+<li>copy:复制</li>
+</ol>
+<h2 id="5-Docker-Compose"><a href="#5-Docker-Compose" class="headerlink" title="5.Docker-Compose"></a>5.Docker-Compose</h2><p>用于批处理run容器</p>
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><ol>
+<li><p>下载Compose</p>
+<p>或者直接下载上传到/uer/local/bin/docker-compose</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L <span class="string">"https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)"</span> -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增加可执行权限</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-命令"><a href="#2-命令" class="headerlink" title="2.命令"></a>2.命令</h3><ol>
+<li><p>启动</p>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="3-yml配置文件"><a href="#3-yml配置文件" class="headerlink" title="3.yml配置文件"></a>3.yml配置文件</h3><p>docker-compose.yml</p>
+<p><a href="https://docs.docker.com/compose/compose-file/" target="_blank" rel="noopener">官方文档</a></p>
+<p>3级别的可以单独写在1级别上,用于重命名</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th>级别</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>version</td>
+<td>docker-compose.yml版本号</td>
+<td>1</td>
+<td>3,兼容之前版本</td>
+</tr>
+<tr>
+<td>services</td>
+<td>配置多个容器</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>自定义服务名</td>
+<td>2</td>
+<td>无名称可以自己起</td>
+</tr>
+<tr>
+<td>image</td>
+<td>指定镜像</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>restart</td>
+<td>开机是否启动</td>
+<td>3</td>
+<td>always:总是启动/no:不启动</td>
+</tr>
+<tr>
+<td>container_name</td>
+<td>容器名</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>ports</td>
+<td>端口映射</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>volumes</td>
+<td>数据卷</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>environment</td>
+<td>环境变量</td>
+<td>3</td>
+<td>查看hub文档有相关说明</td>
+</tr>
+<tr>
+<td>command</td>
+<td>初始化</td>
+<td>3</td>
+<td>–</td>
+</tr>
+</tbody></table>
+<h3 id="4-部署容器"><a href="#4-部署容器" class="headerlink" title="4.部署容器"></a>4.部署容器</h3><h4 id="1-gitLab"><a href="#1-gitLab" class="headerlink" title="1.gitLab"></a>1.gitLab</h4><ol>
+<li><p>相关资料</p>
+<p>这里下载的是gitLab的汉化版,并非官方版,在dockerHub上搜索gitlab-ce-zh搜索选择汉化版本;</p>
+<p><a href="https://hub.docker.com/r/gitlabcezh/gitlab-ce-zh" target="_blank" rel="noopener">gitlat中文社区文档</a></p>
+<p><a href="https://github.com/sameersbn/docker-gitlab/blob/master/README.md" target="_blank" rel="noopener">gitlab-docker官方文档</a></p>
+<p><a href="https://docs.gitlab.com/ee/install/requirements.html" target="_blank" rel="noopener">gitlab硬件要求:</a>当前建议8G+7200转机械硬盘或固态硬盘,否则启动和运行都很不理想</p>
+</li>
+<li><p>docker-compose.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">    web:</span></span><br><span class="line"><span class="attr">      image:</span> <span class="string">'twang2218/gitlab-ce-zh'</span></span><br><span class="line"><span class="attr">      restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"><span class="attr">      hostname:</span> <span class="string">'www.airbash.cn'</span></span><br><span class="line"><span class="attr">      environment:</span></span><br><span class="line"><span class="attr">        TZ:</span> <span class="string">'Asia/Shanghai'</span></span><br><span class="line"><span class="attr">        GITLAB_OMNIBUS_CONFIG:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          external_url 'http://www.airbash.cn/gitlab'</span></span><br><span class="line"><span class="string">          gitlab_rails['time_zone'] = 'Asia/Shanghai'</span></span><br><span class="line"><span class="string"></span><span class="attr">      ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">'8080:80'</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">'8443:443'</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">'2222:22'</span></span><br><span class="line"><span class="attr">      volumes:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">/usr/local/docker/gitlab/config:/etc/gitlab</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">/usr/local/docker/gitlab/data:/var/opt/gitlab</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">/usr/local/docker/gitlab/logs:/var/log/gitlab</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2017/08/02/%E8%BF%90%E7%BB%B4/docker/" title="docker">airbash.cn/2017/08/02/%E8%BF%90%E7%BB%B4/docker/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2017/08/02/%E8%BF%90%E7%BB%B4/docker/&title=《docker》 — ZSP's Blog&pic=../images/logo/DockerLogo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2017/08/02/%E8%BF%90%E7%BB%B4/docker/&title=《docker》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2017/08/02/%E8%BF%90%E7%BB%B4/docker/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《docker》 — ZSP's Blog&url=airbash.cn/2017/08/02/%E8%BF%90%E7%BB%B4/docker/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2017/08/02/%E8%BF%90%E7%BB%B4/docker/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2017/08/02/%E8%BF%90%E7%BB%B4/docker/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/开源项目/" class="color5">开源项目</a>
+      
+    <a href="/tags/运维/" class="color3">运维</a>
+      
+    <a href="/tags/docker/" class="color2">docker</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-基础知识"><span class="post-toc-text">1.基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-镜像分类"><span class="post-toc-text">1.镜像分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-待补充"><span class="post-toc-text">2.待补充</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Docker操作"><span class="post-toc-text">2.Docker操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-安装docker"><span class="post-toc-text">1.安装docker</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-配置docker源"><span class="post-toc-text">2.配置docker源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-卸载Docker"><span class="post-toc-text">2.卸载Docker</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Docker命令"><span class="post-toc-text">3.Docker命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-镜像"><span class="post-toc-text">1.镜像</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-容器"><span class="post-toc-text">2.容器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-部署容器"><span class="post-toc-text">3.部署容器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-mysql"><span class="post-toc-text">1.mysql</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-DockerFile"><span class="post-toc-text">4.DockerFile</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-Docker-Compose"><span class="post-toc-text">5.Docker-Compose</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-安装"><span class="post-toc-text">1.安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-命令"><span class="post-toc-text">2.命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-yml配置文件"><span class="post-toc-text">3.yml配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-部署容器"><span class="post-toc-text">4.部署容器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-gitLab"><span class="post-toc-text">1.gitLab</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/10/31/PowerShell/%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          脚本执行权限
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/08/01/Hexo/install/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">airbash-主题安装和配置详情</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

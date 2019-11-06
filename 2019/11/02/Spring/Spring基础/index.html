@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Spring基础 | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="1.基础知识1.基础配置 添加依赖: pom.xml:测试类,不包含mvc功能 1234567&amp;lt;dependencies&amp;gt;  	&amp;lt;dependency&amp;gt;  		&amp;lt;groupId&amp;gt;org.springframework&amp;lt;&#x2F;groupId&amp;gt;  		&amp;lt;artifactId&amp;gt;spring-context&amp;lt;&#x2F;artifactId&amp;gt;">
+<meta name="keywords" content="JAVA,Spring,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring基础">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;02&#x2F;Spring&#x2F;Spring%E5%9F%BA%E7%A1%80&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="1.基础知识1.基础配置 添加依赖: pom.xml:测试类,不包含mvc功能 1234567&amp;lt;dependencies&amp;gt;  	&amp;lt;dependency&amp;gt;  		&amp;lt;groupId&amp;gt;org.springframework&amp;lt;&#x2F;groupId&amp;gt;  		&amp;lt;artifactId&amp;gt;spring-context&amp;lt;&#x2F;artifactId&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.447Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Spring/Spring基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Spring基础
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Spring/">Spring</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1.基础知识"></a>1.基础知识</h3><h4 id="1-基础配置"><a href="#1-基础配置" class="headerlink" title="1.基础配置"></a>1.基础配置</h4><ol>
+<li><p>添加依赖:</p>
+<p>pom.xml:测试类,不包含mvc功能</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  		<span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制spring(applicationContext).xml文件</p>
+</li>
+</ol>
+<h4 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2.注意事项"></a>2.注意事项</h4><ul>
+<li><p>接口—父类—子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.接口</span><br><span class="line">    ApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"Sping.xml文件名"</span>);<span class="comment">//不能close</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.接口实现类(父类)</span><br><span class="line">    AbstractApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"Sping.xml文件名"</span>);</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>.子类(原始)</span><br><span class="line">    ClassPathXmlApplicationContext ctx = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"Sping.xml文件名"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第一个单词+简写(alt+/)</p>
+</li>
+<li><p>尽量使用方法不使用强转,而使用方法,因为方法可能会升级</p>
+</li>
+<li><p>运用反射的技术进行操作:反射无视访问权限</p>
+</li>
+</ul>
+<ol start="2">
+<li>控制反转<ol>
+<li>控制反转:Spring获取已经创建好的对象;(可以创建对象，称为Spring控制对象，也称为IOC控制反转.)</li>
+<li>主动控制:直接new对象;</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-Spring-IOC容器"><a href="#2-Spring-IOC容器" class="headerlink" title="2.Spring IOC容器"></a>2.Spring IOC容器</h3><p>使用IOC实例化javaBean的流程</p>
+<h4 id="1-创建javaBean-实体类"><a href="#1-创建javaBean-实体类" class="headerlink" title="1.创建javaBean:实体类"></a>1.创建javaBean:实体类</h4><ol>
+<li><p>创建步骤</p>
+<ol>
+<li>必须在包(package)内创建</li>
+<li>实现Serializable序列化接口(暗中添加三个方法)</li>
+<li>书写无参构造器(如果有构造器的话)<ol>
+<li>可以是默认构造器</li>
+<li>方便子类的继承</li>
+</ol>
+</li>
+<li>创建get/set/toString定义”Bean属性”;</li>
+</ol>
+</li>
+<li><p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    String Name;<span class="comment">//实例变量:对象属性</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//Bean属性:name</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">setName</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//Bean属性:name</span></span><br><span class="line">    toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="2-实例化-创建javaBean对象"><a href="#2-实例化-创建javaBean对象" class="headerlink" title="2.实例化(创建javaBean对象)"></a>2.实例化(创建javaBean对象)</h4><p>让Spring框架在启动的时候自动创建DemoBean的实例,并绑定ID为demoBean</p>
+<p>id与name功能一样</p>
+<h5 id="1-xml标签"><a href="#1-xml标签" class="headerlink" title="1.xml标签"></a>1.xml标签</h5><ul>
+<li><p>Bean标签列表</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>功能</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>class</td>
+<td>javaBean文件所在位置</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>javaBean被实例化时的名称</td>
+<td>与name功能相同;</td>
+</tr>
+<tr>
+<td>name</td>
+<td>javaBean被实例化时的名称</td>
+<td>与id功能相同;</td>
+</tr>
+<tr>
+<td>factory-method=”方法”</td>
+<td>工厂方法初始化时执行方法</td>
+<td></td>
+</tr>
+<tr>
+<td>factory-bean=”Bean对象”</td>
+<td>工厂方法初始化Bean创建对象</td>
+<td></td>
+</tr>
+<tr>
+<td>init-method</td>
+<td>初始化方法</td>
+<td>Spring会在容器启动时候，创建Bean对象，并且执行init()方法</td>
+</tr>
+<tr>
+<td>destroy-method</td>
+<td>销毁方法</td>
+<td>Spring会在关闭容器时候，销毁Bean对象，并且执行destroy()方法/仅在单例时有效</td>
+</tr>
+<tr>
+<td>scope=”prototype”</td>
+<td>建立多个Bean实例,每次调用GetBean时候都会创建一个新对象</td>
+<td>默认情况下,Spring中Bean是”单例”的(自始而终,singletion,并且创建的对象时同一对象)</td>
+</tr>
+<tr>
+<td>lazy-init=”true”;</td>
+<td>懒惰初始化</td>
+<td>适合很少使用的对象</td>
+</tr>
+</tbody></table>
+<p>单例的Java在容器启动时立即初始化,反应快,性能好,占用资源高.</p>
+<p>懒惰初始化不是立即生效</p>
+</li>
+<li><p>alias标签:设置别名</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">alias</span> <span class="attr">name</span>=<span class="string">"Bean名"</span> <span class="attr">alias</span> =<span class="string">"别名"</span> /&gt;</span>//没有id选项只有name选项</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="2-Spring-IOC创建对象三种方法"><a href="#2-Spring-IOC创建对象三种方法" class="headerlink" title="2.Spring IOC创建对象三种方法"></a>2.Spring IOC创建对象三种方法</h5><p>​    只能对spring.xml配置的文件进行实例化,不能实例化@server相关的</p>
+<ol>
+<li><p>使用无参数构造器创建对象：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"demoBean"</span> <span class="attr">class</span>=<span class="string">"day01.DemoBean"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>调用类的静态工厂方法创建对象：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"calender"</span> <span class="attr">class</span>=<span class="string">"java.util.Calendar"</span> <span class="attr">factory-method</span>=<span class="string">"getInstance"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用对象的工厂方法创建对象：</p>
+<ol>
+<li><p>调用了2中的Bean[不推荐]</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"date"</span> <span class="attr">factory-bean</span>=<span class="string">"calender"</span> <span class="attr">factory-method</span>=<span class="string">"getTime"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接书写</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id="userServiceImpl" class="cn.tedu.service.UserServiceImpl"&gt;&lt;/bean&gt;</span><br><span class="line">	<span class="comment">//&lt;constructor-arg type = "String"  value = "key" /&gt;传递参数</span></span><br><span class="line">&lt;bean id="user" factory-bean="userServiceImpl" factory-method="findAll"/&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-调用"><a href="#3-调用" class="headerlink" title="3.调用"></a>3.调用</h4><ol>
+<li><p>导入Spring配置文件(applicationContext文件,启动、初始化Spring容器)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AbstractApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring配置文件"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从xml中获取指定ID的对象</p>
+<ol>
+<li><p>方法一[不推荐]:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ID名类型 id = (ID名类型)ctx.getBean(<span class="string">"ID名"</span>);<span class="comment">//默认输出project类型,强转成id名对应的类型</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.getBean(<span class="string">"ID名"</span>,ID名类型.class);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-Spring注入"><a href="#3-Spring注入" class="headerlink" title="3.Spring注入"></a>3.Spring注入</h3><h4 id="1-Set注入"><a href="#1-Set注入" class="headerlink" title="1.Set注入"></a>1.Set注入</h4><h5 id="1-注入属性的值"><a href="#1-注入属性的值" class="headerlink" title="1.注入属性的值"></a>1.注入属性的值</h5><ul>
+<li><p>注意事项java:</p>
+<ol>
+<li>无参构造器的优先级小于set注入的值</li>
+<li>public时可以直接User.name,或者用private然后get方法导出来</li>
+<li>直接输出对象时输出的是toString方法</li>
+</ol>
+</li>
+<li><p>注意事项property:</p>
+<ol start="2">
+<li><p>XML文件中的property中name与java中setName()有关.set方法的参数名无关</p>
+</li>
+<li><p>java中的set方法名通常和属性名相同</p>
+</li>
+</ol>
+</li>
+<li><p>java文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> set+A变量名(String name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化变量(相当于在set方法传入)</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"a变量名"</span> <span class="attr">value</span>=<span class="string">"变量值"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="1-2注入非基本值"><a href="#1-2注入非基本值" class="headerlink" title="1.2注入非基本值"></a>1.2注入非基本值</h5><ul>
+<li><p>基础知识</p>
+<p>如果某属性的值不是基本值（可以直接在代码中书写的值，例如数值、字符串），而是另一个<code>&lt;bean&gt;</code>时，需要使用<code>ref</code>来确定该属性的值，例如：</p>
+</li>
+<li><p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Department department;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Department <span class="title">setDepartment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> department;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"department"</span> <span class="attr">class</span>=<span class="string">"cn.tedu.spring.department"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"x变量名"</span> <span class="attr">value</span>=<span class="string">"变量值"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"cn.tedu.spring.User"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"department"</span> <span class="attr">ref</span>=<span class="string">"department"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="2-通过有参构造方法注入属性的值-不常用"><a href="#2-通过有参构造方法注入属性的值-不常用" class="headerlink" title="2.通过有参构造方法注入属性的值[不常用]"></a>2.通过有参构造方法注入属性的值[不常用]</h5><ul>
+<li><p>注意事项:</p>
+<ul>
+<li><del>通常情况下都不需要有参构造器,正常的类都需要无参构造器;</del></li>
+</ul>
+</li>
+<li><p>如果某个类没有无参数的构造方法，且参数可以用于属性赋值.</p>
+<ul>
+<li><p>同理，如果构造方法的参数的类型不是基本值能表达的，则应该通过<code>ref</code>来注入值！</p>
+</li>
+<li><p><code>index</code>是从0开始顺序编号的！</p>
+</li>
+</ul>
+</li>
+<li><p>java文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name; <span class="comment">// Mike</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>则在Spring的配置文件中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"person"</span> <span class="attr">class</span>=<span class="string">"cn.tedu.spring.Person"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- index：为第几个参数注入值 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"Mike"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="3-自动装配非基本值-autowire-不常用"><a href="#3-自动装配非基本值-autowire-不常用" class="headerlink" title="3.自动装配非基本值:autowire[不常用]"></a>3.自动装配非基本值:autowire[不常用]</h5><ul>
+<li><p>注意事项:</p>
+<ul>
+<li><p>不建议使用,容易出现错误</p>
+</li>
+<li><p>自动装配是Spring自动的为属性注入值的做法，也是基于SET注入方式实现的;</p>
+</li>
+<li><p>byName:根据set名称装配:</p>
+<ul>
+<li>名称很容易保持一致</li>
+</ul>
+</li>
+<li><p>byType:根据属性类型装配:</p>
+<ul>
+<li>1.没有匹配的对象不会自动配置也不会发生错误;</li>
+<li>2.需要保证匹配类型的对象有且仅有1个</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>xml1</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"cn.tedu.spring.User"</span> <span class="attr">autowire</span>=<span class="string">"byName"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"cn.tedu.spring.department"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>xml2</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"cn.tedu.spring.User"</span> <span class="attr">autowire</span>=<span class="string">"byType"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"cn.tedu.spring.department"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多对象错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type &apos;cn.tedu.spring.UserDao&apos; available: expected single matching bean but found 2: userDao,userDao2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="4-注入集合类型"><a href="#4-注入集合类型" class="headerlink" title="4.注入集合类型"></a>4.注入集合类型</h5><p><strong>1.List/Set</strong>[仅了解]</p>
+<ul>
+<li><p>注意事项</p>
+<ul>
+<li>set在spring中是:LinkedHashSet;</li>
+<li>list早spring中是:ArrayList;</li>
+</ul>
+</li>
+<li><p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;String&gt; names;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNames</span><span class="params">(List&lt;String&gt; names)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.names = names;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"names"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>2.map</strong>[仅了解]</p>
+<ul>
+<li><p>注意事项:LinkedHashMap</p>
+</li>
+<li><p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Map&lt;String,Object&gt; session;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSession</span><span class="params">(Map&lt;String,Object&gt; session)</span></span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.session = session;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"session"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"root"</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"ad"</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"18"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>3.数组</strong>[仅了解]</p>
+<ul>
+<li><p>注意事项:</p>
+<p>数组的配置可以和list混为一谈(set/list/array标签可以互相使用)</p>
+</li>
+<li><p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String[] classes;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClasses</span><span class="params">(String[] classes)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.classes = classes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">list</span>&gt;</span><span class="comment">&lt;!--&lt;array&gt;&lt;set&gt;--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>JSD1811<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>JSD1812<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>JSD1901<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>test</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SampleBean sampleBean = ac.getBean(<span class="string">"sampleBean"</span>, SampleBean.class);</span><br><span class="line">System.out.println(sampleBean.classes.getClass());</span><br><span class="line"><span class="comment">//不能直接输出,直接输出输出的是类型</span></span><br><span class="line">System.out.println(Arrays.toString(sampleBean.classes));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>4.properties</strong>[掌握]</p>
+<ul>
+<li><p>注意事项:</p>
+<ul>
+<li>properties存在的原因:相比较于xml可读性更高</li>
+<li>spring配置文件使用properties方法:</li>
+</ul>
+</li>
+<li><p>properties</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/db_name?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai</span></span><br><span class="line"><span class="attr">driver</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">initialSize</span>=<span class="string">2</span></span><br><span class="line"><span class="attr">maxActive</span>=<span class="string">10</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Properties dbConfig;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDbConfig</span><span class="params">(Properties dbConfig)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.dbConfig = dbConfig;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>xml</p>
+<ul>
+<li><p>方法1[不推荐]:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dbConfig"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"driver"</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            ...</span><br><span class="line">		<span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法2:</p>
+<ul>
+<li>&lt;util&gt;相当于bean</li>
+<li>还可以用&lt;util&gt;配置其他的集合</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dbConfig"</span> <span class="attr">ref</span>=<span class="string">"db"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">util:properties</span> <span class="attr">id</span>=<span class="string">"db"</span> <span class="attr">location</span>=<span class="string">"classpath:db.properties"</span>&gt;</span><span class="tag">&lt;/<span class="name">util:properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-Spring表达式"><a href="#2-Spring表达式" class="headerlink" title="2.Spring表达式"></a>2.Spring表达式</h4><p>用于获取非基本值</p>
+<ul>
+<li><p>获取非基本值(取代ref)</p>
+<p>#{bean_id.属性名}</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"#&#123;user.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取List/Set集合[不推荐]</p>
+<p>#{bean_id.集合属性名[索引值]}</p>
+<ul>
+<li>注意事项<ul>
+<li>[]内的是索引,并不是数组,因此在大多数情况下不建议使用;</li>
+<li>set不能使用:因为他没有索引(但是Spring中linkedHashSet可以)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"#&#123;sampleBean.names[1]&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取Map集合</p>
+<p>1.#{bean_id.map属性名.key}</p>
+<p>2.#{bean_id.map属性名[‘key’]}</p>
+<p>推荐第一个因为可以少写代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"#&#123;sampleBean.session.password&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-注解注入"><a href="#3-注解注入" class="headerlink" title="3.注解注入"></a>3.注解注入</h4><ul>
+<li>扫描注解</li>
+<li>在Spring加载时执行只会影响启动速度,但是并不会影响使用</li>
+</ul>
+<h5 id="1-componet注解"><a href="#1-componet注解" class="headerlink" title="1.componet注解:"></a>1.componet注解:</h5><ul>
+<li><p>原理:</p>
+<p>Spring会扫描包名内所有的class,如果配置了Component注解就会创建对象(包名&gt;=注解所在包)</p>
+</li>
+<li><p>分类</p>
+<p>以下注解的功能是完全等效的,但是应该区分使用:</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Component</td>
+<td>通用注解</td>
+</tr>
+<tr>
+<td>@Controller</td>
+<td>控制类注解</td>
+</tr>
+<tr>
+<td>@Service</td>
+<td>业务类注解</td>
+</tr>
+<tr>
+<td>@Repository</td>
+<td>持久层类</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>配置</p>
+<ol>
+<li><p>xml</p>
+<p>@Controller注解扫描</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"包名"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>java</li>
+</ol>
+<ul>
+<li>使用默认Bean-id(类名首字母变小写,与之前相同)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>自定义Bean-id[不常用]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(<span class="string">"id名"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="2-其他注解-不常用"><a href="#2-其他注解-不常用" class="headerlink" title="2.其他注解[不常用]"></a>2.其他注解[不常用]</h5><ol>
+<li><p><strong>多例</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scope</span>(<span class="string">"prototype"</span>)<span class="comment">//多例</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>懒加载</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Lazy</span></span><br><span class="line"><span class="meta">@Lazy</span>(<span class="keyword">true</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>单例</strong>[不推荐]</p>
+<p>3.2<strong>非懒加载</strong>(默认)</p>
+<ul>
+<li><p>初始化时立即生效</p>
+</li>
+<li><p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">King</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> King king = <span class="keyword">new</span> King();</span><br><span class="line">    <span class="comment">//2.因为要返回同一个对象,因此不能直接返回new对象;</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">King</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="comment">//1.将构造方法私有化,这样不能在外界new对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> King <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//3.设置成static,可以不创建对象直接调用方法</span></span><br><span class="line">    <span class="comment">//4.static执行级别高,因此提前加载进内存,而这里返回的King对象没有加载进去,因此这个King也要设置成static;static一直在内存中,因此取决于使用频率;</span></span><br><span class="line">        <span class="keyword">return</span> king;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单例注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scope</span>(<span class="string">"singleton"</span>)<span class="comment">//默认单例无需添加</span></span><br><span class="line"><span class="meta">@Scope</span><span class="comment">//单例</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>非懒加载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Lazy</span>(<span class="keyword">false</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>3.2 <strong>懒加载</strong></p>
+<ul>
+<li><p>初始化时不生效,使用时启动(但是初始化一次)</p>
+</li>
+<li><p>java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">King</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> King king = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">King</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> King <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(king==<span class="keyword">null</span>)&#123;<span class="comment">//判断是否需要锁</span></span><br><span class="line">            sychronized(<span class="string">"java"</span>)&#123;<span class="comment">//线程安全问题,两个线程同时进入可能会创建多个对象</span></span><br><span class="line">                <span class="keyword">if</span>(king==<span class="keyword">null</span>)&#123;<span class="comment">//判断是否创建对象</span></span><br><span class="line">                king = <span class="keyword">new</span> King();</span><br><span class="line">       		&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> king;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>生命周期</strong></p>
+<p>在使用这2个注解之前，需要添加Tomcat运行环境，否则这2个注解将无法识别。tomcat负责这两个操作,但是可以在junit中使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span> 初始化</span><br><span class="line"><span class="meta">@PreDestroy</span> 结束时</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>自动装配非基本属性</strong></p>
+<ul>
+<li><p>注意事项:</p>
+<ol>
+<li><p>写在需要自动装配的属性上面,不写在类上面;</p>
+</li>
+<li><p>先根据byName(set)如果失败再根据byType</p>
+</li>
+</ol>
+</li>
+<li><p>方法1:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">abc</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="meta">@Component</span></span><br><span class="line">    <span class="keyword">public</span> efgh efg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法2:</p>
+<p>注意：<code>@Resource</code>是<code>javax</code>包中的，如果使用该注解，需要项目添加Tomcat环境。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">abc</span><span class="params">()</span></span>&#123;</span><br><span class="line">   	<span class="meta">@Resource</span>(name=<span class="string">"efgh"</span>)</span><br><span class="line">    <span class="keyword">public</span> efgh efg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/02/Spring/Spring%E5%9F%BA%E7%A1%80/" title="Spring基础">airbash.cn/2019/11/02/Spring/Spring%E5%9F%BA%E7%A1%80/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/02/Spring/Spring%E5%9F%BA%E7%A1%80/&title=《Spring基础》 — ZSP's Blog&pic=../images/logo/SpringLogo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/02/Spring/Spring%E5%9F%BA%E7%A1%80/&title=《Spring基础》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/02/Spring/Spring%E5%9F%BA%E7%A1%80/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring基础》 — ZSP's Blog&url=airbash.cn/2019/11/02/Spring/Spring%E5%9F%BA%E7%A1%80/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/02/Spring/Spring%E5%9F%BA%E7%A1%80/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/02/Spring/Spring%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/JAVA/" class="color5">JAVA</a>
+      
+    <a href="/tags/Spring/" class="color2">Spring</a>
+      
+    <a href="/tags/框架/" class="color3">框架</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-基础知识"><span class="post-toc-text">1.基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-基础配置"><span class="post-toc-text">1.基础配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-注意事项"><span class="post-toc-text">2.注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Spring-IOC容器"><span class="post-toc-text">2.Spring IOC容器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-创建javaBean-实体类"><span class="post-toc-text">1.创建javaBean:实体类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-实例化-创建javaBean对象"><span class="post-toc-text">2.实例化(创建javaBean对象)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-xml标签"><span class="post-toc-text">1.xml标签</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-Spring-IOC创建对象三种方法"><span class="post-toc-text">2.Spring IOC创建对象三种方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-调用"><span class="post-toc-text">3.调用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Spring注入"><span class="post-toc-text">3.Spring注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Set注入"><span class="post-toc-text">1.Set注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-注入属性的值"><span class="post-toc-text">1.注入属性的值</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-2注入非基本值"><span class="post-toc-text">1.2注入非基本值</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-通过有参构造方法注入属性的值-不常用"><span class="post-toc-text">2.通过有参构造方法注入属性的值[不常用]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-自动装配非基本值-autowire-不常用"><span class="post-toc-text">3.自动装配非基本值:autowire[不常用]</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#4-注入集合类型"><span class="post-toc-text">4.注入集合类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Spring表达式"><span class="post-toc-text">2.Spring表达式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-注解注入"><span class="post-toc-text">3.注解注入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-componet注解"><span class="post-toc-text">1.componet注解:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-其他注解-不常用"><span class="post-toc-text">2.其他注解[不常用]</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/02/Spring/SpringMVC/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          SpringMVC
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/01/Apache/Maven/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Maven</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

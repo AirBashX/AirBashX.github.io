@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Log4J | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="1.基础知识 作用: 记录项目产生的日志:调试日志&#x2F;运行日志&#x2F;异常日志  实现方式:  JDK的logger log4j和log4j2   日志级别    日志 级别 作用    fatal 1(最高) 致命   error 2    warn 3    info 4    debug 5 调试   trace 6 堆栈     2. 基础配置1.添加依赖 pom.xml 12345&amp;lt;dep">
+<meta name="keywords" content="Apache,JAVA,log4j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Log4J">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;02&#x2F;Apache&#x2F;Log4J&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="1.基础知识 作用: 记录项目产生的日志:调试日志&#x2F;运行日志&#x2F;异常日志  实现方式:  JDK的logger log4j和log4j2   日志级别    日志 级别 作用    fatal 1(最高) 致命   error 2    warn 3    info 4    debug 5 调试   trace 6 堆栈     2. 基础配置1.添加依赖 pom.xml 12345&amp;lt;dep">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.430Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Apache/Log4J" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Log4J
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Apache/">Apache</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1.基础知识"></a>1.基础知识</h2><ol>
+<li><p>作用:</p>
+<p>记录项目产生的日志:调试日志/运行日志/异常日志</p>
+</li>
+<li><p>实现方式:</p>
+<ol>
+<li>JDK的logger</li>
+<li>log4j和log4j2</li>
+</ol>
+</li>
+<li><p>日志级别</p>
+<table>
+<thead>
+<tr>
+<th>日志</th>
+<th>级别</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fatal</td>
+<td>1(最高)</td>
+<td>致命</td>
+</tr>
+<tr>
+<td>error</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>warn</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>info</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>debug</td>
+<td>5</td>
+<td>调试</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>6</td>
+<td>堆栈</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="2-基础配置"><a href="#2-基础配置" class="headerlink" title="2. 基础配置"></a>2. 基础配置</h2><h4 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1.添加依赖"></a>1.添加依赖</h4><ol>
+<li><p>pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调价报错依赖</p>
+<p>SLF4J: Failed to load class “org.slf4j.impl.StaticLoggerBinder”.<br>SLF4J: Defaulting to no-operation (NOP) logger implementation<br>SLF4J: See <a href="http://www.slf4j.org/codes.html#StaticLoggerBinder" target="_blank" rel="noopener">http://www.slf4j.org/codes.html#StaticLoggerBinder</a> for further details.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-nop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><ol>
+<li><p>log4j.properties</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">log4j.rootLogger</span>=<span class="string">DEBUG,Console,File,DailyRollingFile,RollingFile</span></span><br><span class="line">   </span><br><span class="line"><span class="comment">#Console </span></span><br><span class="line"><span class="meta">log4j.appender.Console</span>=<span class="string">org.apache.log4j.ConsoleAppender  </span></span><br><span class="line"><span class="meta">log4j.appender.Console.layout</span>=<span class="string">org.apache.log4j.PatternLayout  </span></span><br><span class="line"><span class="meta">log4j.appender.Console.layout.ConversionPattern</span>=<span class="string">%d [%t] %-5p [%c] - %m%n</span></span><br><span class="line">   </span><br><span class="line"><span class="comment">#File</span></span><br><span class="line"><span class="meta">log4j.appender.File</span> = <span class="string">org.apache.log4j.FileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.File.File</span> = <span class="string">D://log1.log</span></span><br><span class="line"><span class="meta">log4j.appender.File.layout</span> = <span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.File.layout.ConversionPattern</span> =<span class="string">%d [%t] %-5p [%c] - %m%n</span></span><br><span class="line"><span class="meta">log4j.appender.File.Append</span> = <span class="string">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#DailyRollingFile</span></span><br><span class="line"><span class="meta">log4j.appender.DailyRollingFile</span> = <span class="string">org.apache.log4j.DailyRollingFileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.DailyRollingFile.File</span> = <span class="string">D://log2.log</span></span><br><span class="line"><span class="meta">log4j.appender.DailyRollingFile.layout</span> = <span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.DailyRollingFile.layout.ConversionPattern</span> =<span class="string">%d [%t] %-5p [%c] - %m%n</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#RollingFile</span></span><br><span class="line"><span class="meta">log4j.appender.RollingFile</span> = <span class="string">org.apache.log4j.RollingFileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.RollingFile.File</span> = <span class="string">D://log3.log</span></span><br><span class="line"><span class="meta">log4j.appender.RollingFile.MaxFileSize</span>=<span class="string">1KB</span></span><br><span class="line"><span class="meta">log4j.appender.RollingFile.MaxBackupIndex</span>=<span class="string">3</span></span><br><span class="line"><span class="meta">log4j.appender.RollingFile.layout</span> = <span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.RollingFile.layout.ConversionPattern</span> =<span class="string">%d [%t] %-5p [%c] - %m%n</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h5><ol>
+<li><p>输出等级</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将DEBUG及以上日志使用输出类型输出</span></span><br><span class="line"><span class="comment">#OFF(0)&lt;FIFAL&lt;ERROR&lt;WARN&lt;INFO&lt;DEBUG&lt;ALL(全部)</span></span><br><span class="line"><span class="meta">log4j.rootLogger</span>=<span class="string">DEBUG,输出类型1[,输出类型2]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输出格式:</p>
+<p>log4j.appender.输出名称.layout=org.apache.log4j.PatternLayout推荐配置</p>
+<table>
+<thead>
+<tr>
+<th>格式名称</th>
+<th>作用</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>org.apache.log4j.HTMLLayout</td>
+<td>以HTML表格形式布局</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.log4j.PatternLayout</td>
+<td>可以灵活地指定布局模式</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.log4j.SimpleLayout</td>
+<td>包含日志信息的级别和信息字符串</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.log4j.TTCCLayout</td>
+<td>包含日志产生的时间、线程、类别等等信息</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>自定义配置</p>
+<p>log4j.appender.输出名称.layout.ConversionPattern=%d [%t] %-5p [%c] - %m%n推荐配置</p>
+<table>
+<thead>
+<tr>
+<th>配置类型</th>
+<th>配置名称</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%m</td>
+<td>输出代码中指定的消息；</td>
+<td></td>
+</tr>
+<tr>
+<td>%M</td>
+<td>输出打印该条日志的方法名；</td>
+<td></td>
+</tr>
+<tr>
+<td>%p</td>
+<td>输出优先级，即DEBUG，<a href="http://baike.baidu.com/item/INFO" target="_blank" rel="noopener">INFO</a>，WARN，ERROR，FATAL；</td>
+<td></td>
+</tr>
+<tr>
+<td>%r</td>
+<td>输出自应用启动到输出该log信息耗费的毫秒数；</td>
+<td></td>
+</tr>
+<tr>
+<td>%c</td>
+<td>输出所属的类目，通常就是所在类的全名；</td>
+<td></td>
+</tr>
+<tr>
+<td>%t</td>
+<td>输出产生该日志事件的线程名；</td>
+<td></td>
+</tr>
+<tr>
+<td>%n</td>
+<td>输出一个回车换行符，Windows平台为”rn”，Unix平台为”n”；</td>
+<td></td>
+</tr>
+<tr>
+<td>%d</td>
+<td>输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyyy-MM-dd HH:mm:ss,SSS}，输出类似：2002-10-18 22:10:28,921；</td>
+<td></td>
+</tr>
+<tr>
+<td>%l</td>
+<td>输出日志事件的发生位置，及在代码中的行数</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>输出类型</p>
+<p>log4j.appender.输出类型=org.apache.log4j.输出类型Appender</p>
+<table>
+<thead>
+<tr>
+<th>输出类型</th>
+<th>作用</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Console</td>
+<td>控制台</td>
+<td></td>
+</tr>
+<tr>
+<td>File</td>
+<td>只产生一个日志文件</td>
+<td></td>
+</tr>
+<tr>
+<td>DailyRollingFile</td>
+<td>每天产生一个日志文件</td>
+<td></td>
+</tr>
+<tr>
+<td>RollingFile</td>
+<td>文件大小超过指定大小时产生新文件</td>
+<td></td>
+</tr>
+<tr>
+<td>WriterAppender</td>
+<td>将日志信息以流格式发送到任意指定的地方</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>输出名称</p>
+<table>
+<thead>
+<tr>
+<th>输出类型</th>
+<th>输出名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>File</td>
+<td>默认续写</td>
+</tr>
+<tr>
+<td>DailyRollingFile</td>
+<td>最后一天的名称与输出名称相同,之前的为            输出名称+日期</td>
+</tr>
+<tr>
+<td>RollingFile</td>
+<td>当超过配置的制定大小时创建新文件,文件名为     输出名称n</td>
+</tr>
+</tbody></table>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">log4j.appender.输出类型.File</span> = <span class="string">D://log.log</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>额外配置</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#File 当配置false时不续写,直接覆盖</span></span><br><span class="line"><span class="meta">log4j.appender.File.append</span> = <span class="string">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#DailyRollingFile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RollingFile:当文件大小超过1KB时新建新文件,当文件数超过3个时覆盖之前的文件</span></span><br><span class="line"><span class="meta">log4j.appender.RollingFile.MaxFileSize</span>=<span class="string">1KB</span></span><br><span class="line"><span class="meta">log4j.appender.RollingFile.MaxBackupIndex</span>=<span class="string">3</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-java配置"><a href="#3-java配置" class="headerlink" title="3.java配置"></a>3.java配置</h4><ol>
+<li><p>新建logger事例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Logger logger = Logger.getLogger(当前.class);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>格式化logger</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger.日志级别名(<span class="string">"显示信息"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>格式化错误日志</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger.日志级别名(<span class="string">"显示信息"</span>,<span class="keyword">new</span> 错误);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="3-框架配置"><a href="#3-框架配置" class="headerlink" title="3.框架配置"></a>3.框架配置</h2><h4 id="1-Spring-MVC"><a href="#1-Spring-MVC" class="headerlink" title="1.Spring MVC"></a>1.Spring MVC</h4><ol>
+<li><p>web.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 加载log4j的配置文件log4j.properties --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>log4jConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:log4j.properties<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 设定刷新日志配置文件的时间间隔，这里设置为10s --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>log4jRefreshInterval<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>10000<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 加载Spring框架中的log4j监听器Log4jConfigListener --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.util.Log4jConfigListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 为避免项目间冲突，定义唯一的 webAppRootKey --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>webAppRootKey<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>scheduleProject<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="2-Spring-Boot"><a href="#2-Spring-Boot" class="headerlink" title="2.Spring Boot"></a>2.Spring Boot</h4><p>直接使用即可</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/02/Apache/Log4J/" title="Log4J">airbash.cn/2019/11/02/Apache/Log4J/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/02/Apache/Log4J/&title=《Log4J》 — ZSP's Blog&pic=../images/logo/Log4JLogo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/02/Apache/Log4J/&title=《Log4J》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/02/Apache/Log4J/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Log4J》 — ZSP's Blog&url=airbash.cn/2019/11/02/Apache/Log4J/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/02/Apache/Log4J/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/02/Apache/Log4J/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Apache/" class="color2">Apache</a>
+      
+    <a href="/tags/JAVA/" class="color5">JAVA</a>
+      
+    <a href="/tags/log4j/" class="color1">log4j</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-基础知识"><span class="post-toc-text">1.基础知识</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-基础配置"><span class="post-toc-text">2. 基础配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-添加依赖"><span class="post-toc-text">1.添加依赖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-配置文件"><span class="post-toc-text">2.配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#详解"><span class="post-toc-text">详解</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-java配置"><span class="post-toc-text">3.java配置</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-框架配置"><span class="post-toc-text">3.框架配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Spring-MVC"><span class="post-toc-text">1.Spring MVC</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Spring-Boot"><span class="post-toc-text">2.Spring Boot</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/02/Apache/Lucene/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Lucene</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

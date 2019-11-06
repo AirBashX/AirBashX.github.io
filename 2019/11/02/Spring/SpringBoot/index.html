@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SpringBoot | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="1.基础配置它是一个默认添加了许多依赖，完成了许多(公共)默认的配置，集成了主流的Spring+SpringMVC的框架。 1. 创建项目 打开网址 http:&#x2F;&#x2F;start.spring.io; 填写参数,选择额外依赖,点击Generate Project按钮 下载项目压缩包 解压压缩包并剪切到eclipse项目目录中 eclipse中导入项目:Import&amp;gt; Existing Maven">
+<meta name="keywords" content="JAVA,框架,SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;02&#x2F;Spring&#x2F;SpringBoot&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="1.基础配置它是一个默认添加了许多依赖，完成了许多(公共)默认的配置，集成了主流的Spring+SpringMVC的框架。 1. 创建项目 打开网址 http:&#x2F;&#x2F;start.spring.io; 填写参数,选择额外依赖,点击Generate Project按钮 下载项目压缩包 解压压缩包并剪切到eclipse项目目录中 eclipse中导入项目:Import&amp;gt; Existing Maven">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.445Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Spring/SpringBoot" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      SpringBoot
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Spring/">Spring</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="1-基础配置"><a href="#1-基础配置" class="headerlink" title="1.基础配置"></a>1.基础配置</h3><p>它是一个默认添加了许多依赖，完成了许多(公共)默认的配置，集成了主流的Spring+SpringMVC的框架。</p>
+<h4 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h4><ol>
+<li>打开网址 <a href="http://start.spring.io" target="_blank" rel="noopener">http://start.spring.io</a>;</li>
+<li>填写参数,选择额外依赖,点击Generate Project按钮</li>
+<li>下载项目压缩包</li>
+<li>解压压缩包并剪切到eclipse项目目录中</li>
+<li>eclipse中导入项目:<strong>Import</strong>&gt; <strong>Existing Maven Projects</strong>,并自动下载依赖;</li>
+</ol>
+<h4 id="2-maven配置"><a href="#2-maven配置" class="headerlink" title="2. maven配置"></a>2. maven配置</h4><ol>
+<li><p>自动添加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--SpringBoot默认:配置MVC或Mybatis时会被替换--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--SpringBoot默认:junit下列框架默认都有--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--mysql/jdbc驱动--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--SpringMVC:替换Spring-starter--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--Mybatis:替换Spring-starter--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="3-默认配置"><a href="#3-默认配置" class="headerlink" title="3. 默认配置"></a>3. 默认配置</h4><ol>
+<li><p>推荐把静态资源(html/图片/css/js素材)放到resources/static文件夹中</p>
+</li>
+<li><p>java文件夹中默认创建了<code>cn.tedu.groupiD名.项目名</code>包,Spring专属包;并在该包创建<code>项目名Application.java文件</code>,该类时启动类</p>
+</li>
+<li><p>项目内置独立Tomcat,并且不用部署,使用时直接执行启动类就行,直接访问<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p>
+</li>
+<li><p>默认配置了DispatcherServlet,处理路径是/*,后缀无(任意都行)</p>
+</li>
+<li><p>默认配置了StringHtppMessageConverter,字符集UTF-8</p>
+</li>
+<li><p>默认添加了jackson依赖,boot推荐服务器这样做,利于多客户端使用:@RestController=@ResponseBody+@Controller</p>
+</li>
+</ol>
+<h3 id="2-项目规范"><a href="#2-项目规范" class="headerlink" title="2. 项目规范"></a>2. 项目规范</h3><ol>
+<li><p>在java文件中创建包</p>
+<table>
+<thead>
+<tr>
+<th>包名</th>
+<th>存储类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>controller</td>
+<td>controller</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>实体类</td>
+</tr>
+<tr>
+<td>mapper</td>
+<td>接口类</td>
+</tr>
+<tr>
+<td>util</td>
+<td>工具类(返回类/实体类的一种)</td>
+</tr>
+<tr>
+<td>interceptor</td>
+<td>拦截器</td>
+</tr>
+<tr>
+<td>conf</td>
+<td>拦截器String类</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>在resource文件中创建目录</p>
+<table>
+<thead>
+<tr>
+<th>目录名</th>
+<th>存储类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mappers</td>
+<td>接口配置文件</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="4-JUnit"><a href="#4-JUnit" class="headerlink" title="4.JUnit"></a>4.JUnit</h3><ol>
+<li><p><strong>基础配置</strong>[不推荐]:</p>
+<p>此处建议直接复制生成的测试文件,就不用了设置了</p>
+<ul>
+<li><p>调用Spring文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWitch</span>(SpringRunner.class);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>自动装配对象</strong></p>
+<p>无需new就可以自动声明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">UserMapper mapper;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>报错解决</strong></p>
+<ol>
+<li><p>步骤文件中<code>@AutoWired</code>错误或<code>@MapperScan</code>出错,导致找不到接口类;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;cn.tedu.store.mapper.UserMapper&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: &#123;@org.springframework.beans.factory.annotation.Autowired(required=true)&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mapper.xml中 <code>id</code>或者<code>namespace</code>属性出错,导致查找不到接口类的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): cn.tedu.store.mapper.UserMapper.insert</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mapper.xml中<code>@param</code>定义的和引用的数量不一样导致数组下标越界</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter &apos;#modifiedUser&apos; not found. Available parameters are [modifiedTime, modifiedUser, param3, aid, param1, param2]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.sql.SQLException: Parameter index out of range (1 &gt; number o)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mapper.xml中sql语句字段名出错</p>
+<p>一大坨</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.jdbc.BadSqlGrammarException: </span><br><span class="line">### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column '错误字段名' in 'field list'<span class="comment">&lt;!--错误的字段名--&gt;</span></span><br><span class="line">### The error may exist in file [D:\tts9\workspace\store\target\classes\mappers\UserMapper.xml]<span class="comment">&lt;!--错误文件所在系统位置--&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mapper.xml中sql语句出错</p>
+<p>一大坨</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.jdbc.BadSqlGrammarException: </span><br><span class="line">### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1<span class="comment">&lt;!--错误的位置--&gt;</span></span><br><span class="line">### The error may exist in file [D:\eclipse_workspace\store09\target\classes\mappers\AddressMapper.xml]<span class="comment">&lt;!--错误文件在系统中的位置--&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mapper.java中方法出错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.lang.ClassNotFoundException: Cannot find class:</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实体类中的某个属性错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named &apos;phone&apos; in &apos;class cn.tedu.store.entity.User&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>junit报错,报错台无信息</p>
+<p>测试类包名出错或者忘记写@Test</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="5-连接数据库"><a href="#5-连接数据库" class="headerlink" title="5.连接数据库"></a>5.连接数据库</h3><ol>
+<li><p><strong>添加依赖</strong></p>
+<p>此时不添加数据源启动就会失败</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>配置数据源</strong></p>
+<p>配置resources下的application.properties文件</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/tedu_ums?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">root</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Junn测试</strong></p>
+<ol>
+<li><p>用junit运行测试文件</p>
+<p>在配置完数据源后,自动在test文件件中创建<code>项目名ApplicationTest.java</code>文件</p>
+<p>主要用于检测依赖是否正常,正常的话不报错</p>
+</li>
+<li><p>自行测试</p>
+<ol>
+<li><p>复制java文件</p>
+</li>
+<li><p>test</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AutoWired</span></span><br><span class="line">DataSource datesource;</span><br><span class="line">Connection conn = dataSource.getConnection();</span><br><span class="line">syse(conn);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-使用MyBatis"><a href="#6-使用MyBatis" class="headerlink" title="6.使用MyBatis"></a>6.使用MyBatis</h3><ol>
+<li><p><strong>调用mapper.xml</strong></p>
+<p>acclication.properties</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mybatis.mapper-locations</span>=<span class="string">classpath:mappers/*.xml</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建实体类</strong></p>
+<ol>
+<li>可用于MyBatis的数据库使用</li>
+<li>可用于AJAX做返回值使用</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="keyword">private</span> Integer age;</span><br><span class="line">	<span class="keyword">private</span> String phone;</span><br><span class="line">	<span class="keyword">private</span> String email;</span><br><span class="line">	创建get/set/toString方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>扫描接口类</strong></p>
+<ol>
+<li><p>在接口类配置[不推荐,每一个都要配置]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动类配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"cn.tedu.boot.demo.mapper[,包2]"</span>)<span class="comment">//要扫描的包,类似spring.xml</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><strong>配置SQL语句</strong></li>
+</ol>
+<ol>
+<li><p>使用注解[不推荐,不利于维护]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@insert</span>(SQL语句)</span><br><span class="line"><span class="function">Integer <span class="title">insert</span><span class="params">(User user)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用XML</p>
+<p>跟MyBatis配置方式相同,在resources下新建mapper.xml文件</p>
+<p>mapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"cn.tedu.boot.demo.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insert"</span></span></span><br><span class="line"><span class="tag">   		<span class="attr">useGeneratedKeys</span>=<span class="string">"true"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span>&gt;</span> INSERT INTO t_user (username,password,age,phone,email,is_delete)VALUES(#&#123;username&#125;,#&#123;password&#125;,#&#123;age&#125;,#&#123;phone&#125;,#&#123;email&#125;,#&#123;isDelete&#125;)</span><br><span class="line">   	<span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>测试</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">	UserMapper mapper;</span><br><span class="line">	User user = <span class="keyword">new</span> User();</span><br><span class="line">	user.setUsername(<span class="string">"springboot"</span>);</span><br><span class="line">	user.setPassword(<span class="string">"8888"</span>);</span><br><span class="line">	Integer rows = mapper.insert(user);</span><br><span class="line">	System.err.println(<span class="string">"rows"</span>+rows);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="7-拦截器"><a href="#7-拦截器" class="headerlink" title="7.拦截器"></a>7.拦截器</h3><ol>
+<li><p>新建拦截器类</p>
+<p>指定拦截的规则:不符合规则的拦截,并转发到指定位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;<span class="comment">//1.实现HandlerInterceptor类</span></span><br><span class="line">	<span class="meta">@Override</span><span class="comment">//2.生成preHandle方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span><span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(uid==<span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建配置类</p>
+<p>白名单和黑名单都可以传入List类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span></span>&#123;<span class="comment">//1.实现WebMvcConfigurer类</span></span><br><span class="line">    	<span class="meta">@Override</span><span class="comment">//2.实现addIntercdptors方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">		HandlerInterceptor interceptor=<span class="keyword">new</span> LoginInterceptor();<span class="comment">//新建拦截器类对象</span></span><br><span class="line">	registry.addInterceptor(interceptor)</span><br><span class="line">    .addPathPatterns(<span class="string">"/**"</span>)<span class="comment">//白名单</span></span><br><span class="line">    .excludePathPatterns(patterns);<span class="comment">//黑名单</span></span><br><span class="line"><span class="comment">/*		InterceptorRegistration x = registry.addInterceptor(interceptor);</span></span><br><span class="line"><span class="comment">		x.addPathPatterns(patterns);</span></span><br><span class="line"><span class="comment">		x.excludePathPatterns(patterns);*/</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="8-实例流程"><a href="#8-实例流程" class="headerlink" title="8.实例流程"></a>8.实例流程</h3><p>下面配置建立在上面配置完数据库的情况下</p>
+<ol>
+<li><p>创建实体类</p>
+<p>见上文<code>使用MyBatis--创建实体类</code></p>
+</li>
+<li><p>创建接口</p>
+<p>UserMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> interface <span class="title">UserMapper</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">User <span class="title">findByUsername</span><span class="params">(String username)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建返回类(工具类)</p>
+<p>ResponseResult.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Integer state;</span><br><span class="line"><span class="keyword">private</span> String message;</span><br><span class="line">生成get/set/toString方法</span><br><span class="line">生成无参构造器:防止框架找不到无参构造器报错</span><br><span class="line">生成有参数构造器:用于做返回类使用;</span><br><span class="line">生成只有state的有参构造器:值返回一个值时使用(灵活性,建议使用)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建Mapper文件</p>
+<p>UserMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">resultType</span>=<span class="string">"cn.tedu.boot.demo.entity.User"</span>&gt;</span></span><br><span class="line">        SELECT id FROM t_user WHERE username = #&#123;username&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改Application.properties</p>
+<p>见上文<code>使用MyBatis</code></p>
+</li>
+<li><p>创建登录网页</p>
+<p>reg.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>用户注册<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>请输入用户名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"username-hint"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>请输入密码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"password-hint"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>请输入年龄<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"age"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>请输入手机号码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"phone"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>请输入电子邮箱<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"email"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"btn-reg"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"注册"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"jquery-1.8.3.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">	$(<span class="string">"btn-reg"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">       	$(<span class="string">"#username-hint"</span>).html(<span class="string">""</span>);<span class="comment">//防止第二次校验失效</span></span></span><br><span class="line"><span class="javascript">		$(<span class="string">"#password-hint"</span>).html(<span class="string">""</span>);</span></span><br><span class="line">        $ajax(&#123;</span><br><span class="line"><span class="actionscript">            <span class="string">"url"</span>:<span class="string">"user/reg"</span>,</span></span><br><span class="line"><span class="javascript">            <span class="string">"data"</span>:$(<span class="string">"#from-reg"</span>).serialize(),</span></span><br><span class="line"><span class="actionscript">            <span class="string">"type"</span>:<span class="string">"post"</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="string">"dataType"</span>:<span class="string">"json"</span>,</span></span><br><span class="line"><span class="actionscript">            <span class="string">"success"</span>:<span class="function"><span class="keyword">function</span><span class="params">(json)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">if</span>(json.state==<span class="number">1</span>)&#123;</span></span><br><span class="line"><span class="actionscript">                    alert(<span class="string">"注册成功"</span>);</span></span><br><span class="line"><span class="actionscript">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(json.state==<span class="number">2</span>)&#123;</span></span><br><span class="line"><span class="javascript">                 	$(<span class="string">"#username-hint"</span>).html(json.message);</span></span><br><span class="line"><span class="actionscript">                &#125;<span class="keyword">else</span>&#123;<span class="comment">//此处无需设置</span></span></span><br><span class="line"><span class="javascript">                    $(<span class="string">"#password-hint"</span>).html(json.message);</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建controller</p>
+<p>Controller.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestControlle</span><span class="comment">//设置ajax:相当于不返回给处理器;而返回给发送数据的html文件</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span><span class="comment">//自动装配接口类,MVC不需要调用Spring文件</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"reg"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">reg</span><span class="params">(User user)</span></span>&#123;<span class="comment">//传入了一个User,前面都没有类似操作,可以直接传入数据</span></span><br><span class="line">        User user = userMapper.finByUsername();</span><br><span class="line">        <span class="keyword">if</span>(user == <span class="keyword">null</span>)&#123;<span class="comment">//测试是要注册的用户名是否已存在</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ResponseResult(<span class="number">1</span>);<span class="comment">//只有state的构造器</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ResponseResult(<span class="number">2</span>),<span class="string">"用户名已经被占用"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接访问127.0.0.1:8080即可</p>
+</li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/02/Spring/SpringBoot/" title="SpringBoot">airbash.cn/2019/11/02/Spring/SpringBoot/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/02/Spring/SpringBoot/&title=《SpringBoot》 — ZSP's Blog&pic=../images/logo/SpringLogo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/02/Spring/SpringBoot/&title=《SpringBoot》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/02/Spring/SpringBoot/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringBoot》 — ZSP's Blog&url=airbash.cn/2019/11/02/Spring/SpringBoot/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/02/Spring/SpringBoot/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/02/Spring/SpringBoot/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/JAVA/" class="color5">JAVA</a>
+      
+    <a href="/tags/框架/" class="color3">框架</a>
+      
+    <a href="/tags/SpringBoot/" class="color1">SpringBoot</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-基础配置"><span class="post-toc-text">1.基础配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-创建项目"><span class="post-toc-text">1. 创建项目</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-maven配置"><span class="post-toc-text">2. maven配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-默认配置"><span class="post-toc-text">3. 默认配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-项目规范"><span class="post-toc-text">2. 项目规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-JUnit"><span class="post-toc-text">4.JUnit</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-连接数据库"><span class="post-toc-text">5.连接数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-使用MyBatis"><span class="post-toc-text">6.使用MyBatis</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-拦截器"><span class="post-toc-text">7.拦截器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-实例流程"><span class="post-toc-text">8.实例流程</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          JQuery
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">AJAX</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

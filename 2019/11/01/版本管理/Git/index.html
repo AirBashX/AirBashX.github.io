@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="1.基础介绍1.详情 基础知识: 分布式管理系统,与之相对应的是svn集中式管理系统  汉化gui教程;  环境变量: 默认自动修改   2.快捷键   快捷键 名称    ctrl+l 清屏   3.版本分支流程 相关信息    英文名 中文名 作用(流程见流程图)    master 主干分支    develop 开发分支    hotfix bug修理分支    release 发行前测试">
+<meta name="keywords" content="版本管理,Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;01&#x2F;%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86&#x2F;Git&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="1.基础介绍1.详情 基础知识: 分布式管理系统,与之相对应的是svn集中式管理系统  汉化gui教程;  环境变量: 默认自动修改   2.快捷键   快捷键 名称    ctrl+l 清屏   3.版本分支流程 相关信息    英文名 中文名 作用(流程见流程图)    master 主干分支    develop 开发分支    hotfix bug修理分支    release 发行前测试">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;01&#x2F;%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86&#x2F;Git&#x2F;imgs&#x2F;git%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B.png">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.456Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;01&#x2F;%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86&#x2F;Git&#x2F;imgs&#x2F;git%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-版本管理/Git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Git
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/版本管理/">版本管理</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="1-基础介绍"><a href="#1-基础介绍" class="headerlink" title="1.基础介绍"></a>1.基础介绍</h2><h3 id="1-详情"><a href="#1-详情" class="headerlink" title="1.详情"></a>1.详情</h3><ol>
+<li><p>基础知识: 分布式管理系统,与之相对应的是svn集中式管理系统</p>
+</li>
+<li><p><a href="https://jingyan.baidu.com/article/ae97a64602a606bbfd461d93.html" target="_blank" rel="noopener">汉化gui教程</a>;</p>
+</li>
+<li><p>环境变量: 默认自动修改</p>
+</li>
+</ol>
+<h3 id="2-快捷键"><a href="#2-快捷键" class="headerlink" title="2.快捷键"></a>2.快捷键</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctrl+l</td>
+<td>清屏</td>
+</tr>
+</tbody></table>
+<h3 id="3-版本分支流程"><a href="#3-版本分支流程" class="headerlink" title="3.版本分支流程"></a>3.版本分支流程</h3><ol>
+<li><p>相关信息</p>
+<table>
+<thead>
+<tr>
+<th>英文名</th>
+<th>中文名</th>
+<th>作用(流程见流程图)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>master</td>
+<td>主干分支</td>
+<td></td>
+</tr>
+<tr>
+<td>develop</td>
+<td>开发分支</td>
+<td></td>
+</tr>
+<tr>
+<td>hotfix</td>
+<td>bug修理分支</td>
+<td></td>
+</tr>
+<tr>
+<td>release</td>
+<td>发行前测试分支</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>流程图</p>
+<p><img src="imgs/git%E7%89%88%E6%9C%AC%E6%B5%81%E7%A8%8B.png" alt=""></p>
+</li>
+</ol>
+<h3 id="4-新建项目流程"><a href="#4-新建项目流程" class="headerlink" title="4.新建项目流程"></a>4.新建项目流程</h3><ol>
+<li>新建目录(库),在目录内新建文件,右击git输入<code>git init</code>命令</li>
+<li>打开<code>github</code>—project创建库和项目</li>
+<li>打开项目复制项目网页上的库地址(<code>ssh</code>或<code>https</code>)</li>
+<li>建立github和本地库的联系</li>
+<li>添加到缓存区—&gt;本地仓库–&gt;-远程</li>
+</ol>
+<h2 id="2-命令"><a href="#2-命令" class="headerlink" title="2.命令"></a>2.命令</h2><h3 id="1-基础配置"><a href="#1-基础配置" class="headerlink" title="1.基础配置"></a>1.基础配置</h3><ul>
+<li><p>基础配置:</p>
+<ul>
+<li><p>每次git提交时都会引用这两条信息,以说明是谁提交了更新,并永久纳入历史记录</p>
+</li>
+<li><p>下列是全局配置,当版本库没有配置时启用</p>
+</li>
+<li><p>–global:全局配置,不写就是配置当前版本库</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>设置个人邮箱</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config [--global] user.email &quot;294379349@qq.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置个人用户名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config [--global] user.name &quot;zsp&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置默认文本编辑器</p>
+<p>subl 配置了sublime 可以使用subls</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config [--goble] core.editor 名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置完成后,自动在/用户目录下生成<code>/.gitconfig</code>文件,里面保存着1-3设置的内容,也可以直接修改该文件</p>
+</li>
+</ol>
+<h3 id="2-SSH秘钥登录"><a href="#2-SSH秘钥登录" class="headerlink" title="2.SSH秘钥登录"></a>2.SSH秘钥登录</h3><ol>
+<li><p>生成秘钥</p>
+<p>默认保存在 /用户名/.ssh中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 注释</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开<code>github</code>—settings,添加<code>ssh</code>秘钥,将.ssh中的公钥写入(注意删除末尾空格)</p>
+</li>
+<li><p>验证连通性</p>
+<p>成功的话会在<code>.ssh</code>目录下生成<code>known_hosts</code>文件,并提示<code>access</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="3-仓库命令"><a href="#3-仓库命令" class="headerlink" title="3.仓库命令"></a>3.仓库命令</h3><ol>
+<li><p>创建仓库</p>
+<p>在工作目录中执行,成功后会生成<code>.git</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init [目录]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将本地文件添加到暂存区</p>
+<p><code>.</code>:所有文件;<code>*.java</code>:java文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将缓存区文件推送到本地仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit [-m &quot;注释&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立远程库和本地库的联系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 项目地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将本地仓库推送到远程仓库</p>
+<ul>
+<li><p>第一次推送</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二次推送</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin 版本</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>将远程仓库下载到本地仓库</p>
+<p>直接clone就不需要<code>init</code>和<code>remote</code>命令,因为该命令相当于创建并建立关系</p>
+<ul>
+<li><p>第一次下载</p>
+<p>111.230.13.216 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>普通下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-排除文件"><a href="#4-排除文件" class="headerlink" title="4.排除文件"></a>4.排除文件</h3><table>
+<thead>
+<tr>
+<th>范围</th>
+<th>配置文件</th>
+<th>优缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全局</td>
+<td>位置自定义/,gitignore</td>
+<td>操作简单,仅个人可用</td>
+</tr>
+<tr>
+<td>局部</td>
+<td>项目/.git/.gitignore</td>
+<td>所有人可用</td>
+</tr>
+<tr>
+<td>局部本地</td>
+<td>项目/.git/info/exclude/.gitignore</td>
+<td>仅本地单个项目可用</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>指定全局配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.excludesfile /指定目录/.gitignore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从版本控制中取消并add</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-r</td>
+<td>递归删除(与linux相似)</td>
+</tr>
+<tr>
+<td>–cached</td>
+<td>不删除文件,仅从索引中删除</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="3-Eclipse"><a href="#3-Eclipse" class="headerlink" title="3.Eclipse"></a>3.Eclipse</h2><h3 id="1-安装配置"><a href="#1-安装配置" class="headerlink" title="1.安装配置"></a>1.安装配置</h3><ol>
+<li>下载<code>egit</code>插件</li>
+<li>打开<code>windows</code>—<code>Preferences</code></li>
+<li>选择<code>Team</code>—<code>Git</code><ol>
+<li><code>Git</code>—Default repository folder:配置默认clone目录,这里设置为工作目录</li>
+<li><code>Configuration</code>—User Settings—Location:配置默认git配置文件<code>.gitconfig</code>(可以在此处修改email和name)</li>
+</ol>
+</li>
+<li>配置SSH私钥目录:选择<code>General</code>—<code>Network Connections</code>—<code>SSH2</code>—General—SSH2 home:</li>
+</ol>
+<h3 id="2-新建库"><a href="#2-新建库" class="headerlink" title="2.新建库"></a>2.新建库</h3><ol>
+<li><p>git init</p>
+<ol>
+<li>复制项目到指定库中:右击项目<code>Team</code>—<code>ShareProject</code>—Create—选择要生成到的目录上</li>
+<li>将项目变成库:右击项目<code>Team</code>—<code>ShareProject</code>,勾选Use or create repository in parent folder of project,点击Create Repository</li>
+</ol>
+</li>
+<li><p>git add .</p>
+<p>右击项目<code>Team</code>—<code>add to index</code></p>
+</li>
+<li><p>git commit</p>
+<ol>
+<li>右击项目<code>Team</code>—<code>commit</code>—弹出窗口—书写注释—commit</li>
+<li>右击项目<code>Team</code>—<code>commit</code>—弹出窗口—书写注释—commit and push(会让你执行以下操作)</li>
+</ol>
+</li>
+<li><p>git  remote add origin 项目地址&amp;git push</p>
+<p>右击项目<code>Team</code>—<code>Remote</code>—<code>push</code>—URL:地址—source ref:设置分支类型—点击add Spec—next</p>
+</li>
+</ol>
+<h3 id="3-下载库"><a href="#3-下载库" class="headerlink" title="3.下载库"></a>3.下载库</h3><ol>
+<li><p><code>new</code>—<code>other</code>—git—clone</p>
+</li>
+<li><p>右击项目—Team–pull</p>
+</li>
+</ol>
+<h3 id="4-冲突解决"><a href="#4-冲突解决" class="headerlink" title="4.冲突解决"></a>4.冲突解决</h3><ol>
+<li><p>查看冲突:</p>
+<p>右击项目—<code>Team</code>—<code>synchonrized</code></p>
+</li>
+<li><p>处理冲突:</p>
+<ol>
+<li>工具处理:右击项目—<code>Tream</code>—<code>marge Tool</code></li>
+<li>直接处理:<ol>
+<li>本地冲突文件:git add—git commit—git push移动到本地仓库</li>
+<li>远程冲突文件:git pull覆盖本地文件</li>
+<li>比较二者的区别</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="5-版本分支"><a href="#5-版本分支" class="headerlink" title="5.版本分支"></a>5.版本分支</h3><ol>
+<li>新建分支<ol>
+<li>右击项目—&gt;<code>Team</code>—&gt;<code>Switch to</code>—&gt;<code>new Branch</code>—&gt;弹出窗口</li>
+<li>Select:选择要克隆的分支—&gt;Branch name:设置分支名称</li>
+</ol>
+</li>
+<li>合并分支</li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/" title="Git">airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/&title=《Git》 — ZSP's Blog&pic=../images/logo/GitLogo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/&title=《Git》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Git》 — ZSP's Blog&url=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/版本管理/" class="color5">版本管理</a>
+      
+    <a href="/tags/Git/" class="color4">Git</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-基础介绍"><span class="post-toc-text">1.基础介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-详情"><span class="post-toc-text">1.详情</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-快捷键"><span class="post-toc-text">2.快捷键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-版本分支流程"><span class="post-toc-text">3.版本分支流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-新建项目流程"><span class="post-toc-text">4.新建项目流程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-命令"><span class="post-toc-text">2.命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-基础配置"><span class="post-toc-text">1.基础配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-SSH秘钥登录"><span class="post-toc-text">2.SSH秘钥登录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-仓库命令"><span class="post-toc-text">3.仓库命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-排除文件"><span class="post-toc-text">4.排除文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Eclipse"><span class="post-toc-text">3.Eclipse</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-安装配置"><span class="post-toc-text">1.安装配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-新建库"><span class="post-toc-text">2.新建库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-下载库"><span class="post-toc-text">3.下载库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-冲突解决"><span class="post-toc-text">4.冲突解决</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-版本分支"><span class="post-toc-text">5.版本分支</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          SVN
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/01/JAVA/BigDecimal/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">BigDecimal</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

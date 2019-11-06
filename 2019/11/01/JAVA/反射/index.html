@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>反射相关知识 | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="1.获取class对象​    eclipse按alt+&#x2F;不会补全新建对象的变量名,需要手动补全;  类的class属性[推荐] 代码更安全性能更好 1class clazz = String.class;  Class的静态方法forName 仅当给出完整类名(包含包名)时使用,因为如果类包名错误会报错; 12345try&amp;#123;    Class forName = Class.forNa">
+<meta name="keywords" content="JAVA,反射">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反射相关知识">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;01&#x2F;JAVA&#x2F;%E5%8F%8D%E5%B0%84&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="1.获取class对象​    eclipse按alt+&#x2F;不会补全新建对象的变量名,需要手动补全;  类的class属性[推荐] 代码更安全性能更好 1class clazz = String.class;  Class的静态方法forName 仅当给出完整类名(包含包名)时使用,因为如果类包名错误会报错; 12345try&amp;#123;    Class forName = Class.forNa">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.440Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-JAVA/反射" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      反射相关知识
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/JAVA/">JAVA</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="1-获取class对象"><a href="#1-获取class对象" class="headerlink" title="1.获取class对象"></a>1.获取class对象</h3><p>​    eclipse按alt+/不会补全新建对象的变量名,需要手动补全;</p>
+<ol>
+<li><p>类的class属性[推荐]</p>
+<p>代码更安全性能更好</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">clazz</span> </span>= String.class;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Class的静态方法forName</p>
+<p>仅当给出完整类名(包含包名)时使用,因为如果<code>类包名</code>错误会报错;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    Class forName = Class.forName(<span class="string">"java.lang.String"</span>);</span><br><span class="line">&#125;<span class="keyword">catch</span>(ClassNotFoundException e)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Object类里的getClass()方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str= &quot;x&quot;;</span><br><span class="line">Class clazz = str.getClass();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-新建对象"><a href="#2-新建对象" class="headerlink" title="2.新建对象"></a>2.新建对象</h3><ol>
+<li><p>java不推荐使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">   Object object = clazz.newInstance([<span class="string">"参数1"</span>,<span class="string">"参数2"</span>,..]); </span><br><span class="line">&#125;<span class="keyword">catch</span>()&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java推荐使用[推荐]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">   Object object = clazz.getDeclaredConstructor().newInstance([<span class="string">"参数1"</span>,<span class="string">"参数2"</span>,...]);</span><br><span class="line">&#125;<span class="keyword">catch</span>()&#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="3-获取class信息-了解"><a href="#3-获取class信息-了解" class="headerlink" title="3.获取class信息[了解]"></a>3.获取class信息[了解]</h3><ol>
+<li><p>获取修饰符[了解]</p>
+<ol>
+<li><p>返回值是修饰符值相加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = clazz.getModifiedrs();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列表</p>
+<table>
+<thead>
+<tr>
+<th align="left">修饰符</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>ABSTRACT</code></td>
+<td align="left"><code>1024</code></td>
+</tr>
+<tr>
+<td align="left"><code>FINAL</code></td>
+<td align="left"><code>16</code></td>
+</tr>
+<tr>
+<td align="left"><code>INTERFACE</code></td>
+<td align="left"><code>512</code></td>
+</tr>
+<tr>
+<td align="left"><code>NATIVE</code></td>
+<td align="left"><code>256</code></td>
+</tr>
+<tr>
+<td align="left"><code>PRIVATE</code></td>
+<td align="left"><code>2</code></td>
+</tr>
+<tr>
+<td align="left"><code>PROTECTED</code></td>
+<td align="left"><code>4</code></td>
+</tr>
+<tr>
+<td align="left"><code>PUBLIC</code></td>
+<td align="left"><code>1</code></td>
+</tr>
+<tr>
+<td align="left"><code>STATIC</code></td>
+<td align="left"><code>8</code></td>
+</tr>
+<tr>
+<td align="left"><code>STRICT</code></td>
+<td align="left"><code>2048</code></td>
+</tr>
+<tr>
+<td align="left"><code>SYNCHRONIZED</code></td>
+<td align="left"><code>32</code></td>
+</tr>
+<tr>
+<td align="left"><code>TRANSIENT</code></td>
+<td align="left"><code>128</code></td>
+</tr>
+<tr>
+<td align="left"><code>VOLATILE</code></td>
+<td align="left"><code>64</code></td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+<li><p>获取类名</p>
+<ol>
+<li><p>获取完整包类名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String name = clazz.getName();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取类名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String name = clazz.getSimpleName();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>获取包名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stirng name = clazz.getPackName();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取超类(父类)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class sclazz = clazz.getSuper().getName();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="4-获取class属性"><a href="#4-获取class属性" class="headerlink" title="4.获取class属性"></a>4.获取class属性</h3><p>​        getDeclarredFields/Methods/Constructors是获取私有数据,不加不能获取私有数据</p>
+<ol>
+<li><p>获取属性(变量)数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Field[] x= clazz.getFields();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>已知属性名获取[不常用]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Field x =clazz.getFields(<span class="string">"属性名"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>获取方法数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Method[] y = clazz.getDeclaredMethods();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>已知方法名和类型获取[不常用]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Method y = clazz.getDeclaredMethods(<span class="string">"方法名"</span>,参数类型<span class="number">1</span>.class,参数类型<span class="number">2</span>.class);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>获取构造方法数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Constructors[] z = clazz.getDeclaredConstructors()[.getName];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>已知有参构造器获取[不常用]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Constructors z = clazz.getDeclaredMethods(参数类型<span class="number">1</span>.class,参数类型<span class="number">2</span>.class);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-获取修改属性信息"><a href="#5-获取修改属性信息" class="headerlink" title="5.获取修改属性信息"></a>5.获取修改属性信息</h3><ol>
+<li><p>获取名称</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String name = x/y/z.getName();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取修饰符</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = x/y/z.getModifiders();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置私有属性可被修改/访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x/y/z.setAccessible(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取属性类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class type= x.getType()[.getName()];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性名</p>
+<ol>
+<li><p>获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object oject = [(类型)]x.get(要获取的对象);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.set(要被赋值的对象,<span class="string">"值"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>获取参数列表类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class[] Parameter = y/z.getParameterTypes();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取返回值类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class <span class="keyword">return</span> = y/z.getReturnType();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取抛出异常的类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class exception = y/z.getExceptionType();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.invoke(要被执行的方法,<span class="string">"参数1"</span>,<span class="string">"参数2"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="6-事例"><a href="#6-事例" class="headerlink" title="6.事例"></a>6.事例</h3><p>​    模仿springIOC功能</p>
+<ol>
+<li><p>Father.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"><span class="keyword">private</span> Integer age;</span><br><span class="line"><span class="keyword">private</span> String sex;</span><br><span class="line">get/set/构造方法/toString;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MySpring.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getBean</span><span class="params">(String className)</span> </span>&#123;</span><br><span class="line">	Object object = <span class="keyword">null</span>;</span><br><span class="line">	Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">	System.out.println(<span class="string">"请给"</span>+className+<span class="string">"类的对象赋值"</span>);</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//1.getBean</span></span><br><span class="line">		Class&lt;?&gt; clazz = Class.forName(className);</span><br><span class="line">		object = clazz.newInstance();</span><br><span class="line">		<span class="comment">//2.依赖注入:通过成员变量生成set方法</span></span><br><span class="line">		Field[] fields = clazz.getDeclaredFields();</span><br><span class="line">		<span class="keyword">for</span>(Field field :fields) &#123;</span><br><span class="line">			<span class="comment">//(1.)拼接成员变量变成set方法</span></span><br><span class="line">			String fieldName = field.getName();</span><br><span class="line">			String upperCase = fieldName.substring(<span class="number">0</span>, <span class="number">1</span>).toUpperCase();</span><br><span class="line">			String substring = fieldName.substring(<span class="number">1</span>);</span><br><span class="line">			StringBuilder setMethodName = <span class="keyword">new</span> StringBuilder(<span class="string">"set"</span>);</span><br><span class="line">			setMethodName.append(upperCase);</span><br><span class="line">			setMethodName.append(substring);</span><br><span class="line">			<span class="comment">//(2.)通过拼接到的set方法名获取set方法对象</span></span><br><span class="line">			Class&lt;?&gt; Fieldtype = field.getType();</span><br><span class="line">			Method method = clazz.getDeclaredMethod(setMethodName.toString(), Fieldtype);</span><br><span class="line">			method.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">			System.out.println(<span class="string">"请给"</span>+setMethodName+<span class="string">"赋值"</span>);</span><br><span class="line">			String value = input.nextLine();</span><br><span class="line">			<span class="comment">//(3.)采用newInteger(String)的方式转换格式</span></span><br><span class="line">			Constructor&lt;?&gt; fieldConstructor = Fieldtype.getDeclaredConstructor(String.class);<span class="comment">//获取参数类的(string)构造方法</span></span><br><span class="line">			Object value2 = fieldConstructor.newInstance(value);<span class="comment">//通过构造方法新建对象</span></span><br><span class="line">			method.invoke(object, value2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> object;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>test.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	MySpring spring = <span class="keyword">new</span> MySpring();</span><br><span class="line">	Father father = (Father)spring.getBean(<span class="string">"Other.反射.untity.Father"</span>);</span><br><span class="line">	System.out.println(father);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-commons"><a href="#2-commons" class="headerlink" title="2.commons"></a>2.commons</h2>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/" title="反射相关知识">airbash.cn/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/&title=《反射相关知识》 — ZSP's Blog&pic=../images/logo/JavaLogo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/&title=《反射相关知识》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《反射相关知识》 — ZSP's Blog&url=airbash.cn/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/JAVA/" class="color5">JAVA</a>
+      
+    <a href="/tags/反射/" class="color3">反射</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-获取class对象"><span class="post-toc-text">1.获取class对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-新建对象"><span class="post-toc-text">2.新建对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-获取class信息-了解"><span class="post-toc-text">3.获取class信息[了解]</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-获取class属性"><span class="post-toc-text">4.获取class属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-获取修改属性信息"><span class="post-toc-text">5.获取修改属性信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-事例"><span class="post-toc-text">6.事例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-commons"><span class="post-toc-text">2.commons</span></a>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/01/JAVA/BigDecimal/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          BigDecimal
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/01/JAVA/JavaAPI/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">JavaAPI</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

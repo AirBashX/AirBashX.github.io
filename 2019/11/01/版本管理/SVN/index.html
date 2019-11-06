@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SVN | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="二.SVN1.安装1.安装服务端建议安装visualSVN server图形化操作软件,或者官网推荐软件subvison 2.安装客户端建议安装TortoiseSVN图形化操作软件和其对应的汉化包 2.Eclipse1.相关配置1.安装svn下载subclise插件; 2.断开svn连接​    断开连接:右击项目&amp;gt;&amp;gt;&amp;gt;team&amp;gt;&amp;gt;&amp;gt;断开连接&amp;gt;&amp;gt;&amp;g">
+<meta name="keywords" content="版本管理,SVN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVN">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;01&#x2F;%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86&#x2F;SVN&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="二.SVN1.安装1.安装服务端建议安装visualSVN server图形化操作软件,或者官网推荐软件subvison 2.安装客户端建议安装TortoiseSVN图形化操作软件和其对应的汉化包 2.Eclipse1.相关配置1.安装svn下载subclise插件; 2.断开svn连接​    断开连接:右击项目&amp;gt;&amp;gt;&amp;gt;team&amp;gt;&amp;gt;&amp;gt;断开连接&amp;gt;&amp;gt;&amp;g">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.457Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-版本管理/SVN" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      SVN
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/版本管理/">版本管理</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h1 id="二-SVN"><a href="#二-SVN" class="headerlink" title="二.SVN"></a>二.SVN</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><h3 id="1-安装服务端"><a href="#1-安装服务端" class="headerlink" title="1.安装服务端"></a>1.安装服务端</h3><p>建议安装<a href="https://www.visualsvn.com/downloads/" target="_blank" rel="noopener">visualSVN server</a>图形化操作软件,或者官网推荐软件<a href="https://sourceforge.net/projects/win32svn/" target="_blank" rel="noopener">subvison</a></p>
+<h3 id="2-安装客户端"><a href="#2-安装客户端" class="headerlink" title="2.安装客户端"></a>2.安装客户端</h3><p>建议安装<a href="https://tortoisesvn.net/downloads.html" target="_blank" rel="noopener">TortoiseSVN</a>图形化操作软件和其对应的<a href="https://tortoisesvn.net/downloads.html" target="_blank" rel="noopener">汉化包</a></p>
+<h2 id="2-Eclipse"><a href="#2-Eclipse" class="headerlink" title="2.Eclipse"></a>2.Eclipse</h2><h3 id="1-相关配置"><a href="#1-相关配置" class="headerlink" title="1.相关配置"></a>1.相关配置</h3><h4 id="1-安装svn"><a href="#1-安装svn" class="headerlink" title="1.安装svn"></a>1.安装svn</h4><p>下载<code>subclise</code>插件;</p>
+<h4 id="2-断开svn连接"><a href="#2-断开svn连接" class="headerlink" title="2.断开svn连接"></a>2.断开svn连接</h4><p>​    断开连接:右击项目&gt;&gt;&gt;<code>team</code>&gt;&gt;&gt;<code>断开连接</code>&gt;&gt;&gt;勾选删除云数据(不作为svn)</p>
+<h4 id="3-删除已保存资源库位置"><a href="#3-删除已保存资源库位置" class="headerlink" title="3.删除已保存资源库位置:"></a>3.删除已保存资源库位置:</h4><p>​    svn资源库&gt;&gt;&gt;删除多余位置</p>
+<h4 id="4-将svn插件设置为英文"><a href="#4-将svn插件设置为英文" class="headerlink" title="4.将svn插件设置为英文"></a>4.将svn插件设置为英文</h4><ol>
+<li><p>打开<code>eclipse所在目录\configuration\config.ini文件</code></p>
+</li>
+<li><p>增加英文配置:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set Subversion English Version</span></span><br><span class="line"><span class="attr">osgi.nl</span>=en_US</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="5-查看svn记录"><a href="#5-查看svn记录" class="headerlink" title="5.查看svn记录"></a>5.查看svn记录</h4><p>打开svn记录视图</p>
+<h3 id="2-SVN操作"><a href="#2-SVN操作" class="headerlink" title="2.SVN操作"></a>2.SVN操作</h3><h4 id="1-提交项目"><a href="#1-提交项目" class="headerlink" title="1.提交项目"></a>1.提交项目</h4><ol>
+<li>右击项目&gt;&gt;&gt;<code>team</code>&gt;&gt;&gt;<code>share</code>&gt;&gt;&gt;输入svn仓库地址&gt;&gt;&gt;在不输入密码的情况下要点击finsh4-5次</li>
+<li>右击项目&gt;&gt;&gt;<code>team</code>&gt;&gt;&gt;<code>commit</code></li>
+</ol>
+<h4 id="2-下载项目"><a href="#2-下载项目" class="headerlink" title="2.下载项目"></a>2.下载项目</h4><ol>
+<li><p>打开svn视图:<code>windows</code>&gt;&gt;&gt;<code>show view</code>&gt;&gt;&gt;<code>other</code>&gt;&gt;&gt;svn资源库</p>
+</li>
+<li><p>添加资源库:右击svn资源库(或者点击视图右上角图标)&gt;&gt;&gt;添加新的资源库&gt;&gt;&gt;填写url</p>
+</li>
+<li><p>check out:右击资源库&gt;&gt;&gt;检出为..&gt;&gt;&gt;作为工作空间中的项目检出[&gt;&gt;&gt;修改项目名称&gt;&gt;&gt;选择保存到的位置]</p>
+</li>
+<li><p>手动导入该项目</p>
+</li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/" title="SVN">airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/&title=《SVN》 — ZSP's Blog&pic=../images/logo/SVNLogo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/&title=《SVN》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SVN》 — ZSP's Blog&url=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/SVN/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/版本管理/" class="color5">版本管理</a>
+      
+    <a href="/tags/SVN/" class="color4">SVN</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#二-SVN"><span class="post-toc-text">二.SVN</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-安装"><span class="post-toc-text">1.安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-安装服务端"><span class="post-toc-text">1.安装服务端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-安装客户端"><span class="post-toc-text">2.安装客户端</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Eclipse"><span class="post-toc-text">2.Eclipse</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-相关配置"><span class="post-toc-text">1.相关配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-安装svn"><span class="post-toc-text">1.安装svn</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-断开svn连接"><span class="post-toc-text">2.断开svn连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-删除已保存资源库位置"><span class="post-toc-text">3.删除已保存资源库位置:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-将svn插件设置为英文"><span class="post-toc-text">4.将svn插件设置为英文</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-查看svn记录"><span class="post-toc-text">5.查看svn记录</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-SVN操作"><span class="post-toc-text">2.SVN操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-提交项目"><span class="post-toc-text">1.提交项目</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-下载项目"><span class="post-toc-text">2.下载项目</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/01/Apache/Maven/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Maven
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/01/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/Git/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Git</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

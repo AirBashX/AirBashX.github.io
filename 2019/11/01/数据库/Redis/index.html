@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Redis | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="1.基础知识 版本  3.x之前不支持分布式安装 3.x之后支持分布式安装   优缺点  单个redis容易发生单点故障,一台服务器很难处理大量内存. redis可用的存储空间有限,即使是打野不能用    1.基础配置.&#x2F;redis&#x2F;redis.conf    名称(默认) 作用 行号 注意事项    bind   127.0.0.1 可以连接的地址 69 注释掉设置为远程登录   port 63">
+<meta name="keywords" content="数据库,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;01&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93&#x2F;Redis&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="1.基础知识 版本  3.x之前不支持分布式安装 3.x之后支持分布式安装   优缺点  单个redis容易发生单点故障,一台服务器很难处理大量内存. redis可用的存储空间有限,即使是打野不能用    1.基础配置.&#x2F;redis&#x2F;redis.conf    名称(默认) 作用 行号 注意事项    bind   127.0.0.1 可以连接的地址 69 注释掉设置为远程登录   port 63">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.454Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-数据库/Redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Redis
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/数据库/">数据库</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-01
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1.基础知识"></a>1.基础知识</h2><ol>
+<li><p>版本</p>
+<ol>
+<li>3.x之前不支持分布式安装</li>
+<li>3.x之后支持分布式安装</li>
+</ol>
+</li>
+<li><p>优缺点</p>
+<ol>
+<li>单个redis容易发生单点故障,一台服务器很难处理大量内存.</li>
+<li>redis可用的存储空间有限,即使是打野不能用</li>
+</ol>
+</li>
+</ol>
+<h3 id="1-基础配置"><a href="#1-基础配置" class="headerlink" title="1.基础配置"></a>1.基础配置</h3><p>./redis/redis.conf</p>
+<table>
+<thead>
+<tr>
+<th>名称(默认)</th>
+<th>作用</th>
+<th>行号</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bind   127.0.0.1</td>
+<td>可以连接的地址</td>
+<td>69</td>
+<td>注释掉设置为远程登录</td>
+</tr>
+<tr>
+<td>port 6379</td>
+<td>端口号</td>
+<td>93</td>
+<td>自行设置</td>
+</tr>
+<tr>
+<td>timeout 0</td>
+<td>设置超时断开时间</td>
+<td>113</td>
+<td>自行设置</td>
+</tr>
+<tr>
+<td>daemonize no</td>
+<td>设置为守护线程</td>
+<td>136</td>
+<td>yes:守护线程</td>
+</tr>
+<tr>
+<td>pidfile /var/run/端口号.pid</td>
+<td>设置pid的文件</td>
+<td>159</td>
+<td>只有设置为守护线程才生效</td>
+</tr>
+<tr>
+<td>loglevel verbose</td>
+<td>日志级别</td>
+<td></td>
+<td>debug、verbose(默认)、notice、warning</td>
+</tr>
+<tr>
+<td>logfile   日志文件位置</td>
+<td>设置日志保存文件</td>
+<td>172</td>
+<td>设置为守护线程默认为:/dev/null(黑洞)</td>
+</tr>
+<tr>
+<td>databases   16</td>
+<td>设置存储库数量</td>
+<td>187</td>
+<td>默认16个</td>
+</tr>
+<tr>
+<td>save 10 1</td>
+<td>10秒钟有1个key持久化到硬盘</td>
+<td>219-221</td>
+<td>三个条件满足其中一个就进行RDB持久化</td>
+</tr>
+<tr>
+<td>rdbcompression   yes</td>
+<td>本地存储数据是否进行压缩</td>
+<td>252</td>
+<td>yes:开启默认开启</td>
+</tr>
+<tr>
+<td>dbfilename 持久化文件</td>
+<td>设置持久化备份的库文件</td>
+<td>254</td>
+<td></td>
+</tr>
+<tr>
+<td>dir 指定数据存储位置</td>
+<td>指定数据库保存的位置</td>
+<td>264</td>
+<td>默认redis目录下</td>
+</tr>
+<tr>
+<td>requirepass  foobared</td>
+<td>设置密码</td>
+<td>508</td>
+<td>默认注释(redis3.0之后必须设置),通过”-a 密码”进行连接,明文书写即可,java通过auth连接</td>
+</tr>
+<tr>
+<td>maxclients</td>
+<td>设置并发线程连接数</td>
+<td>540</td>
+<td>默认注释没有限制</td>
+</tr>
+<tr>
+<td>maxmemory&lt;bytes&gt;</td>
+<td>指定Redis最大内存</td>
+<td>567</td>
+<td>默认注释,默认值256M(建议1g分配256-512)</td>
+</tr>
+</tbody></table>
+<h3 id="2-内存淘汰机制"><a href="#2-内存淘汰机制" class="headerlink" title="2.内存淘汰机制"></a>2.内存淘汰机制</h3><p>只需要配置一个模式</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>volatile-lru</td>
+<td>删除最不常用的超时数据</td>
+<td>后面配置超时时间</td>
+</tr>
+<tr>
+<td>allkeys-lru</td>
+<td>查询所有key中最近最不常使用的数据进行删除</td>
+<td>常被配置的模式</td>
+</tr>
+<tr>
+<td>volatile-random</td>
+<td>随机删除超时数据</td>
+<td>后面配置超时时间</td>
+</tr>
+<tr>
+<td>allkeys-random</td>
+<td>查询所有数据后随机删除</td>
+<td></td>
+</tr>
+<tr>
+<td>volatile-ttl</td>
+<td>查询所有超时数据,排序后删除</td>
+<td>后面配置超时时间</td>
+</tr>
+<tr>
+<td>noeviction</td>
+<td>不进行处理,内存溢出时报错</td>
+<td>默认配置</td>
+</tr>
+<tr>
+<td>volatile-lfu</td>
+<td>在所有超时数据中驱逐使用频率最少的键</td>
+<td>4.0新功能</td>
+</tr>
+<tr>
+<td>allkeys-lfu</td>
+<td>在所有键中驱逐使用频率最少的键</td>
+<td>4.0新功能     常见配置</td>
+</tr>
+</tbody></table>
+<h2 id="2-redis命令"><a href="#2-redis命令" class="headerlink" title="2.redis命令"></a>2.redis命令</h2><h3 id="1-共有命令"><a href="#1-共有命令" class="headerlink" title="1.共有命令"></a>1.共有命令</h3><p>操作成功几个数据返回几</p>
+<h4 id="1-多数据库"><a href="#1-多数据库" class="headerlink" title="1.多数据库"></a>1.多数据库</h4><ol>
+<li><p>select:切换数据库</p>
+<p>[0-15]默认16个数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select n</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>move:移动数据到另一个数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move key n</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>flushdb:删除当前数据库的所有key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flushdb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>flushall:删除每个数据库的所有key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flushall</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="2-其他"><a href="#2-其他" class="headerlink" title="2.其他"></a>2.其他</h4><ol>
+<li><p>查看所有key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keys *</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del x [y..]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检测是否含有key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exists x [y..]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除时间</p>
+<ol>
+<li><p>设置清除时间</p>
+<ol>
+<li><p>秒</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expire x 10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><del>毫秒</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pexpire x 1000</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>查看清除时间</p>
+<ol>
+<li><p>返回值</p>
+<table>
+<thead>
+<tr>
+<th>返回值</th>
+<th>作用</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-1</td>
+<td>永久有效</td>
+<td></td>
+</tr>
+<tr>
+<td>-2</td>
+<td>无效</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;0</td>
+<td>剩余时间</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>秒</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ttl x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>毫秒</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pttl x</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>设置为永久有效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">persist x</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>返回随机KEY[不常用]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">random key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重命名KEY</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename x y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>序列化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dump x</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-String"><a href="#2-String" class="headerlink" title="2.String"></a>2.String</h3><p>最大的key为512mb,不会发生编码异常,在客户端编解码</p>
+<p>用途:用户限制登录</p>
+<ol>
+<li><p>set增加数据</p>
+<p>可以覆盖之前的数据和类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set str 10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mset批量增加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mset str1 10 str2 x str3 20</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看一个数据</p>
+<ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get string</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key sitring:?[<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>批量查看</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mget str1 str2 str3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getrange截取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getRange str n1 n2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getset返回之前的值,设置新值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getset str 15//输出nil</span><br><span class="line">getset str 10//输出10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>strlen长度</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strlen str</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>append判断追加</p>
+<p>key存在时追加值,key不存在时赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append str 10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>setnx 判断赋值</p>
+<p>key存在时不进行操作,key不存在时赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setnx str 10;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加减操作</p>
+<p>只能对String类型的数值进行操作,以0开头的数值视为字符串,不书写n时为加减1,0不存在时从0开始计算</p>
+<ol>
+<li><p>加1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">incr string</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>减1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desr string</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自增n</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">incrby str n;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自减n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">decrby str n;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>添加一个n秒的临时数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setex str n value</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="3-Hash"><a href="#3-Hash" class="headerlink" title="3.Hash"></a>3.Hash</h3><pre><code>存储对象,类似于HashMap</code></pre><ol>
+<li><p>hset添加对象的一个属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hset user:1 id 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hmset批量添加对象的多个属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hmset user:1 id 1 name zhangsan</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hget 获取对象的一个属性值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gset user:1 id</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hmset批量获取对象的多个属性值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hgset user:1 id name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hgetall获取对象的所有属性名和属性值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hgetall user:1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hdel删除对象的一个或多个属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdel user:1 id [user]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hsetnx存在属性时不操作,不存在属性时添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hsetnx user:1 id 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hexists检测是否存在属性</p>
+<p>返回值存在个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexists user:1 id [name...]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="4-List"><a href="#4-List" class="headerlink" title="4.List"></a>4.List</h3><pre><code>用途:做流程
+
+类似于linkedList</code></pre><ol>
+<li><p>lpush(从左侧(头部)开始添加,最先添加的是尾部最后一个)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpush friend x [x] [x]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rpush(从尾)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpush friend x [x] [x]</span><br></pre></td></tr></table></figure>
+
+<hr>
+</li>
+<li><p>rpushx:最右侧添加(不受1/2的影响)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpushx key x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lpushx:最左侧添加(不受1/2的影响)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpushx key x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lrange:查看n1-n2的值(可以实现分页)</p>
+<p>负数代表从后开始数第几个,例如-1代表最后一个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrange friend n1 n2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lpop:从头部弹出,弹出就没了(删除)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpop friend</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rpop:从尾部弹出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpop friend</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>brpop:从头部弹出,没值的话等待1000秒,有值就弹出(等待时代表全部弹出,这个key就被删除了,需要重新赋值)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blpop key 1000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>blpop:从尾部弹出,如果在1000秒之后有值就弹出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blpop key 1000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rpoplpush:从friend1右侧弹出从friends头部插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpoplpush friend1 friend2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lset:更改下标为n的key的值为x</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lset key n x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>linset:将x插入下标为n的key的前面或后面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linsert key before|after n x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>llen:长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">llen key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lindx:显示下标为n的key值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lindex key n</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="5-Set"><a href="#5-Set" class="headerlink" title="5.Set"></a>5.Set</h3><p>类似于hashtable:无序不重复</p>
+<ol>
+<li><p>sadd:添加数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sadd key a b c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>scard:获取数据数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scard key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>smembers:获取所有数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smembers key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sismember:查询是否存在a数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sismember key a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>srandmember:返回集合中一个或n个数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">srandmember key [n]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>srem:删除key中的一个或多个数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">srem key a [b]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>spop:随机删除key中一个或n个数据并返回删除的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spop key [n]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>smove:将一个数据移动到另一个key</p>
+<p>将key1中的a移动到key2中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smove key1 key2 a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>差集:</p>
+<ol>
+<li><p>sdiff:查询交集之外的不相同的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdiff key1 key2 [key3]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sdiffstore:脚趾之外的不同的数据复制到key中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdiiffstore key key1 key2 [key3]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>交集:</p>
+<ol>
+<li><p>sinter:查询共有数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sinter key1 key2 [key3]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sinterstore:共有数据并复制到key中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sinterstore key key1 key2 [key3]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>并集:</p>
+<ol>
+<li><p>sunion:查询所有数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sunion key1 key2 [key3]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sunionstore:所有数据并复制到可以中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sunionstore key key1 key2 [key3]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-Zset"><a href="#6-Zset" class="headerlink" title="6.Zset"></a>6.Zset</h3><p>用途:排行榜</p>
+<p>有序集合且不允许重复,但是通过一个double分数来排列顺序,分数可以重复</p>
+<ol>
+<li><p>zadd:增加一个或多个数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zadd key 分数 a [分数 b]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>zcound:查看分数1-分数2的成员个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zcard key 分数1 分数2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>zrange:通过从低到高查看下标0-n之间的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrage key 0 n</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>zrevrange:通过从高到第查看下标0-n之间的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrevrange key 0 n</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>zrem:删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrem key a [b]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>zremrangebybank:删除下标0-n之间的数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zremrangebybank key 0 n</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>zremrangebyscore:删除分数之间的数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zremrangebycore key 分数1 分数2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="3-redis操作"><a href="#3-redis操作" class="headerlink" title="3.redis操作"></a>3.redis操作</h2><h3 id="1-发布订阅"><a href="#1-发布订阅" class="headerlink" title="1.发布订阅"></a>1.发布订阅</h3><ol>
+<li><p>作用:</p>
+<p>订阅频道,从而接收数据</p>
+</li>
+<li><p>subscribe:订阅频道:处于接收状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subscribe 频道 [频道1]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>publish:向指定频道发送信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">publish 频道 信息</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>unsubscribe:退订频道</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unsubcribe</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>punsubscribe:退订所有频道</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">punsubscribe</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="2-事务"><a href="#2-事务" class="headerlink" title="2.事务"></a>2.事务</h3><p>​    用途:一组行为执行时:秒杀活动</p>
+<ol>
+<li><p>multi:开始事务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">multi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>exec:执行</p>
+<p>数据出错:只有出错的语句不会被执行</p>
+<p>语法错误(报告错误):都不会被执行,会自动回滚</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>discard:回滚(放弃执行)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">discard</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>watch:</p>
+<ol>
+<li>监视一个或多个key,如果这个key在事务期间被更改,那么当<code>exec</code>时就会回滚,并取消监视</li>
+<li>在<code>multi</code>之前执行,如果执行<code>exci</code>或<code>discard</code>就会自动取消监视</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch key [key]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>unwatch:取消所有监视</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unwatch [key] [key]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="4-持久化"><a href="#4-持久化" class="headerlink" title="4.持久化"></a>4.持久化</h3><h4 id="1-RDB"><a href="#1-RDB" class="headerlink" title="1.RDB"></a>1.RDB</h4><ol>
+<li><p>基础知识:</p>
+<ol>
+<li><p>默认开启</p>
+</li>
+<li><p>定期将内存中的数据做成快照保存在磁盘中</p>
+</li>
+<li><p>默认存储在redis目录下,名为dump.rdb</p>
+</li>
+</ol>
+</li>
+<li><p>优缺点</p>
+<ol>
+<li><p>优点:保存和读取数据都很快</p>
+</li>
+<li><p>缺点:</p>
+<ol>
+<li>小机器不适合做快照</li>
+<li>在非正常关机时无法保存</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>快照条件:</p>
+<ol>
+<li>执行shutdown正常关闭时</li>
+<li>执行flushall删除所有key时</li>
+<li>在指定时间间隔内</li>
+<li>执行save命令</li>
+</ol>
+</li>
+<li><p>恢复rdb:</p>
+<p>将dump.rdb文件拷贝到redis下的bin目录即可</p>
+</li>
+</ol>
+<h4 id="2-AOF"><a href="#2-AOF" class="headerlink" title="2.AOF"></a>2.AOF</h4><ol>
+<li><p>基础知识:</p>
+<ol>
+<li><p>执行操作之后会将操作写在日志中,如果出现问题可以回滚</p>
+</li>
+<li><p>每做一次写操作都会,就会将操作追加到appendoly.aof中,当redis重启时就会重新读取整个数据库</p>
+</li>
+</ol>
+</li>
+<li><p>启动AOF,修改配置文件:</p>
+<ol>
+<li><p>启动AOF:699默认no</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定存储文件名:703</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appendfilename &quot;appenonly.aof&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定跟新日志条件:728默认被注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appendfsync 条件</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>always:写操作一次就写入一次:</li>
+<li>everysec:每秒钟写入一次:性能和持久化居中</li>
+<li>no:完全依赖os,性能最好,持久化没保证</li>
+</ol>
+</li>
+<li><p>配置重写机制</p>
+<p>当AOF文件大小是上次rewrite后大小的一倍且文件大于64M时触发。一般都设置为3G，64M太小了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line">auto-aof-rewrite-min-size 64mb</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>恢复AOF</p>
+<ol>
+<li><p><del>直接复制到bin目录下</del></p>
+</li>
+<li><p>通过命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-check-aof --fix appendonly.aof</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="5-数据一致性"><a href="#5-数据一致性" class="headerlink" title="5.数据一致性"></a>5.数据一致性</h3><h4 id="1-实时同步"><a href="#1-实时同步" class="headerlink" title="1.实时同步"></a>1.实时同步</h4><p>数据库与redis</p>
+<p>@cacheable:查询时使用,注意Long类型需转换为String类型,否则会抛异常</p>
+<p>@CatchPut:更新时使用,使用此注解,一定会从DB上查询数据</p>
+<p>@CacheEvicat:删除时使用;</p>
+<p>@Caching:组合用法:</p>
+<h4 id="2-异步队列"><a href="#2-异步队列" class="headerlink" title="2.异步队列"></a>2.异步队列</h4><p>消息中间件:kafka</p>
+<h4 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h4><ol>
+<li>udf自定义函数</li>
+<li>脚本</li>
+</ol>
+<h4 id="4-相关知识点"><a href="#4-相关知识点" class="headerlink" title="4.相关知识点"></a>4.相关知识点</h4><ol>
+<li><p>数据库穿透:</p>
+<p>可能查询到的是null数据,null数据不会写入redis缓存,而是返回查询失败,更多的人访问最后导致宕机,因此可以设置如果数据库查询到的是null的话就添加key但是值是null;</p>
+</li>
+<li><p>雪崩:</p>
+<p>缓存集中在同一时间段失效,导致大量用户进入数据库查询产生数据穿透</p>
+<ol>
+<li>分析用户行为,找到合适的时间点失效</li>
+<li>加锁或者队列</li>
+<li>缓存预热</li>
+</ol>
+</li>
+<li><p>热点key:</p>
+</li>
+</ol>
+<h4 id="5-主从复制"><a href="#5-主从复制" class="headerlink" title="5.主从复制"></a>5.主从复制</h4><p>可以使用阿里插件:canal也可以用下列方法</p>
+<ol>
+<li><p>修改从服务器redis配置文件</p>
+<ol>
+<li>port:6380(重新修改端口号):此端口是从服务器的端口号</li>
+<li>slaveof 127.0.0.1 6379(指定主服务器和端口号用于连接主服务器)</li>
+</ol>
+</li>
+<li><p>或者使用命令切换主从服务器</p>
+<ol>
+<li>slaveof ip地址 端口号 变回从服务器:只能进行查</li>
+<li>slaveof on one 变回主服务器</li>
+</ol>
+</li>
+<li><p>slavef 查询新的master</p>
+<p>slaveof new master</p>
+</li>
+</ol>
+<h4 id="6-哨兵模式"><a href="#6-哨兵模式" class="headerlink" title="6.哨兵模式"></a>6.哨兵模式</h4><h2 id="4-Cluster集群"><a href="#4-Cluster集群" class="headerlink" title="4.Cluster集群"></a>4.Cluster集群</h2><h3 id="1-基础知识-1"><a href="#1-基础知识-1" class="headerlink" title="1.基础知识"></a>1.基础知识</h3><ol>
+<li><p>无中心,无需连接所有的服务器</p>
+</li>
+<li><p>必须要3master+3slaveof才能配置成集群</p>
+</li>
+<li><p>共有0-16383共16384个hash曹,个人服务器均分</p>
+</li>
+<li><p>容错性(投票):当一个服务器在半数以上的服务器无法连接时视为当前无服务挂掉</p>
+</li>
+<li><p>节点分配:A(0-5460)B(5461-10922)C(10923-1638)</p>
+<p>如果增加新的服务器则分别从ABC的前面出去一部分最后达成均分</p>
+</li>
+<li><p>真集群和假集群以下为假集群的创建规则</p>
+</li>
+</ol>
+<h3 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h3><h4 id="1-修改配置文件"><a href="#1-修改配置文件" class="headerlink" title="1.修改配置文件"></a>1.修改配置文件</h4><ol>
+<li><p>复制配置文件</p>
+<ol>
+<li><p>创建Redis节点安装总目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/redis_cluster</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建Redis节点安装目录(复制5份redis配置文件(7001-7005))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp `~/redis.conf /usr/local/redis_cluster/7001/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>修改配置文件</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>行号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>port 7001</td>
+<td>修改端口号,6个服务器不同</td>
+<td>92</td>
+</tr>
+<tr>
+<td>pidfile /var/run/redis-7001.pid</td>
+<td>修改pid进程文件.默认以pid命名名称</td>
+<td>158</td>
+</tr>
+<tr>
+<td>logfile 存放地址/redis.log</td>
+<td>修改日志文件地址,可不修改</td>
+<td>171</td>
+</tr>
+<tr>
+<td>dir 存放地址</td>
+<td>修改数据文件存放地址,以端口号为目录名区分,可不修改</td>
+<td>263</td>
+</tr>
+<tr>
+<td>cluster-enable yes</td>
+<td>启用集群</td>
+<td>832</td>
+</tr>
+<tr>
+<td>cluster-config-file node-7001.conf</td>
+<td>修改节点的配置文件</td>
+<td>840</td>
+</tr>
+<tr>
+<td>cluster-node-timeout 15000</td>
+<td>配合集群节点的超时时间,使用默认</td>
+<td>846</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>启动并查看</p>
+<ol>
+<li><p>启动5份redis</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /配置文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep redis</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭reids</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 7001 shutdown</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="2-安装软件"><a href="#2-安装软件" class="headerlink" title="2.安装软件"></a>2.安装软件</h4><h5 id="1-ruby"><a href="#1-ruby" class="headerlink" title="1.ruby"></a>1.ruby</h5><p>redis-trib.rb的依赖</p>
+<p>建议编译安装,而不是下列方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install ruby ruby-devel rubygams rpm-build</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-rvm"><a href="#2-rvm" class="headerlink" title="2.rvm"></a>2.rvm</h5><p>用于更新ruby,官方文档:<a href="https://www.rvm.io/rvm/install" target="_blank" rel="noopener">https://www.rvm.io/rvm/install</a></p>
+<p>stable:最新版 master:最新开发版 </p>
+<ol>
+<li><p>安装rvm官方的两个gpg秘钥</p>
+<ol>
+<li><p><del>标准方法(经常失败:原因未知)</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg2 --keyserver hkp：//pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>替代方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://rvm.io/mpapis.asc | gpg --import  - </span><br><span class="line">curl -sSL https://rvm.io/pkuczynski.asc | gpg --import  -</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>安装rvm</p>
+<ol>
+<li><p><del>标准安装</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\curl -sSL https://get.rvm.io | bash -s stable</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用ruby安装rvm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\curl -sSL https://get.rvm.io | bash -s stable --ruby</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>检验安装情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name rvm -print</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载配置文件</p>
+<ol>
+<li><p>普通加载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /usr/local/rvm/scripts/rvm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><del>设置环境变量(官方脚本:全局)</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile.d/rvm.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>升级rvm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm get stable</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看ruby版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm list known</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装最最新版ruby</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm install 2.6.3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用一个ruby版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm use 2.6.3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置默认ruby版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm use 2.6.3 --default</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看ruby版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby --version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装redis与ruby整合工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem isntall redis</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="3-创建启动"><a href="#3-创建启动" class="headerlink" title="3.创建启动"></a>3.创建启动</h4><ol>
+<li><p>创建redis_cluster</p>
+<ol>
+<li><p>3.0-4.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-trib.rb create --replicas 1 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.1:7005</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.0:不需要安装ruby</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>先出的结果为主,输入yes</p>
+</li>
+<li><p>连接reids</p>
+<p>-c:连接集群 -p:访问7001</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 127.0.01 -c -p 7001</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看节点测试:redis命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info replication</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有节点信息:redis命令</p>
+<p>每个节点都有一个id,用节点来对应,可以更改端口号</p>
+<p>主用来set,从用来get,若果set就会跳到get中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cluster nodes</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="4-集群管理"><a href="#4-集群管理" class="headerlink" title="4.集群管理"></a>4.集群管理</h4><ol>
+<li><p>添加单个集群</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add-node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除单个集群</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del-node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除全部集群</p>
+<ol>
+<li>关闭所有集群</li>
+<li>删除nodes-port.conf配置文件</li>
+<li>重建集群</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-相关方法"><a href="#4-相关方法" class="headerlink" title="4.相关方法"></a>4.相关方法</h3><ol>
+<li><p>新建对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> RedisTemplate&lt;String,String&gt; redisTemplate;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getString</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">		ValueOperations&lt;String, String&gt; string = redisTemplate.opsForValue();</span><br><span class="line">		<span class="keyword">if</span>(redisTemplate.hasKey(username)) &#123;<span class="comment">//redis中有,直接输出</span></span><br><span class="line">			System.out.println(<span class="string">"在redis中查找:"</span>);</span><br><span class="line">			<span class="keyword">return</span> string.get(username);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;<span class="comment">//redis中没有数据,在mysql中查找后赋值(模拟),并输出</span></span><br><span class="line">			String age=<span class="string">"15"</span>;</span><br><span class="line">			string.set(username, age);</span><br><span class="line">			System.out.println(<span class="string">"在mysql中查找:"</span>);</span><br><span class="line">			<span class="keyword">return</span> age;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>语法规律</p>
+<p>公用redis语法对应redisTemplate静态方法</p>
+<p>私有redis语法对应redisTemplate.ospFor***()</p>
+</li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" title="Redis">airbash.cn/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/&title=《Redis》 — ZSP's Blog&pic=../images/logo/RedisLogo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/&title=《Redis》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Redis》 — ZSP's Blog&url=airbash.cn/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/数据库/" class="color4">数据库</a>
+      
+    <a href="/tags/Redis/" class="color1">Redis</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-基础知识"><span class="post-toc-text">1.基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-基础配置"><span class="post-toc-text">1.基础配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-内存淘汰机制"><span class="post-toc-text">2.内存淘汰机制</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-redis命令"><span class="post-toc-text">2.redis命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-共有命令"><span class="post-toc-text">1.共有命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-多数据库"><span class="post-toc-text">1.多数据库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-其他"><span class="post-toc-text">2.其他</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-String"><span class="post-toc-text">2.String</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Hash"><span class="post-toc-text">3.Hash</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-List"><span class="post-toc-text">4.List</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-Set"><span class="post-toc-text">5.Set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-Zset"><span class="post-toc-text">6.Zset</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-redis操作"><span class="post-toc-text">3.redis操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-发布订阅"><span class="post-toc-text">1.发布订阅</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-事务"><span class="post-toc-text">2.事务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-持久化"><span class="post-toc-text">4.持久化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-RDB"><span class="post-toc-text">1.RDB</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-AOF"><span class="post-toc-text">2.AOF</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-数据一致性"><span class="post-toc-text">5.数据一致性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-实时同步"><span class="post-toc-text">1.实时同步</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-异步队列"><span class="post-toc-text">2.异步队列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-其他"><span class="post-toc-text">3.其他</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-相关知识点"><span class="post-toc-text">4.相关知识点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-主从复制"><span class="post-toc-text">5.主从复制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-哨兵模式"><span class="post-toc-text">6.哨兵模式</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Cluster集群"><span class="post-toc-text">4.Cluster集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-基础知识-1"><span class="post-toc-text">1.基础知识</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-搭建流程"><span class="post-toc-text">2.搭建流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-修改配置文件"><span class="post-toc-text">1.修改配置文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-安装软件"><span class="post-toc-text">2.安装软件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-ruby"><span class="post-toc-text">1.ruby</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-rvm"><span class="post-toc-text">2.rvm</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-创建启动"><span class="post-toc-text">3.创建启动</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-集群管理"><span class="post-toc-text">4.集群管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-相关方法"><span class="post-toc-text">4.相关方法</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/01/JAVA/JavaBase/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          JavaBase
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/01/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Oracle</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

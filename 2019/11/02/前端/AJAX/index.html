@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>AJAX | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="1. AJAX1.基础内容 实现功能: 在不转发和重发的情况下处理页面(异步)  基础配置:  配置tomcat 设置spring-mvc依赖 字符集.自动查找    2.$.ajax参数   参数名 内容 注意事项    url 访问地址    data 发送表单数据(不写时代表接收数据)new FormData($(“#form”[0])    type 请求方法:get&#x2F;post(与服务器控">
+<meta name="keywords" content="JAVA,Spring,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX">
+<meta property="og:url" content="airbash.cn&#x2F;2019&#x2F;11&#x2F;02&#x2F;%E5%89%8D%E7%AB%AF&#x2F;AJAX&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="1. AJAX1.基础内容 实现功能: 在不转发和重发的情况下处理页面(异步)  基础配置:  配置tomcat 设置spring-mvc依赖 字符集.自动查找    2.$.ajax参数   参数名 内容 注意事项    url 访问地址    data 发送表单数据(不写时代表接收数据)new FormData($(“#form”[0])    type 请求方法:get&#x2F;post(与服务器控">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-06T03:36:22.449Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-前端/AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      AJAX
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/前端/">前端</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="1-AJAX"><a href="#1-AJAX" class="headerlink" title="1. AJAX"></a>1. AJAX</h3><h4 id="1-基础内容"><a href="#1-基础内容" class="headerlink" title="1.基础内容"></a>1.基础内容</h4><ol>
+<li><p>实现功能:</p>
+<p>在不转发和重发的情况下处理页面(异步)</p>
+</li>
+<li><p>基础配置:</p>
+<ul>
+<li>配置tomcat</li>
+<li>设置spring-mvc依赖</li>
+<li>字符集.自动查找</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-ajax参数"><a href="#2-ajax参数" class="headerlink" title="2.$.ajax参数"></a>2.$.ajax参数</h4><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>内容</th>
+<th>注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>访问地址</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td>发送表单数据(不写时代表接收数据)new FormData($(“#form”[0])</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>请求方法:get/post(与服务器控制层一致)</td>
+<td></td>
+</tr>
+<tr>
+<td>dataType</td>
+<td>服务器return类型:json/xml/text/html</td>
+<td>不指定时自动识别</td>
+</tr>
+<tr>
+<td>success</td>
+<td>成功响应时(响应码为2XX时)的处理函数</td>
+<td></td>
+</tr>
+<tr>
+<td>error</td>
+<td>失败时响应(响应吗为2XX以外)的处理函数</td>
+<td></td>
+</tr>
+<tr>
+<td>contentType:false</td>
+<td>上传</td>
+<td></td>
+</tr>
+<tr>
+<td>contentData:false</td>
+<td>上传</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>error在项目中通常只处理3XX错误(400X/500X项目中不应该出现)</p>
+<h4 id="3-JQ代码"><a href="#3-JQ代码" class="headerlink" title="3.JQ代码"></a>3.JQ代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btn-login"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">        <span class="string">"url"</span>:<span class="string">"user/login.do"</span>,</span><br><span class="line">            <span class="string">"data"</span>:<span class="string">"username="</span>+$(<span class="string">"#username"</span>).val()+<span class="string">"&amp;password="</span>+$(<span class="string">"#password"</span>).val(),</span><br><span class="line">        <span class="string">"type"</span>:<span class="string">"post"</span>,</span><br><span class="line">        <span class="string">"dataType"</span>:<span class="string">"json"</span>,</span><br><span class="line">            <span class="string">"success"</span>:<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(json.state == <span class="number">1</span>)&#123;</span><br><span class="line">                    alert(json.message);</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(json.state ==<span class="number">2</span>)&#123;</span><br><span class="line">                    alert(json.message);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    alert(json.message);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JSON"><a href="#2-JSON" class="headerlink" title="2. JSON"></a>2. JSON</h3><h4 id="1-语法"><a href="#1-语法" class="headerlink" title="1.语法"></a>1.语法</h4><ol>
+<li>标签名\文本都要加双引号</li>
+<li>标签名右侧冒号[+文本]</li>
+<li>父标签后加大括号</li>
+<li>文本中String类型需要加双引号,int类型不需要加双引号</li>
+</ol>
+<h4 id="2-与xml的比较"><a href="#2-与xml的比较" class="headerlink" title="2.与xml的比较"></a>2.与xml的比较</h4><ul>
+<li><p>xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">state</span>&gt;</span>1<span class="tag">&lt;/<span class="name">state</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">username</span>&gt;</span>root<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">age</span>&gt;</span>18<span class="tag">&lt;/<span class="name">age</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">    <span class="attr">"state"</span>:<span class="number">1</span>,</span><br><span class="line">	<span class="attr">"data"</span>:&#123;</span><br><span class="line">   		<span class="attr">"username"</span>:<span class="string">"root"</span>,</span><br><span class="line">    	<span class="attr">"age"</span>:<span class="number">18</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-Json中的数组"><a href="#3-Json中的数组" class="headerlink" title="3.Json中的数组"></a>3.Json中的数组</h4><ul>
+<li><p>数组:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"state"</span>:<span class="number">1</span>,</span><br><span class="line">	<span class="attr">"data"</span>: [</span><br><span class="line">		<span class="string">"Mike"</span>, <span class="string">"Jack"</span>, <span class="string">"Lucy"</span></span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组中包含对象</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"state"</span>:<span class="number">1</span>,</span><br><span class="line">	<span class="attr">"data"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"username"</span>:<span class="string">"Mike"</span>,</span><br><span class="line">			<span class="attr">"age"</span>:<span class="number">23</span></span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"username"</span>:<span class="string">"Jack"</span>,</span><br><span class="line">			<span class="attr">"age"</span>:<span class="number">21</span></span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"username"</span>:<span class="string">"Lucy"</span>,</span><br><span class="line">			<span class="attr">"age"</span>:<span class="number">25</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="4-javascript"><a href="#4-javascript" class="headerlink" title="4.javascript"></a>4.javascript</h4><p>json可以被javascript直接识别,<code>json.parse(str)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> json = &#123;</span><br><span class="line">	<span class="string">"state"</span>:<span class="number">1</span>,</span><br><span class="line">	<span class="string">"message"</span>:<span class="string">"欢迎使用JSON"</span>,</span><br><span class="line">	<span class="string">"data"</span>:[</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">"username"</span>:<span class="string">"Mike"</span>,</span><br><span class="line">			<span class="string">"age"</span>:<span class="number">23</span></span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			 <span class="string">"username"</span>:<span class="string">"Lucy"</span>,</span><br><span class="line">			 <span class="string">"age"</span>:<span class="number">21</span></span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			 <span class="string">"username"</span>:<span class="string">"jack"</span>,</span><br><span class="line">			 <span class="string">"age"</span>:<span class="number">22</span></span><br><span class="line">			 &#125;</span><br><span class="line">		]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;json.data.length;i++)&#123;</span><br><span class="line">	alert(json.data[i].username);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-springMVC整合"><a href="#3-springMVC整合" class="headerlink" title="3. springMVC整合"></a>3. springMVC整合</h3><h4 id="1-服务器响应String类型"><a href="#1-服务器响应String类型" class="headerlink" title="1.服务器响应String类型"></a>1.服务器响应String类型</h4><h5 id="1-英文类型"><a href="#1-英文类型" class="headerlink" title="1.英文类型"></a>1.英文类型</h5><ol>
+<li><p>controller.java</p>
+<p>只注解@ResponseBody即可,可以和@controller合并为<code>@RestController</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"login.do"</span>)</span><br><span class="line">	<span class="meta">@ResponseBody</span><span class="comment">//默认不支持utf-8,添加json依赖后支持</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">handleLogin</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">		String username, String password)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">"root"</span>.equals(username)) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="string">"1234"</span>.equals(password)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"OK"</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"error"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">"error"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<p>只要是将数据发送给controller并转到croller页面就会发生打印现象</p>
+<ol>
+<li>访问当下地址<a href="http://localhost:8080/spring-10-ajax/user/login.do?username=root&amp;password=1234" target="_blank" rel="noopener">http://localhost:8080/spring-10-ajax/user/login.do?username=root&amp;password=1234</a>;</li>
+<li>from接收后;</li>
+</ol>
+<ol start="3">
+<li><p>结果</p>
+<p>​    添加后不转换地址,可以吧return直接输入到页面上</p>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="2-中文类型"><a href="#2-中文类型" class="headerlink" title="2.中文类型"></a>2.中文类型</h5><ol>
+<li><p>原理:</p>
+<p>相当于在html添加数据,而html响应头默认为8859-1类型的,因此需要修改默认字符集才能在页面上显示中文,否则乱码</p>
+</li>
+<li><p>方法1:</p>
+<p>修改@ResponseBody为<code>@ResponseBody(text/html;charset=UTF-8)</code></p>
+</li>
+<li><p>方法2:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mvc:message-converters</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.http.converter.StringHttpMessageConverter"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"supportedMediaTypes"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">value</span>&gt;</span>text/html;charset=UTF-8<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mvc:message-converters</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="2-服务器响应JSON格式的结果"><a href="#2-服务器响应JSON格式的结果" class="headerlink" title="2. 服务器响应JSON格式的结果"></a>2. 服务器响应JSON格式的结果</h4><ol>
+<li><p><strong>添加依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>注解驱动</strong></p>
+<ul>
+<li>jackson必须在spring.xml中添加驱动才能起作用</li>
+</ul>
+<ol>
+<li>在添加@ResponseBody注解以后只能return英文,注解驱动后可以return中文,并且可以return”json”</li>
+<li>中文原理:将响应头改为:application/json; charset=UTF-8</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建实体类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseResult</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Integer state;</span><br><span class="line">	<span class="keyword">private</span> String message;</span><br><span class="line">	<span class="comment">// 某些构造方法/SET/GET</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>controller类</strong></p>
+<p>@ResponseBody//启用AJAX:默认不支持utf-8,添加json注解后支持</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"login.do"</span>)</span><br><span class="line">	<span class="meta">@ResponseBody</span><span class="comment">//默认不支持utf-8,添加json注解后支持</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">handleLogin</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">		String username, String password)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">"root"</span>.equals(username)) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="string">"1234"</span>.equals(password)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> AAA(<span class="number">1</span>,<span class="string">"登录成功"</span>);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> AAA(<span class="number">3</span>,<span class="string">"密码错误"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> AAA(<span class="number">2</span>,<span class="string">"账号错误"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>页面显示结果</strong></p>
+<p>访问user/login.do</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"state"</span>:<span class="number">1</span>,<span class="attr">"message"</span>:<span class="string">"登录成功"</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>转换器</p>
+<p>在响应正文的过程中需要使用转换器Converter:</p>
+<p>返回值类型String:StringHttpMessageConverter转换器</p>
+<p>无法识别时:jackson转换器</p>
+</li>
+</ol>
+<h3 id="4-前端页面"><a href="#4-前端页面" class="headerlink" title="4.  前端页面"></a>4.  前端页面</h3><ol>
+<li><p>解决方案:</p>
+<p>通过取消form表单的提交功能</p>
+<ol>
+<li>删除form标签</li>
+<li>使用button</li>
+</ol>
+</li>
+<li><p>html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"handle_login.do"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>用户登录<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>请输入用户名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"username"</span> /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>请输入密码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"password"</span> /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"btn-login"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"登录"</span> /&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jQuery</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"jquery-1.8.3.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    $(<span class="string">"#btn-login"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="string">"hello, jquery!"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>写在文档的最后面.或者使用下列代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		$(<span class="string">"#btn-login"</span>).click();</span><br><span class="line">	&#125;); <span class="comment">//网页全部加载完之后再执行</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月06日 11:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/" title="AJAX">airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/</a></p>
+        <footer>
+            <a href="airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/&title=《AJAX》 — ZSP's Blog&pic=../images/logo/AJAXLogo.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/&title=《AJAX》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《AJAX》 — ZSP's Blog&url=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/&via=airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/JAVA/" class="color5">JAVA</a>
+      
+    <a href="/tags/Spring/" class="color2">Spring</a>
+      
+    <a href="/tags/框架/" class="color3">框架</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-AJAX"><span class="post-toc-text">1. AJAX</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-基础内容"><span class="post-toc-text">1.基础内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-ajax参数"><span class="post-toc-text">2.$.ajax参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-JQ代码"><span class="post-toc-text">3.JQ代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-JSON"><span class="post-toc-text">2. JSON</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-语法"><span class="post-toc-text">1.语法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-与xml的比较"><span class="post-toc-text">2.与xml的比较</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-Json中的数组"><span class="post-toc-text">3.Json中的数组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-javascript"><span class="post-toc-text">4.javascript</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-springMVC整合"><span class="post-toc-text">3. springMVC整合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-服务器响应String类型"><span class="post-toc-text">1.服务器响应String类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-英文类型"><span class="post-toc-text">1.英文类型</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-中文类型"><span class="post-toc-text">2.中文类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-服务器响应JSON格式的结果"><span class="post-toc-text">2. 服务器响应JSON格式的结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-前端页面"><span class="post-toc-text">4.  前端页面</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/02/Spring/SpringBoot/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          SpringBoot
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/02/Spring/MyBatis/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">MyBatis</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
