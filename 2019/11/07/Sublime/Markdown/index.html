@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sublime实时预览markdown | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="本文由 简悦 SimpRead 转码， 原文地址 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_20011607&#x2F;article&#x2F;details&#x2F;81370236  如前文《Sublime Text3 的插件管理工具 (Package Control) 的安装及使用方法》所说，Sublime 有强大的插件扩展功能，本文将详细介绍在用 Sublime 写 Markdown 文档时如何预览，甚至">
+<meta name="keywords" content="Markdown,Sublime,IDE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sublime实时预览markdown">
+<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;2019&#x2F;11&#x2F;07&#x2F;Sublime&#x2F;Markdown&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="本文由 简悦 SimpRead 转码， 原文地址 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_20011607&#x2F;article&#x2F;details&#x2F;81370236  如前文《Sublime Text3 的插件管理工具 (Package Control) 的安装及使用方法》所说，Sublime 有强大的插件扩展功能，本文将详细介绍在用 Sublime 写 Markdown 文档时如何预览，甚至">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180803020629933?watermark&#x2F;2&#x2F;text&#x2F;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA==&#x2F;dissolve&#x2F;70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180803030607658?watermark&#x2F;2&#x2F;text&#x2F;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA==&#x2F;dissolve&#x2F;70">
+<meta property="og:updated_time" content="2019-11-06T19:45:04.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180803020629933?watermark&#x2F;2&#x2F;text&#x2F;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA==&#x2F;dissolve&#x2F;70">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Sublime/Markdown" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Sublime实时预览markdown
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/IDE/">IDE</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <blockquote>
+<p>本文由 <a href="http://ksria.com/simpread/" target="_blank" rel="noopener">简悦 SimpRead</a> 转码， 原文地址 <a href="https://blog.csdn.net/qq_20011607/article/details/81370236" target="_blank" rel="noopener">https://blog.csdn.net/qq_20011607/article/details/81370236</a></p>
+</blockquote>
+<p>如前文<a href="https://blog.csdn.net/qq_20011607/article/details/81370123" target="_blank" rel="noopener">《Sublime Text3 的插件管理工具 (Package Control) 的安装及使用方法》</a>所说，Sublime 有强大的插件扩展功能，本文将详细介绍在用 Sublime 写 Markdown 文档时如何预览，甚至是实时刷新预览。</p>
+<hr>
+<ol start="0">
+<li>温习：插件安装方式，后面会反复用到</li>
+</ol>
+<hr>
+<ol>
+<li>组合键<code>Ctrl+Shift+P</code> 调出命令面板</li>
+<li>输入<code>Package Control: Install Package</code>，回车</li>
+<li>在搜索框中输入要安装的包名（一个一个，不能同时安多个）</li>
+<li>静待几秒即可安装成功</li>
+</ol>
+<hr>
+<h2 id="插件介绍"><a href="#插件介绍" class="headerlink" title="插件介绍"></a>插件介绍</h2><p>介绍几个 Markdown 类的常用插件：</p>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>MarkdownEditing</strong></td>
+<td>一个提高 Sublime 中 Markdown 编辑特性的插件</td>
+</tr>
+<tr>
+<td><strong>MarkdownPreview</strong></td>
+<td>Markdown 转 HTML，提供在浏览器中的预览功能</td>
+</tr>
+<tr>
+<td><strong>MarkdownLivePreview</strong></td>
+<td>提供在编辑框中实时预览的功能</td>
+</tr>
+<tr>
+<td><strong>LiveReload</strong></td>
+<td>一个提供 md/html 等文档的实时刷新预览的的插件</td>
+</tr>
+</tbody></table>
+<p>接下来会一次介绍这几个插件。</p>
+<hr>
+<ol>
+<li><h1 id="MarkdownEditing"><a href="#MarkdownEditing" class="headerlink" title="MarkdownEditing"></a>MarkdownEditing</h1></li>
+</ol>
+<p>顾名思义，Markdown 编辑器，是 Markdown 写作者必备的插件，不仅可以高亮显示 Markdown 语法还支持很多编程语言的语法高亮显示。<br>特别注意：MarkdownEditing 只针对 md\mdown\mmd\txt 格式文件才启用。</p>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><p>MarkdownEditing 从视觉和便捷性上针对 Markdown 文档的编辑进行了一系列的优化。如：</p>
+<ul>
+<li>颜色方案仿 Byword 及 iA writer</li>
+<li>自动匹配星号（*）、下划线（_）及反引号（`）</li>
+<li>选中文本按下以上符号能自动在所选文本前后添加配对的符号</li>
+<li>方便粗体、斜体和代码框的输入</li>
+</ul>
+<h5 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h5><p><img src="https://img-blog.csdn.net/20180803020629933?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<ol start="2">
+<li><h1 id="MarkdownLivePreview"><a href="#MarkdownLivePreview" class="headerlink" title="MarkdownLivePreview"></a>MarkdownLivePreview</h1></li>
+</ol>
+<h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><p>实时预览 Markdown 文件，左侧为 md 文件，右侧为预览结果。可配合 MarkdownEditing 一起使用。</p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>MarkdownLivePreview 默认关闭实时预览，既然安装这个插件了，那肯定是要用的。打开方式为在<strong>Preferences -&gt; Package Settings -&gt; MarkdownLivePreview -&gt; Settings</strong> 的设置的右侧加一条 <code>&quot;markdown_live_preview_on_open&quot;: true,</code>，重启 sublime 即可。</p>
+<p>为什么不能直接将左侧对应的 false 改为 true，这是因为左侧为默认配置，是不能改的（只读），右侧的编辑区才是用户自定义区。</p>
+<h5 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h5><p>以下为配合 MarkdownEditing 的效果：<br><img src="https://img-blog.csdn.net/20180803030607658?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""><br>实际预览效果并不理想, 很丑, 而且不能横向滚动, 也就是说如果一行显示不过来那你就看不到 了。偶然也会有些卡, 所以其实推荐的是下面这个插件。</p>
+<ol start="3">
+<li><h1 id="MarkdownPreview"><a href="#MarkdownPreview" class="headerlink" title="MarkdownPreview"></a>MarkdownPreview</h1></li>
+</ol>
+<h5 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h5><ol>
+<li>支持在浏览器中预览 markdown 文件</li>
+<li>将 md 文件导出为 html 代码</li>
+</ol>
+<h5 id="将-md-文件用浏览器预览——1-常规方法"><a href="#将-md-文件用浏览器预览——1-常规方法" class="headerlink" title="将 md 文件用浏览器预览——1. 常规方法"></a>将 md 文件用浏览器预览——1. 常规方法</h5><ol>
+<li>组合键 <code>Ctrl+Shift+P</code> 调出命令面板</li>
+<li>输入<code>mdp</code>找到并选中<code>Markdown Preview： Preview in Browser</code></li>
+<li>出现两个选项：<code>github</code>和<code>markdown</code>。任选其一即可，github 是利用 GitHub 的在线 API 来解析. md 文件，支持在线资源的预览，如在线图片它的解析速度取决于你的联网速度。该方式据说一天只能打开 60 次。markdown 就是传统的本地打开，不支持在线资源的预览。</li>
+<li>默认浏览器中显示预览结果</li>
+</ol>
+<h5 id="将-md-文件用浏览器预览——2-用快捷键打开"><a href="#将-md-文件用浏览器预览——2-用快捷键打开" class="headerlink" title="将 md 文件用浏览器预览——2. 用快捷键打开"></a>将 md 文件用浏览器预览——2. 用快捷键打开</h5><p>Sublime Text 支持自定义快捷键，Markdown Preview 默认没有快捷键，我们可以自己为<code>Markdown Preview： Preview in Browser</code>设置快捷键。<br>方法是在<code>Preferences -&gt; Key Bindings</code>打开的文件的右侧栏的中括号中添加一行代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;keys&quot;: [&quot;alt+m&quot;], &quot;command&quot;: &quot;markdown_preview&quot;, &quot;args&quot;: &#123;&quot;target&quot;: &quot;browser&quot;, &quot;parser&quot;:&quot;markdown&quot;&#125;  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里：</p>
+<blockquote>
+<p><code>&quot;alt+m&quot;</code> 可设置为自己喜欢的按键。<br><code>&quot;parser&quot;: &quot;markdown&quot;</code>也可设置为<code>&quot;parser&quot;:&quot;github&quot;</code>，改为使用 Github 在线 API 解析 markdown。</p>
+</blockquote>
+<p>以上两种方式都有个问题：每次预览都要打开一个新的网页，而且需要手动操作。有没有一个方法，可以打开一个网页后，之后再也不用管，让它实时刷新预览呢？</p>
+<p>有，还很简单，答案就是<strong>MarkdownPreview+LiveReload</strong>！<br>LiveReload 是一个可实时刷新的插件，不仅可用于 Markdown，也可用于 HTML 等。</p>
+<hr>
+<ol start="4">
+<li><h1 id="（最强）实时自动刷新预览：MarkdownPreview-LiveReload"><a href="#（最强）实时自动刷新预览：MarkdownPreview-LiveReload" class="headerlink" title="（最强）实时自动刷新预览：MarkdownPreview + LiveReload"></a>（最强）实时自动刷新预览：MarkdownPreview + LiveReload</h1></li>
+</ol>
+<h4 id="先安装并配置-Markdown-Preview"><a href="#先安装并配置-Markdown-Preview" class="headerlink" title="先安装并配置 Markdown Preview"></a>先安装并配置 Markdown Preview</h4><p>如前 Markdown Preview 安装成功后，设置前文所述的快捷键（如需），打开其配置文件 <code>Preferences -&gt; Package Settings -&gt; Markdown Preview -&gt; Settings</code>，检查左侧 enable_autoreload 条目是否为 true，若是，跳过。若不是，右侧栏加一条下面这个后重启 Sublime:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;enable_autoreload&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装并配置-LiveReload"><a href="#安装并配置-LiveReload" class="headerlink" title="安装并配置 LiveReload"></a>安装并配置 LiveReload</h4><p><code>Ctrl+Shift+p</code>, 输入 <code>Install Package</code>，输入<code>LiveReload</code>, 回车安装<br>安装成功后, 再次<code>Ctrl+shift+p</code>, 输入<code>LiveReload: Enable/disable plug-ins</code>, 回车, 选择 <code>Simple Reload with delay (400ms)</code>或者<code>Simple Reload</code>，两者的区别仅仅在于后者没有延迟。</p>
+<h4 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h4><p>如前面提到的手动或者快捷键打开预览网页，之后便再也不用管它，只要你的 sublime 保存一次，网页那边就会自动刷新预览，美滋滋。</p>
+<p>但是呢，有个遗留的问题：网页预览不能跟随你的 sublime 编辑位置，还需要你滑动页面。<br>在这一点上，CSDN-Markdown 可以说很优秀了，本文就是在该编辑器下完成的。</p>
+<p>作者：张渊猛</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月07日 03:45</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/07/Sublime/Markdown/" title="Sublime实时预览markdown">https://airbash.cn/2019/11/07/Sublime/Markdown/</a></p>
+        <footer>
+            <a href="https://airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://airbash.cn/2019/11/07/Sublime/Markdown/&title=《Sublime实时预览markdown》 — ZSP's Blog&pic=../images/logo/Sublime.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://airbash.cn/2019/11/07/Sublime/Markdown/&title=《Sublime实时预览markdown》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://airbash.cn/2019/11/07/Sublime/Markdown/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Sublime实时预览markdown》 — ZSP's Blog&url=https://airbash.cn/2019/11/07/Sublime/Markdown/&via=https://airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://airbash.cn/2019/11/07/Sublime/Markdown/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://airbash.cn/2019/11/07/Sublime/Markdown/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Markdown/" class="color4">Markdown</a>
+      
+    <a href="/tags/Sublime/" class="color3">Sublime</a>
+      
+    <a href="/tags/IDE/" class="color4">IDE</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插件介绍"><span class="post-toc-text">插件介绍</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MarkdownEditing"><span class="post-toc-text">MarkdownEditing</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#特性"><span class="post-toc-text">特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#效果图："><span class="post-toc-text">效果图：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MarkdownLivePreview"><span class="post-toc-text">MarkdownLivePreview</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#功能"><span class="post-toc-text">功能</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用"><span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#效果图"><span class="post-toc-text">效果图</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MarkdownPreview"><span class="post-toc-text">MarkdownPreview</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#功能-1"><span class="post-toc-text">功能</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#将-md-文件用浏览器预览——1-常规方法"><span class="post-toc-text">将 md 文件用浏览器预览——1. 常规方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#将-md-文件用浏览器预览——2-用快捷键打开"><span class="post-toc-text">将 md 文件用浏览器预览——2. 用快捷键打开</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#（最强）实时自动刷新预览：MarkdownPreview-LiveReload"><span class="post-toc-text">（最强）实时自动刷新预览：MarkdownPreview + LiveReload</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#先安装并配置-Markdown-Preview"><span class="post-toc-text">先安装并配置 Markdown Preview</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装并配置-LiveReload"><span class="post-toc-text">安装并配置 LiveReload</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#开始使用"><span class="post-toc-text">开始使用</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/07/Markdown/ImgSize/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Markdown中设置图片大小的几种方法
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2019/11/06/Hexo/GenerateSiteMap/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">生成sitemap站点目录</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//airbash.cn" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/IDE/">IDE</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 16px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 12px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
