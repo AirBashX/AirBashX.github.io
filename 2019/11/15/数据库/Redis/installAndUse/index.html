@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档: 2019 | ZSP&#39;s Blog</title>
+  <title>安装使用Redis | ZSP&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="ZSP,ZSP's Blog" />
   
-  <meta name="description" content="专注 JAVA 开发的技术博客">
-<meta name="keywords" content="博客,java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZSP&#39;s Blog">
-<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;archives&#x2F;2019&#x2F;index.html">
+  <meta name="description" content="1.数据库管理1.编译安装 下载redis 1wget -P &#x2F;usr&#x2F;local&#x2F;src&#x2F; http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;版本  解压redis 1tar -xzf redis文件  编译redis 12cd redis&#x2F;srcmake  卸载redis:直接删除   2.环境变量 打开配置文件 1vim &#x2F;etc&#x2F;profile  修改配置文件:文件最后增">
+<meta name="keywords" content="数据库,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装使用Redis">
+<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;2019&#x2F;11&#x2F;15&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93&#x2F;Redis&#x2F;installAndUse&#x2F;index.html">
 <meta property="og:site_name" content="ZSP&#39;s Blog">
-<meta property="og:description" content="专注 JAVA 开发的技术博客">
+<meta property="og:description" content="1.数据库管理1.编译安装 下载redis 1wget -P &#x2F;usr&#x2F;local&#x2F;src&#x2F; http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;版本  解压redis 1tar -xzf redis文件  编译redis 12cd redis&#x2F;srcmake  卸载redis:直接删除   2.环境变量 打开配置文件 1vim &#x2F;etc&#x2F;profile  修改配置文件:文件最后增">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-15T11:55:26.268Z">
 <meta name="twitter:card" content="summary">
   
   
@@ -104,35 +105,190 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap">
-  
-  
+        <section id="main" class="body-wrap"><article id="post-数据库/Redis/installAndUse" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/" class="archive-article-date">
-  <time datetime="2019-11-15T11:50:53.000Z" itemprop="datePublished">11-15</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/"  >安装使用Redis</a>
+    <h1 class="post-title" itemprop="name">
+      安装使用Redis
     </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/数据库/">数据库</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-11-15
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
   
 
-    </header>
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
       
-        <div class="archive-post-footer">
+            
+            <h3 id="1-数据库管理"><a href="#1-数据库管理" class="headerlink" title="1.数据库管理"></a>1.数据库管理</h3><h4 id="1-编译安装"><a href="#1-编译安装" class="headerlink" title="1.编译安装"></a>1.编译安装</h4><ol>
+<li><p>下载redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P /usr/local/src/ http://download.redis.io/releases/版本</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压redis</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf redis文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd redis/src</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载redis:直接删除</p>
+</li>
+</ol>
+<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ol>
+<li><p>打开配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件:文件最后增加</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Redis</span></span><br><span class="line"><span class="keyword">export</span> REDIS_HOME=/usr/local/src/redis-5.0.5/</span><br><span class="line"><span class="keyword">export</span> PATH=$PATH:$REDIS_HOME/src</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新登录</p>
+</li>
+</ol>
+<h4 id="3-启动连接"><a href="#3-启动连接" class="headerlink" title="3.启动连接"></a>3.启动连接</h4><ol>
+<li><p>运行redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-server [配置文件]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>连接redis</p>
+<p>可以直接写成<code>redis-cli</code>代表本地连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-cli -h host -p 6379 [-a 密码]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> redis-cli shutdown</span></span><br></pre></td></tr></table></figure>
+
+<p>通过端口号[不推荐]</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -ed | grep 名称</span><br><span class="line">kill -9 端口号</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h3>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月15日 19:55</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/" title="安装使用Redis">https://airbash.cn/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/</a></p>
+        <footer>
+            <a href="https://airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://airbash.cn/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/&title=《安装使用Redis》 — ZSP's Blog&pic=../images/logo/Redis.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://airbash.cn/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/&title=《安装使用Redis》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://airbash.cn/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《安装使用Redis》 — ZSP's Blog&url=https://airbash.cn/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/&via=https://airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://airbash.cn/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://airbash.cn/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
@@ -143,334 +299,33 @@
       
   </li>
 
-        </div>
-      
+        </ul>
+        
+    </footer>
   </div>
 </article>
 
-  
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-数据库管理"><span class="post-toc-text">1.数据库管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-编译安装"><span class="post-toc-text">1.编译安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-环境变量"><span class="post-toc-text">2.环境变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-启动连接"><span class="post-toc-text">3.启动连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-配置文件"><span class="post-toc-text">2.配置文件</span></a></li></ol>
+        </nav>
+    </aside>
     
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/07/Markdown/ImgSize/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Markdown中设置图片大小的几种方法</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/07/Markdown/ImgSize/" class="archive-article-date">
-  <time datetime="2019-11-06T19:44:17.000Z" itemprop="datePublished">11-07</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/07/Markdown/ImgSize/"  >Markdown中设置图片大小的几种方法</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Markdown/" class="color4">Markdown</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/07/Sublime/Markdown/" class="archive-article-date">
-  <time datetime="2019-11-06T19:27:17.000Z" itemprop="datePublished">11-07</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/07/Sublime/Markdown/"  >Sublime实时预览markdown</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Markdown/" class="color4">Markdown</a>
-      
-    <a href="/tags/Sublime/" class="color3">Sublime</a>
-      
-    <a href="/tags/IDE/" class="color4">IDE</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/06/Hexo/GenerateSiteMap/" class="archive-article-date">
-  <time datetime="2019-11-06T06:41:07.000Z" itemprop="datePublished">11-06</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/06/Hexo/GenerateSiteMap/"  >生成sitemap站点目录</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Hexo/" class="color5">Hexo</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/02/Apache/Log4J/" class="archive-article-date">
-  <time datetime="2019-11-02T13:10:15.000Z" itemprop="datePublished">11-02</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/02/Apache/Log4J/"  >Log4J</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Apache/" class="color2">Apache</a>
-      
-    <a href="/tags/JAVA/" class="color5">JAVA</a>
-      
-    <a href="/tags/log4j/" class="color1">log4j</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/02/Apache/Lucene/" class="archive-article-date">
-  <time datetime="2019-11-02T13:02:40.000Z" itemprop="datePublished">11-02</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/02/Apache/Lucene/"  >Lucene</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Apache/" class="color2">Apache</a>
-      
-    <a href="/tags/Lucene/" class="color2">Lucene</a>
-      
-    <a href="/tags/JAVA/" class="color5">JAVA</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/" class="archive-article-date">
-  <time datetime="2019-11-02T12:52:17.000Z" itemprop="datePublished">11-02</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/"  >JQuery</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/前端/" class="color3">前端</a>
-      
-    <a href="/tags/Jquery/" class="color2">Jquery</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/02/Spring/SpringBoot/" class="archive-article-date">
-  <time datetime="2019-11-02T12:45:20.000Z" itemprop="datePublished">11-02</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/02/Spring/SpringBoot/"  >SpringBoot</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/JAVA/" class="color5">JAVA</a>
-      
-    <a href="/tags/框架/" class="color3">框架</a>
-      
-    <a href="/tags/SpringBoot/" class="color1">SpringBoot</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/" class="archive-article-date">
-  <time datetime="2019-11-02T12:39:45.000Z" itemprop="datePublished">11-02</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/02/%E5%89%8D%E7%AB%AF/AJAX/"  >AJAX</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/JAVA/" class="color5">JAVA</a>
-      
-    <a href="/tags/Spring/" class="color2">Spring</a>
-      
-    <a href="/tags/框架/" class="color3">框架</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/02/Spring/MyBatis/" class="archive-article-date">
-  <time datetime="2019-11-02T12:26:35.000Z" itemprop="datePublished">11-02</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/02/Spring/MyBatis/"  >MyBatis</a>
-    </h1>
-  
-
-    </header>
-      
-        <div class="archive-post-footer">
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/JAVA/" class="color5">JAVA</a>
-      
-    <a href="/tags/Spring/" class="color2">Spring</a>
-      
-    <a href="/tags/框架/" class="color3">框架</a>
-      
-  </li>
-
-        </div>
-      
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &gt;&gt;</a>
-  </nav>
 </section>
         
       </div>
