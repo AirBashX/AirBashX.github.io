@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>服务相关命令 | ZSP&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ZSP,ZSP's Blog" />
+  
+  <meta name="description" content="下面两个命令需要管理员权限,因此需要用管理员权限打开命令行窗口 1、NET和SC的区别 SC命令只对服务生效. net命令不只用于服务，还可用于网络、用户、登录等大部分. net命令对禁用的服务无效. sc命令不适用于PowerShell  2.net命令NET 命令是功能强大的以命令行方式执行的工具,它包含了管理网络环境、服务、用户、登陆大部分重要的管理功能.  常用  启动服务1net sta">
+<meta name="keywords" content="PowerShell,运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务相关命令">
+<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;2018&#x2F;11&#x2F;17&#x2F;PowerShell&#x2F;Service&#x2F;index.html">
+<meta property="og:site_name" content="ZSP&#39;s Blog">
+<meta property="og:description" content="下面两个命令需要管理员权限,因此需要用管理员权限打开命令行窗口 1、NET和SC的区别 SC命令只对服务生效. net命令不只用于服务，还可用于网络、用户、登录等大部分. net命令对禁用的服务无效. sc命令不适用于PowerShell  2.net命令NET 命令是功能强大的以命令行方式执行的工具,它包含了管理网络环境、服务、用户、登陆大部分重要的管理功能.  常用  启动服务1net sta">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-17T16:11:44.248Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">ZSP&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        ZSP&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 JAVA 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="airbash" target="_blank" href="//airbash.cn">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/yanxuedesaonian">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/zspzhaoshuaipeng">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-PowerShell/Service" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      服务相关命令
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/PowerShell/">PowerShell</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-11-17
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>下面两个命令需要管理员权限,因此需要用管理员权限打开命令行窗口</p>
+<h3 id="1、NET和SC的区别"><a href="#1、NET和SC的区别" class="headerlink" title="1、NET和SC的区别"></a>1、NET和SC的区别</h3><ol>
+<li>SC命令只对服务生效.</li>
+<li>net命令不只用于服务，还可用于网络、用户、登录等大部分.</li>
+<li>net命令对禁用的服务无效.</li>
+<li>sc命令不适用于PowerShell</li>
+</ol>
+<h3 id="2-net命令"><a href="#2-net命令" class="headerlink" title="2.net命令"></a>2.net命令</h3><p>NET 命令是功能强大的以命令行方式执行的工具,它包含了管理网络环境、服务、用户、登陆大部分重要的管理功能.</p>
+<ol>
+<li><p>常用</p>
+<ol>
+<li>启动服务<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start 服务名</span><br></pre></td></tr></table></figure></li>
+<li>关闭服务<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop 服务名</span><br></pre></td></tr></table></figure></li>
+<li>获取服务状态<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">get-service</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>bat文本<br>比如我启动我的 svn server 服务，命令行中输入 net start svn 即可，可以更进一步将你经常需要启动的服务整理成命令，用记事本保存成 cmd 后缀格式的文件，这样你双击就可以完成里边相应的命令，这个还是很方便的，只 需要设置好，后续使用的时候就很简单，提高工作效率还是不错的。</p>
+</li>
+<li><p>全部命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\system32&gt;net --help</span><br><span class="line">此命令的语法是:</span><br><span class="line"></span><br><span class="line">NET</span><br><span class="line">    [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |</span><br><span class="line">      HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START |</span><br><span class="line">      STATISTICS | STOP | TIME | USE | USER | VIEW ]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="3-SC命令"><a href="#3-SC命令" class="headerlink" title="3.SC命令"></a>3.SC命令</h3><p>​    用 sc 可打开<strong>被禁用</strong>的服务。(也可以查看服务状态) 可以创建服务、删除服务、打开与关闭服务</p>
+<ol>
+<li><p>常用命令</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sc start 服务名                    开启服务</span><br><span class="line"></span><br><span class="line">sc stop 服务名　　                 停止服务</span><br><span class="line"></span><br><span class="line">sc query 服务名　　                查看服务状态</span><br><span class="line"></span><br><span class="line">sc config 服务名 start= demand     设置为手动启动</span><br><span class="line"></span><br><span class="line">sc config 服务名 start= auto       设置为自动启动</span><br><span class="line"></span><br><span class="line">sc config 服务名 start= disabled   设置为禁用启动</span><br></pre></td></tr></table></figure>
+
+<p> 当你安装了一个应用程序的时候，将其添加到 windows 服务中时，便可以这样去设置服务的启动规则，不过这个命令最好在命令行中使用。</p>
+<p> 以上就是为了开启和关闭服务自己找到的简单方法</p>
+<p> 如果整理得好的话，完全可以充当自己的电脑开机启动定制版脚本，包括打开哪些程序、文件、代码等等。</p>
+</li>
+<li><p>全部命令</p>
+<ol>
+<li><p>sc 用法:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\ZSP&gt;sc --help</span><br><span class="line"></span><br><span class="line">错误:  未知命令</span><br><span class="line"></span><br><span class="line">描述:</span><br><span class="line">        SC 是用来与服务控制管理器和服务进行通信</span><br><span class="line">        的命令行程序。</span><br><span class="line">用法:</span><br><span class="line">        sc &lt;server&gt; [command] [service name] &lt;option1&gt; &lt;option2&gt;...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;server&gt; 选项的格式为 "\\ServerName"</span><br><span class="line">        可通过键入以下命令获取有关命令的更多帮助: "sc [command]"</span><br><span class="line">        命令:</span><br><span class="line">          query-----------查询服务的状态，</span><br><span class="line">                          或枚举服务类型的状态。</span><br><span class="line">          queryex---------查询服务的扩展状态，</span><br><span class="line">                          或枚举服务类型的状态。</span><br><span class="line">          start-----------启动服务。</span><br><span class="line">          pause-----------向服务发送 PAUSE 控制请求。</span><br><span class="line">          interrogate-----向服务发送 INTERROGATE 控制请求。</span><br><span class="line">          continue--------向服务发送 CONTINUE 控制请求。</span><br><span class="line">          stop------------向服务发送 STOP 请求。</span><br><span class="line">          config----------更改服务的配置(永久)。</span><br><span class="line">          description-----更改服务的描述。</span><br><span class="line">          failure---------更改失败时服务执行的操作。</span><br><span class="line">          failureflag-----更改服务的失败操作标志。</span><br><span class="line">          sidtype---------更改服务的服务 SID 类型。</span><br><span class="line">          privs-----------更改服务的所需特权。</span><br><span class="line">          managedaccount--更改服务以将服务帐户密码</span><br><span class="line">                          标记为由 LSA 管理。</span><br><span class="line">          qc--------------查询服务的配置信息。</span><br><span class="line">          qdescription----查询服务的描述。</span><br><span class="line">          qfailure--------查询失败时服务执行的操作。</span><br><span class="line">          qfailureflag----查询服务的失败操作标志。</span><br><span class="line">          qsidtype--------查询服务的服务 SID 类型。</span><br><span class="line">          qprivs----------查询服务的所需特权。</span><br><span class="line">          qtriggerinfo----查询服务的触发器参数。</span><br><span class="line">          qpreferrednode--查询服务的首选 NUMA 节点。</span><br><span class="line">          qmanagedaccount-查询服务是否将帐户</span><br><span class="line">                          与 LSA 管理的密码结合使用。</span><br><span class="line">          qprotection-----查询服务的进程保护级别。</span><br><span class="line">          quserservice----查询用户服务模板的本地实例。</span><br><span class="line">          delete ----------(从注册表中)删除服务。</span><br><span class="line">          create----------创建服务(并将其添加到注册表中)。</span><br><span class="line">          control---------向服务发送控制。</span><br><span class="line">          sdshow----------显示服务的安全描述符。</span><br><span class="line">          sdset-----------设置服务的安全描述符。</span><br><span class="line">          showsid---------显示与任意名称对应的服务 SID 字符串。</span><br><span class="line">          triggerinfo-----配置服务的触发器参数。</span><br><span class="line">          preferrednode---设置服务的首选 NUMA 节点。</span><br><span class="line">          GetDisplayName--获取服务的 DisplayName。</span><br><span class="line">          GetKeyName------获取服务的 ServiceKeyName。</span><br><span class="line">          EnumDepend------枚举服务依赖关系。</span><br><span class="line"></span><br><span class="line">        以下命令不需要服务名称:</span><br><span class="line">        sc &lt;server&gt; &lt;command&gt; &lt;option&gt;</span><br><span class="line">          boot------------(ok | bad)指示是否应将上一次启动另存为</span><br><span class="line">                          最近一次已知的正确启动配置</span><br><span class="line">          Lock------------锁定服务数据库</span><br><span class="line">          QueryLock-------查询 SCManager 数据库的 LockStatus</span><br><span class="line">示例:</span><br><span class="line">        sc start MyService</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">QUERY 和 QUERYEX 选项:</span><br><span class="line">        如果查询命令带服务名称，将返回</span><br><span class="line">        该服务的状态。其他选项不适合这种</span><br><span class="line">        情况。如果查询命令不带参数或</span><br><span class="line">        带下列选项之一，将枚举此服务。</span><br><span class="line">    type=    要枚举的服务的类型(driver, service, userservice, all)</span><br><span class="line">             (默认 = service)</span><br><span class="line">    state=   要枚举的服务的状态 (inactive, all)</span><br><span class="line">             (默认 = active)</span><br><span class="line">    bufsize= 枚举缓冲区的大小(以字节计)</span><br><span class="line">             (默认 = 4096)</span><br><span class="line">    ri=      开始枚举的恢复索引号</span><br><span class="line">             (默认 = 0)</span><br><span class="line">    group=   要枚举的服务组</span><br><span class="line">             (默认 = all groups)</span><br><span class="line"></span><br><span class="line">语法示例</span><br><span class="line">sc query                - 枚举活动服务和驱动程序的状态</span><br><span class="line">sc query eventlog       - 显示 eventlog 服务的状态</span><br><span class="line">sc queryex eventlog     - 显示 eventlog 服务的扩展状态</span><br><span class="line">sc query type= driver   - 仅枚举活动驱动程序</span><br><span class="line">sc query type= service  - 仅枚举 Win32 服务</span><br><span class="line">sc query state= all     - 枚举所有服务和驱动程序</span><br><span class="line">sc query bufsize= 50    - 枚举缓冲区为 50 字节</span><br><span class="line">sc query ri= 14         - 枚举时恢复索引 = 14</span><br><span class="line">sc queryex group= ""    - 枚举不在组内的活动服务</span><br><span class="line">sc query type= interact - 枚举所有不活动服务</span><br><span class="line">sc query type= driver group= NDIS     - 枚举所有 NDIS 驱动程序</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sc config:用法</p>
+<pre><code><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\ZSP&gt;sc config --help</span><br><span class="line">描述:</span><br><span class="line">        在注册表和服务数据库中修改服务项。</span><br><span class="line">用法:</span><br><span class="line">        sc &lt;server&gt; config [服务名称] &lt;option1&gt; &lt;option2&gt;...</span><br><span class="line"></span><br><span class="line">选项:</span><br><span class="line">注意: 选项名称包括等号。</span><br><span class="line">      等号和值之间需要一个空格。</span><br><span class="line">      要删除依赖关系，请使用单个“/”表示依赖关系值。</span><br><span class="line"> type= &lt;own|share|interact|kernel|filesys|rec|adapt|userown|usershare&gt;</span><br><span class="line"> start= &lt;boot|system|auto|demand|disabled|delayed-auto&gt;</span><br><span class="line"> error= &lt;normal|severe|critical|ignore&gt;</span><br><span class="line"> binPath= &lt;.exe 文件的 BinaryPathName&gt;</span><br><span class="line"> group= &lt;LoadOrderGroup&gt;</span><br><span class="line"> tag= &lt;yes|no&gt;</span><br><span class="line"> depend= &lt;依赖关系(以 / (正斜杠)分隔)&gt;</span><br><span class="line"> obj= &lt;AccountName|ObjectName&gt;</span><br><span class="line"> DisplayName= &lt;显示名称&gt;</span><br><span class="line"> password= &lt;密码&gt;</span><br></pre></td></tr></table></figure></code></pre></li>
+</ol>
+</li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月18日 00:11</p>
+        <p>原始链接： <a class="post-url" href="/2018/11/17/PowerShell/Service/" title="服务相关命令">https://airbash.cn/2018/11/17/PowerShell/Service/</a></p>
+        <footer>
+            <a href="https://airbash.cn">
+                <img src="/images/logo.png" alt="ZSP">
+                ZSP
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://airbash.cn/2018/11/17/PowerShell/Service/&title=《服务相关命令》 — ZSP's Blog&pic=../images/logo/PowerShell.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://airbash.cn/2018/11/17/PowerShell/Service/&title=《服务相关命令》 — ZSP's Blog&source=专注 JAVA 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://airbash.cn/2018/11/17/PowerShell/Service/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《服务相关命令》 — ZSP's Blog&url=https://airbash.cn/2018/11/17/PowerShell/Service/&via=https://airbash.cn" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://airbash.cn/2018/11/17/PowerShell/Service/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://airbash.cn/2018/11/17/PowerShell/Service/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/PowerShell/" class="color1">PowerShell</a>
+      
+    <a href="/tags/运维/" class="color3">运维</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、NET和SC的区别"><span class="post-toc-text">1、NET和SC的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-net命令"><span class="post-toc-text">2.net命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-SC命令"><span class="post-toc-text">3.SC命令</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/11/18/PowerShell/getHelp/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          帮助信息
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/installAndUse/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">安装使用Redis</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="https://github.com/AirBashX/hexo-theme-airbash" target="_blank">AirBash</a>
+        &copy; 2019 ZSP<br>
+        鲁ICP备18041747号<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://airbash.cn",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Apache/">Apache</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/IDE/">IDE</a><a class="category-link" href="/categories/JAVA/">JAVA</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/MyBatis/">MyBatis</a><a class="category-link" href="/categories/PowerShell/">PowerShell</a><a class="category-link" href="/categories/Spring/">Spring</a><a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="category-link" href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a><a class="category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/">软件破解</a><a class="category-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 14px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 12px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/StudioST/" style="font-size: 10px;">StudioST</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 14px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 16px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">软件破解</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 16px;">运维</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Apache/" style="font-size: 12px;">Apache</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/Lucene/" style="font-size: 10px;">Lucene</a> <a href="/tags/Markdown/" style="font-size: 12px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/PowerShell/" style="font-size: 14px;">PowerShell</a> <a href="/tags/Redis/" style="font-size: 12px;">Redis</a> <a href="/tags/SVN/" style="font-size: 10px;">SVN</a> <a href="/tags/Spring/" style="font-size: 16px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/StudioST/" style="font-size: 10px;">StudioST</a> <a href="/tags/Sublime/" style="font-size: 10px;">Sublime</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/log4j/" style="font-size: 10px;">log4j</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 14px;">开源项目</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 16px;">数据库</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">框架</a> <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" style="font-size: 14px;">版本管理</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">软件破解</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 16px;">运维</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
