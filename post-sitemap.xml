@@ -8,14 +8,6 @@
     </url>
 
     <url>
-        <loc>https://airbash.cn/2019/11/28/IDEA/IDEAFileHander/</loc>
-        <lastmod>2019-11-28T14:42:10.329Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://airbash.cn/2018/11/18/PowerShell/getHelp/</loc>
         <lastmod>2019-11-17T16:15:06.428Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -72,7 +64,7 @@
     </url>
 
     <url>
-        <loc>https://airbash.cn/2019/11/07/Sublime/Markdown/</loc>
+        <loc>https://airbash.cn/2019/11/07/IDE/Sublime/Markdown/</loc>
         <lastmod>2019-11-06T19:45:04.428Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

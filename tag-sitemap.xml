@@ -3,27 +3,6 @@
 
 
     <url>
-        <loc>https://airbash.cn/tags/IDE/</loc>
-        <lastmod>2019-11-28T14:42:10.329Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://airbash.cn/tags/%25E7%25BC%2596%25E8%25BE%2591%25E5%2599%25A8/</loc>
-        <lastmod>2019-11-28T14:42:10.329Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://airbash.cn/tags/IDEA/</loc>
-        <lastmod>2019-11-28T14:42:10.329Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://airbash.cn/tags/%25E8%25BF%2590%25E7%25BB%25B4/</loc>
         <lastmod>2019-11-17T16:15:06.428Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -75,6 +54,13 @@
     <url>
         <loc>https://airbash.cn/tags/Markdown/</loc>
         <lastmod>2019-11-06T20:19:37.963Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://airbash.cn/tags/IDE/</loc>
+        <lastmod>2019-11-06T19:45:04.428Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -199,14 +185,14 @@
     </url>
 
     <url>
-        <loc>https://airbash.cn/tags/%25E6%25A1%2586%25E6%259E%25B6/</loc>
+        <loc>https://airbash.cn/tags/Spring/</loc>
         <lastmod>2019-11-06T03:36:22.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://airbash.cn/tags/Spring/</loc>
+        <loc>https://airbash.cn/tags/%25E6%25A1%2586%25E6%259E%25B6/</loc>
         <lastmod>2019-11-06T03:36:22.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
