@@ -3,6 +3,34 @@
 
 
     <url>
+        <loc>https://airbash.cn/tags/IDE/</loc>
+        <lastmod>2019-11-28T17:00:25.623Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://airbash.cn/tags/Sublime/</loc>
+        <lastmod>2019-11-28T17:00:25.623Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://airbash.cn/tags/Markdown/</loc>
+        <lastmod>2019-11-28T17:00:25.623Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://airbash.cn/tags/IDEA/</loc>
+        <lastmod>2019-11-28T16:50:31.282Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://airbash.cn/tags/MongoDB/</loc>
         <lastmod>2019-11-28T16:35:38.769Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,34 +47,6 @@
     <url>
         <loc>https://airbash.cn/tags/%25E8%25BD%25AF%25E4%25BB%25B6%25E7%25A0%25B4%25E8%25A7%25A3/</loc>
         <lastmod>2019-11-28T16:35:38.769Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://airbash.cn/tags/IDE/</loc>
-        <lastmod>2019-11-28T16:15:22.943Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://airbash.cn/tags/Sublime/</loc>
-        <lastmod>2019-11-28T16:15:22.943Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://airbash.cn/tags/Markdown/</loc>
-        <lastmod>2019-11-28T16:15:22.943Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://airbash.cn/tags/IDEA/</loc>
-        <lastmod>2019-11-28T15:18:29.987Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
