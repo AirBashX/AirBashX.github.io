@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://airbash.cn/categories/%25E5%2589%258D%25E7%25AB%25AF/</loc>
+        <lastmod>2019-12-27T18:07:34.147Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://airbash.cn/categories/IDE/</loc>
         <lastmod>2019-11-28T17:00:25.623Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -66,13 +73,6 @@
     <url>
         <loc>https://airbash.cn/categories/%25E7%2589%2588%25E6%259C%25AC%25E7%25AE%25A1%25E7%2590%2586/</loc>
         <lastmod>2019-11-06T03:36:22.457Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://airbash.cn/categories/%25E5%2589%258D%25E7%25AB%25AF/</loc>
-        <lastmod>2019-11-06T03:36:22.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

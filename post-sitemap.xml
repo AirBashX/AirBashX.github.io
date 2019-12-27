@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/</loc>
+        <lastmod>2019-12-27T18:07:34.147Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://airbash.cn/2019/11/11/IDE/Sublime/markdown/</loc>
         <lastmod>2019-11-28T17:00:25.623Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -154,14 +162,6 @@
     <url>
         <loc>https://airbash.cn/2019/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/</loc>
         <lastmod>2019-11-06T03:36:22.452Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://airbash.cn/2019/11/02/%E5%89%8D%E7%AB%AF/JQuery/</loc>
-        <lastmod>2019-11-06T03:36:22.450Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
