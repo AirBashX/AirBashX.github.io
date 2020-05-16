@@ -8,29 +8,37 @@
   
     <meta name="keywords" content="ZSP,ZSP's Blog" />
   
-  <meta name="description" content="1.基础知识 容器之间相互隔离,类似于沙盒机制  1.镜像分类 中间层镜像:镜像之间可以复用的部分 1docker image ls -a&#x2F;&#x2F;查看所有  虚悬镜像:当镜像打补丁时,再次pull或者build时,新镜像就会替换旧的镜像名,旧镜像名称就会变成&amp;lt;none&amp;gt;; 1docker image prune&#x2F;&#x2F;删除    2.待补充2.Docker操作1.安装docker官方安装文档,">
-<meta name="keywords" content="开源项目,运维,docker">
+  <meta name="description" content="1.基础知识 容器之间相互隔离,类似于沙盒机制  1.镜像分类 中间层镜像:镜像之间可以复用的部分 1docker image ls -a&#x2F;&#x2F;查看所有  虚悬镜像:当镜像打补丁时,再次pull或者build时,新镜像就会替换旧的镜像名,旧镜像名称就会变成&lt;none&gt;; 1docker image prune&#x2F;&#x2F;删除    2.待补充2.Docker操作1.安装docker官方安装文档,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker">
-<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;2017&#x2F;08&#x2F;02&#x2F;%E8%BF%90%E7%BB%B4&#x2F;docker&#x2F;index.html">
+<meta property="og:url" content="https://airbash.cn/2017/08/02/%E8%BF%90%E7%BB%B4/docker/index.html">
 <meta property="og:site_name" content="ZSP&#39;s Blog">
-<meta property="og:description" content="1.基础知识 容器之间相互隔离,类似于沙盒机制  1.镜像分类 中间层镜像:镜像之间可以复用的部分 1docker image ls -a&#x2F;&#x2F;查看所有  虚悬镜像:当镜像打补丁时,再次pull或者build时,新镜像就会替换旧的镜像名,旧镜像名称就会变成&amp;lt;none&amp;gt;; 1docker image prune&#x2F;&#x2F;删除    2.待补充2.Docker操作1.安装docker官方安装文档,">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T03:36:22.459Z">
+<meta property="og:description" content="1.基础知识 容器之间相互隔离,类似于沙盒机制  1.镜像分类 中间层镜像:镜像之间可以复用的部分 1docker image ls -a&#x2F;&#x2F;查看所有  虚悬镜像:当镜像打补丁时,再次pull或者build时,新镜像就会替换旧的镜像名,旧镜像名称就会变成&lt;none&gt;; 1docker image prune&#x2F;&#x2F;删除    2.待补充2.Docker操作1.安装docker官方安装文档,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-02T13:45:18.000Z">
+<meta property="article:modified_time" content="2019-11-06T03:36:22.459Z">
+<meta property="article:author" content="ZSP">
+<meta property="article:tag" content="开源项目">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
   
   
     <link rel="icon" href="/favicon.ico">
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/pace.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
   
 
   
   
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -163,7 +171,7 @@
 </li>
 <li><p>设置源</p>
 <p>/etc/yum.repos.d/下查看</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">--add-repo \</span><br><span class="line">https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">--add-repo \</span><br><span class="line">https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装docker</p>
 <ol>
@@ -199,7 +207,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker-ce</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除docker目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf &#x2F;var&#x2F;lib&#x2F;docker</span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -306,7 +314,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导出容器[可导出运行]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [image] export 容器id/容器名 镜像名.tar</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [image] export 容器id&#x2F;容器名 镜像名.tar</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导入容器[可指定名称]</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [image] import 镜像名.tar [重命名:建议原名称]</span><br></pre></td></tr></table></figure>
@@ -337,7 +345,7 @@
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 容器名[/容器id bash]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>构建镜像</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t 容器名 /dockefile所在目录</span><br></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t 容器名 &#x2F;dockefile所在目录</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -621,7 +629,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="https://github.com/AirBashX/hexo-theme-airbash" target="_blank">AirBash</a>
-        &copy; 2019 ZSP<br>
+        &copy; 2020 ZSP<br>
         鲁ICP备18041747号<br>
       </p>
     </div>
@@ -717,13 +725,18 @@
         </a>
     </li>
 </div>
+
 <script src="/js/search.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
   <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
   <div id="particles"></div>
-  <script src="/js/particles.js"></script>
+  
+<script src="/js/particles.js"></script>
 
 
 
@@ -731,12 +744,19 @@
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
   <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
-  <script src="/js/animate.js"></script>
+  
+<script src="/js/animate.js"></script>
 
 
-  <script src="/js/pop-img.js"></script>
+
+  
+<script src="/js/pop-img.js"></script>
+
   <script>
      $(".article-entry p img").popImg();
   </script>

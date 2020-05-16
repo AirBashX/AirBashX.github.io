@@ -8,29 +8,36 @@
   
     <meta name="keywords" content="ZSP,ZSP's Blog" />
   
-  <meta name="description" content="1.获取class对象​    eclipse按alt+&#x2F;不会补全新建对象的变量名,需要手动补全;  类的class属性[推荐] 代码更安全性能更好 1class clazz = String.class;  Class的静态方法forName 仅当给出完整类名(包含包名)时使用,因为如果类包名错误会报错; 12345try&amp;#123;    Class forName = Class.forNa">
-<meta name="keywords" content="JAVA,反射">
+  <meta name="description" content="1.获取class对象​    eclipse按alt+&#x2F;不会补全新建对象的变量名,需要手动补全;  类的class属性[推荐] 代码更安全性能更好 1class clazz &#x3D; String.class;  Class的静态方法forName 仅当给出完整类名(包含包名)时使用,因为如果类包名错误会报错; 12345try&amp;#123;    Class forName &#x3D; Class.forNa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="反射相关知识">
-<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;2019&#x2F;11&#x2F;01&#x2F;JAVA&#x2F;%E5%8F%8D%E5%B0%84&#x2F;index.html">
+<meta property="og:url" content="https://airbash.cn/2019/11/01/JAVA/%E5%8F%8D%E5%B0%84/index.html">
 <meta property="og:site_name" content="ZSP&#39;s Blog">
-<meta property="og:description" content="1.获取class对象​    eclipse按alt+&#x2F;不会补全新建对象的变量名,需要手动补全;  类的class属性[推荐] 代码更安全性能更好 1class clazz = String.class;  Class的静态方法forName 仅当给出完整类名(包含包名)时使用,因为如果类包名错误会报错; 12345try&amp;#123;    Class forName = Class.forNa">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T03:36:22.440Z">
+<meta property="og:description" content="1.获取class对象​    eclipse按alt+&#x2F;不会补全新建对象的变量名,需要手动补全;  类的class属性[推荐] 代码更安全性能更好 1class clazz &#x3D; String.class;  Class的静态方法forName 仅当给出完整类名(包含包名)时使用,因为如果类包名错误会报错; 12345try&amp;#123;    Class forName &#x3D; Class.forNa">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-01T12:12:16.000Z">
+<meta property="article:modified_time" content="2019-11-06T03:36:22.440Z">
+<meta property="article:author" content="ZSP">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="反射">
 <meta name="twitter:card" content="summary">
   
   
     <link rel="icon" href="/favicon.ico">
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/pace.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
   
 
   
   
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -152,7 +159,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    Class forName = Class.forName(<span class="string">"java.lang.String"</span>);</span><br><span class="line">&#125;<span class="keyword">catch</span>(ClassNotFoundException e)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Object类里的getClass()方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str= &quot;x&quot;;</span><br><span class="line">Class clazz = str.getClass();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str&#x3D; &quot;x&quot;;</span><br><span class="line">Class clazz &#x3D; str.getClass();</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -492,7 +499,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="https://github.com/AirBashX/hexo-theme-airbash" target="_blank">AirBash</a>
-        &copy; 2019 ZSP<br>
+        &copy; 2020 ZSP<br>
         鲁ICP备18041747号<br>
       </p>
     </div>
@@ -588,13 +595,18 @@
         </a>
     </li>
 </div>
+
 <script src="/js/search.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
   <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
   <div id="particles"></div>
-  <script src="/js/particles.js"></script>
+  
+<script src="/js/particles.js"></script>
 
 
 
@@ -602,12 +614,19 @@
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
   <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
-  <script src="/js/animate.js"></script>
+  
+<script src="/js/animate.js"></script>
 
 
-  <script src="/js/pop-img.js"></script>
+
+  
+<script src="/js/pop-img.js"></script>
+
   <script>
      $(".article-entry p img").popImg();
   </script>

@@ -9,31 +9,39 @@
     <meta name="keywords" content="ZSP,ZSP's Blog" />
   
   <meta name="description" content="本文由 简悦 SimpRead 转码， 原文地址 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_20011607&#x2F;article&#x2F;details&#x2F;81370236  如前文《Sublime Text3 的插件管理工具 (Package Control) 的安装及使用方法》所说，Sublime 有强大的插件扩展功能，本文将详细介绍在用 Sublime 写 Markdown 文档时如何预览，甚至">
-<meta name="keywords" content="Markdown,IDE,Sublime">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sublime实时预览markdown">
-<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;2019&#x2F;11&#x2F;11&#x2F;IDE&#x2F;Sublime&#x2F;markdown&#x2F;index.html">
+<meta property="og:url" content="https://airbash.cn/2019/11/11/IDE/Sublime/markdown/index.html">
 <meta property="og:site_name" content="ZSP&#39;s Blog">
 <meta property="og:description" content="本文由 简悦 SimpRead 转码， 原文地址 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_20011607&#x2F;article&#x2F;details&#x2F;81370236  如前文《Sublime Text3 的插件管理工具 (Package Control) 的安装及使用方法》所说，Sublime 有强大的插件扩展功能，本文将详细介绍在用 Sublime 写 Markdown 文档时如何预览，甚至">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180803020629933?watermark&#x2F;2&#x2F;text&#x2F;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA==&#x2F;dissolve&#x2F;70">
-<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180803030607658?watermark&#x2F;2&#x2F;text&#x2F;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA==&#x2F;dissolve&#x2F;70">
-<meta property="og:updated_time" content="2019-11-28T17:00:25.623Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20180803020629933?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180803030607658?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="article:published_time" content="2019-11-11T13:02:40.000Z">
+<meta property="article:modified_time" content="2019-11-28T17:00:25.623Z">
+<meta property="article:author" content="ZSP">
+<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="IDE">
+<meta property="article:tag" content="Sublime">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180803020629933?watermark&#x2F;2&#x2F;text&#x2F;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA==&#x2F;dissolve&#x2F;70">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180803020629933?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIwMDExNjA3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
   
   
     <link rel="icon" href="/favicon.ico">
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/pace.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
   
 
   
   
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -400,7 +408,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="https://github.com/AirBashX/hexo-theme-airbash" target="_blank">AirBash</a>
-        &copy; 2019 ZSP<br>
+        &copy; 2020 ZSP<br>
         鲁ICP备18041747号<br>
       </p>
     </div>
@@ -496,13 +504,18 @@
         </a>
     </li>
 </div>
+
 <script src="/js/search.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
   <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
   <div id="particles"></div>
-  <script src="/js/particles.js"></script>
+  
+<script src="/js/particles.js"></script>
 
 
 
@@ -510,12 +523,19 @@
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
   <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
-  <script src="/js/animate.js"></script>
+  
+<script src="/js/animate.js"></script>
 
 
-  <script src="/js/pop-img.js"></script>
+
+  
+<script src="/js/pop-img.js"></script>
+
   <script>
      $(".article-entry p img").popImg();
   </script>

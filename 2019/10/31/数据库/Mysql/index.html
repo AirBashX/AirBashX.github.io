@@ -8,29 +8,37 @@
   
     <meta name="keywords" content="ZSP,ZSP's Blog" />
   
-  <meta name="description" content="1.基础知识1.数据类型 整数 int(n);默认11 zerofill:没有的位数用0补齐（约束）   浮点数 float(20,30) 20:总长度|12小数长度 double decimal   字符串 char(n):不可变长度，执行效率高&amp;lt;255; varchar(n)可变长度，占用空间小&amp;lt;65535;通常用于小字段(小于255); text()可变长度&amp;lt;65535;通">
-<meta name="keywords" content="开源项目,Mysql,数据库">
+  <meta name="description" content="1.基础知识1.数据类型 整数 int(n);默认11 zerofill:没有的位数用0补齐（约束）   浮点数 float(20,30) 20:总长度|12小数长度 double decimal   字符串 char(n):不可变长度，执行效率高&lt;255; varchar(n)可变长度，占用空间小&lt;65535;通常用于小字段(小于255); text()可变长度&lt;65535;通">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql">
-<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;2019&#x2F;10&#x2F;31&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93&#x2F;Mysql&#x2F;index.html">
+<meta property="og:url" content="https://airbash.cn/2019/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/index.html">
 <meta property="og:site_name" content="ZSP&#39;s Blog">
-<meta property="og:description" content="1.基础知识1.数据类型 整数 int(n);默认11 zerofill:没有的位数用0补齐（约束）   浮点数 float(20,30) 20:总长度|12小数长度 double decimal   字符串 char(n):不可变长度，执行效率高&amp;lt;255; varchar(n)可变长度，占用空间小&amp;lt;65535;通常用于小字段(小于255); text()可变长度&amp;lt;65535;通">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T03:36:22.452Z">
+<meta property="og:description" content="1.基础知识1.数据类型 整数 int(n);默认11 zerofill:没有的位数用0补齐（约束）   浮点数 float(20,30) 20:总长度|12小数长度 double decimal   字符串 char(n):不可变长度，执行效率高&lt;255; varchar(n)可变长度，占用空间小&lt;65535;通常用于小字段(小于255); text()可变长度&lt;65535;通">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-31T15:12:38.000Z">
+<meta property="article:modified_time" content="2019-11-06T03:36:22.452Z">
+<meta property="article:author" content="ZSP">
+<meta property="article:tag" content="开源项目">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
   
   
     <link rel="icon" href="/favicon.ico">
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/pace.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
   
 
   
   
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -232,7 +240,7 @@
 <li><p>创建表</p>
 <p>默认:<code>ENGINE=InnoDB DEFAULT CHARSET=utf8</code></p>
 <p><code>character set</code> = <code>charset</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">    字段名1 类型 约束,</span><br><span class="line">    字段名2 类型 约束,</span><br><span class="line">    ...</span><br><span class="line">) [character set 字符集,engine = 存储引擎名];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">    字段名1 类型 约束,</span><br><span class="line">    字段名2 类型 约束,</span><br><span class="line">    ...</span><br><span class="line">) [character set 字符集,engine &#x3D; 存储引擎名];</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看所有表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
@@ -268,10 +276,10 @@
 </ul>
 </li>
 <li><p>删除记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 字段名 = 值;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 字段名 &#x3D; 值;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更新记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名set 新字段名= 新值[,新字段名= 新值] [where 字段名 = 值];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名set 新字段名&#x3D; 新值[,新字段名&#x3D; 新值] [where 字段名 &#x3D; 值];</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查询记录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名[where];</span><br></pre></td></tr></table></figure>
@@ -281,7 +289,7 @@
 <h3 id="4-字段操作"><a href="#4-字段操作" class="headerlink" title="4.字段操作"></a>4.字段操作</h3><p>可以同时修改多个字段用<code>(,)</code>表示</p>
 <ol>
 <li><p>修改表信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 engine = myisam/innodb charset=utf8/gbk;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 engine &#x3D; myisam&#x2F;innodb charset&#x3D;utf8&#x2F;gbk;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -333,7 +341,7 @@
 <ul>
 <li><p>and/or</p>
 <p>or若前半段执行成功,后半段不执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where 字段=&quot;值1&quot; or(and) 字段=&quot;值2&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where 字段&#x3D;&quot;值1&quot; or(and) 字段&#x3D;&quot;值2&quot;;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>in</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where 字段名 in (数值1,数值2);</span><br></pre></td></tr></table></figure>
@@ -405,10 +413,10 @@
 <li><p>写在where和having后面当作查询条件的值:</p>
 <ul>
 <li><p>查询最大值:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp where job = (select job from emp order by sal limit 0,1);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp where job &#x3D; (select job from emp order by sal limit 0,1);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>多层子查询</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp where job = (select job from emp where sal = (select min(sal) from emp));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp where job &#x3D; (select job from emp where sal &#x3D; (select min(sal) from emp));</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -416,14 +424,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table 表名 as [(]select * from 表名[)];</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>虚拟表:必须加别名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select ename from (select * from emp where deptno=10) newtable;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select ename from (select * from emp where deptno&#x3D;10) newtable;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h4 id="3-关联-连接-查询"><a href="#3-关联-连接-查询" class="headerlink" title="3.关联(连接)查询"></a>3.关联(连接)查询</h4><p>​    可以使用<code>A.*=B.*</code>代表一个表的所有信息；</p>
 <ol>
 <li><p>等值连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A,B where A.x=B.x;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A,B where A.x&#x3D;B.x;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>内连接</p>
 <ol>
@@ -432,15 +440,15 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A join B;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>有关联关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A join B on A.x=B.x;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A join B on A.x&#x3D;B.x;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 <li><p>外连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A [left/right] join B on A.x=B.x;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from A [left&#x2F;right] join B on A.x&#x3D;B.x;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>自关联(表内字段1与字段2存在一对多的关系)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名X 别名a join 表名X 别名b on 别名a.字段1 = 别名b.字段2;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名X 别名a join 表名X 别名b on 别名a.字段1 &#x3D; 别名b.字段2;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -666,7 +674,7 @@
 </li>
 <li><p>插入数据</p>
 <p>insert into 视图名 (字段名1,字段名2) values(数值1，数值2);.注意事项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create view v_emp_10 as (select * from emp where deptno = 10);</span><br><span class="line"></span><br><span class="line">insert into v_emp_10 (empno,ename,deptno) values (10010,&quot;tom&quot;,10);</span><br><span class="line"></span><br><span class="line">insert into v_emp_10 (empno,ename,deptno) values (10011,&quot;jerry&quot;,20);//数据污染</span><br><span class="line"></span><br><span class="line">create view v_emp_20 as (select * from emp where deptno = 20) with check option;</span><br><span class="line"></span><br><span class="line">insert into v_emp_20 (empno,ename,deptno) values (10012,&quot;book&quot;,20);</span><br><span class="line"></span><br><span class="line">insert into v_emp_20 (empno,ename,deptno) values (10013,&quot;school&quot;,10);//数据添加失败</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create view v_emp_10 as (select * from emp where deptno &#x3D; 10);</span><br><span class="line"></span><br><span class="line">insert into v_emp_10 (empno,ename,deptno) values (10010,&quot;tom&quot;,10);</span><br><span class="line"></span><br><span class="line">insert into v_emp_10 (empno,ename,deptno) values (10011,&quot;jerry&quot;,20);&#x2F;&#x2F;数据污染</span><br><span class="line"></span><br><span class="line">create view v_emp_20 as (select * from emp where deptno &#x3D; 20) with check option;</span><br><span class="line"></span><br><span class="line">insert into v_emp_20 (empno,ename,deptno) values (10012,&quot;book&quot;,20);</span><br><span class="line"></span><br><span class="line">insert into v_emp_20 (empno,ename,deptno) values (10013,&quot;school&quot;,10);&#x2F;&#x2F;数据添加失败</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除数据</p>
 <p>只能删除视图中存在的信息,删除失败时提示删除0条；</p>
@@ -932,9 +940,9 @@
       
     <a href="/tags/开源项目/" class="color5">开源项目</a>
       
-    <a href="/tags/Mysql/" class="color1">Mysql</a>
-      
     <a href="/tags/数据库/" class="color4">数据库</a>
+      
+    <a href="/tags/Mysql/" class="color1">Mysql</a>
       
   </li>
 
@@ -986,7 +994,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="https://github.com/AirBashX/hexo-theme-airbash" target="_blank">AirBash</a>
-        &copy; 2019 ZSP<br>
+        &copy; 2020 ZSP<br>
         鲁ICP备18041747号<br>
       </p>
     </div>
@@ -1082,13 +1090,18 @@
         </a>
     </li>
 </div>
+
 <script src="/js/search.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
   <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
   <div id="particles"></div>
-  <script src="/js/particles.js"></script>
+  
+<script src="/js/particles.js"></script>
 
 
 
@@ -1096,12 +1109,19 @@
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
   <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
-  <script src="/js/animate.js"></script>
+  
+<script src="/js/animate.js"></script>
 
 
-  <script src="/js/pop-img.js"></script>
+
+  
+<script src="/js/pop-img.js"></script>
+
   <script>
      $(".article-entry p img").popImg();
   </script>

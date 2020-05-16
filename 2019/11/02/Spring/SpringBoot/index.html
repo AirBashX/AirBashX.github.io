@@ -8,29 +8,37 @@
   
     <meta name="keywords" content="ZSP,ZSP's Blog" />
   
-  <meta name="description" content="1.基础配置它是一个默认添加了许多依赖，完成了许多(公共)默认的配置，集成了主流的Spring+SpringMVC的框架。 1. 创建项目 打开网址 http:&#x2F;&#x2F;start.spring.io; 填写参数,选择额外依赖,点击Generate Project按钮 下载项目压缩包 解压压缩包并剪切到eclipse项目目录中 eclipse中导入项目:Import&amp;gt; Existing Maven">
-<meta name="keywords" content="JAVA,框架,SpringBoot">
+  <meta name="description" content="1.基础配置它是一个默认添加了许多依赖，完成了许多(公共)默认的配置，集成了主流的Spring+SpringMVC的框架。 1. 创建项目 打开网址 http:&#x2F;&#x2F;start.spring.io; 填写参数,选择额外依赖,点击Generate Project按钮 下载项目压缩包 解压压缩包并剪切到eclipse项目目录中 eclipse中导入项目:Import&gt; Existing Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot">
-<meta property="og:url" content="https:&#x2F;&#x2F;airbash.cn&#x2F;2019&#x2F;11&#x2F;02&#x2F;Spring&#x2F;SpringBoot&#x2F;index.html">
+<meta property="og:url" content="https://airbash.cn/2019/11/02/Spring/SpringBoot/index.html">
 <meta property="og:site_name" content="ZSP&#39;s Blog">
-<meta property="og:description" content="1.基础配置它是一个默认添加了许多依赖，完成了许多(公共)默认的配置，集成了主流的Spring+SpringMVC的框架。 1. 创建项目 打开网址 http:&#x2F;&#x2F;start.spring.io; 填写参数,选择额外依赖,点击Generate Project按钮 下载项目压缩包 解压压缩包并剪切到eclipse项目目录中 eclipse中导入项目:Import&amp;gt; Existing Maven">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T03:36:22.445Z">
+<meta property="og:description" content="1.基础配置它是一个默认添加了许多依赖，完成了许多(公共)默认的配置，集成了主流的Spring+SpringMVC的框架。 1. 创建项目 打开网址 http:&#x2F;&#x2F;start.spring.io; 填写参数,选择额外依赖,点击Generate Project按钮 下载项目压缩包 解压压缩包并剪切到eclipse项目目录中 eclipse中导入项目:Import&gt; Existing Maven">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-02T12:45:20.000Z">
+<meta property="article:modified_time" content="2019-11-06T03:36:22.445Z">
+<meta property="article:author" content="ZSP">
+<meta property="article:tag" content="JAVA">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
   
   
     <link rel="icon" href="/favicon.ico">
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/pace.min.js"></script>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
   
 
   
   
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
   <div id="container">
@@ -238,13 +246,13 @@
 <li><p><strong>报错解决</strong></p>
 <ol>
 <li><p>步骤文件中<code>@AutoWired</code>错误或<code>@MapperScan</code>出错,导致找不到接口类;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &apos;cn.tedu.store.mapper.UserMapper&apos; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: &#123;@org.springframework.beans.factory.annotation.Autowired(required=true)&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &#39;cn.tedu.store.mapper.UserMapper&#39; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: &#123;@org.springframework.beans.factory.annotation.Autowired(required&#x3D;true)&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Mapper.xml中 <code>id</code>或者<code>namespace</code>属性出错,导致查找不到接口类的方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): cn.tedu.store.mapper.UserMapper.insert</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Mapper.xml中<code>@param</code>定义的和引用的数量不一样导致数组下标越界</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter &apos;#modifiedUser&apos; not found. Available parameters are [modifiedTime, modifiedUser, param3, aid, param1, param2]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter &#39;#modifiedUser&#39; not found. Available parameters are [modifiedTime, modifiedUser, param3, aid, param1, param2]</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.sql.SQLException: Parameter index out of range (1 &gt; number o)</span><br></pre></td></tr></table></figure>
 </li>
@@ -260,7 +268,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.lang.ClassNotFoundException: Cannot find class:</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>实体类中的某个属性错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named &apos;phone&apos; in &apos;class cn.tedu.store.entity.User&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named &#39;phone&#39; in &#39;class cn.tedu.store.entity.User&#39;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>junit报错,报错台无信息</p>
 <p>测试类包名出错或者忘记写@Test</p>
@@ -544,7 +552,7 @@
       <p>
         Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
         Theme <a href="https://github.com/AirBashX/hexo-theme-airbash" target="_blank">AirBash</a>
-        &copy; 2019 ZSP<br>
+        &copy; 2020 ZSP<br>
         鲁ICP备18041747号<br>
       </p>
     </div>
@@ -640,13 +648,18 @@
         </a>
     </li>
 </div>
+
 <script src="/js/search.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 
 
   <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
   <div id="particles"></div>
-  <script src="/js/particles.js"></script>
+  
+<script src="/js/particles.js"></script>
 
 
 
@@ -654,12 +667,19 @@
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
   <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
-  <script src="/js/animate.js"></script>
+  
+<script src="/js/animate.js"></script>
 
 
-  <script src="/js/pop-img.js"></script>
+
+  
+<script src="/js/pop-img.js"></script>
+
   <script>
      $(".article-entry p img").popImg();
   </script>
